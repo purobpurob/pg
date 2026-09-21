@@ -270,6 +270,7 @@
             '<span>' + w.gust.toFixed(1).replace(".", ",") + ' m/s gust</span>' +
             '<span>' + windArrow(w.degrees) + ' ' + w.direction + ' ' + Math.round(w.degrees) + '&deg;</span>' +
             '<span>' + (w.precipitation || 0).toFixed(1).replace(".", ",") + ' mm</span>' +
+            (typeof w.temperature === "number" ? '<span>' + w.temperature.toFixed(1).replace(".", ",") + '&deg;C</span>' : "") +
           '</div>' +
           '<p class="window-row-reason">' + w.reason + '</p>' +
         '</div>';
@@ -302,6 +303,11 @@
         '<span class="gust-label">Nedbør</span>' +
         '<span class="gust-value">' + (day.precipitation || 0).toFixed(1).replace(".", ",") + ' mm</span>' +
       '</div>' +
+      (typeof day.temperature === "number" ?
+        '<div class="gust-row">' +
+          '<span class="gust-label">Temperatur</span>' +
+          '<span class="gust-value">' + day.temperature.toFixed(1).replace(".", ",") + '&deg;C</span>' +
+        '</div>' : "") +
       '<p class="reason">' + day.reason + '</p>'
     );
   }
