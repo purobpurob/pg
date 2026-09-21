@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paragliding Weather Forecast</title>
+<link rel="stylesheet" href="style.css?v=4">
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem("theme");
+      if (saved === "light" || saved === "dark") {
+        document.documentElement.setAttribute("data-theme", saved);
+      }
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+
+<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Skift mellem lys og mørk">🌙</button>
+
+<header class="page-header">
+  <div class="page-header-photo"></div>
+  <div class="page-header-content">
+    <h1>Paragliding Weather Forecast</h1>
+    <p class="sub">Elev Flyvevejr for Hammars Backar &amp; Heatherhill</p>
+  </div>
+</header>
+
+<div class="assumptions-toggle-wrap">
+  <button class="assumptions-toggle" id="assumptions-toggle" type="button" aria-haspopup="dialog">
+    Forudsætninger for vurdering
+  </button>
+</div>
+
+<section class="assumptions-panel" id="assumptions-panel" hidden>
+  <div class="assumptions-body" id="assumptions-body">
+  <h2>Forudsætninger for vurdering</h2>
+
+  <p class="assumptions-note">Vurderingerne er lavet med elever i tanke og er bevidst konservative. Ved tvivl vises en skarpere farve, end en erfaren pilot måske selv ville vælge.</p>
+
+  <h3>Hammars Backar</h3>
+  <ul>
+    <li>🟢 Grøn: 190&deg;-260&deg;</li>
+    <li>🟡 Gul: 170&deg;-190&deg; og 260&deg;-285&deg;</li>
+    <li>🔴 Rød: Resten</li>
+  </ul>
+
+  <h3>Heatherhill</h3>
+  <ul>
+    <li>🟢 Grøn: 292&deg;-360&deg; og 0&deg;-22&deg;</li>
+    <li>🟡 Gul: 270&deg;-292&deg; og 22&deg;-45&deg;</li>
+    <li>🔴 Rød: Resten</li>
+  </ul>
+
+  <h3>Vindstyrke</h3>
+  <table class="assumptions-table">
+    <thead>
+      <tr><th>Forhold</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>&le; 5 m/s og &le; 8 m/s gust</td><td>🟢</td></tr>
+      <tr><td>&gt; 5 m/s eller &gt; 8 m/s gust</td><td>🟡</td></tr>
+      <tr><td>&gt; 6 m/s eller &gt; 10 m/s gust</td><td>🔴</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Nedbør</h3>
+  <table class="assumptions-table">
+    <thead>
+      <tr><th>Forhold</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Ingen målbar nedbør</td><td>🟢</td></tr>
+      <tr><td>Nedbør i perioder</td><td>🟡</td></tr>
+      <tr><td>Regn (over 1 mm/t)</td><td>🔴</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Samlet vurdering</h3>
+  <ul>
+    <li>🟢 Flyvevejr: God retning + passende vind</li>
+    <li>🟡 Vær opmærksom: Marginal retning eller højere vind</li>
+    <li>🔴 Ikke egnet: Forkert retning eller for kraftig vind</li>
+  </ul>
+
+  <h3>Tidsvinduer</h3>
+  <p>Hver dag er delt op i tre tidsvinduer: formiddag (09-13), eftermiddag (13-16) og sen eftermiddag (16-19). Dagens samlede farve er det værste udfald blandt de tre vinduer. Klik på en prik i 5 dages forecast for at se detaljer for hvert tidsvindue.</p>
+  </div>
+</section>
+
+<main id="cards" class="cards"></main>
+
+<section class="forecast" id="forecast">
+  <h2>5 dages forecast</h2>
+  <div class="forecast-table" id="forecast-table"></div>
+</section>
+
+<div class="modal-overlay" id="day-modal-overlay" hidden>
+  <div class="modal" id="day-modal" role="dialog" aria-modal="true" aria-labelledby="day-modal-title">
+    <button class="modal-close" id="day-modal-close" type="button" aria-label="Luk">&times;</button>
+    <div id="day-modal-content"></div>
+  </div>
+</div>
+
+<p class="updated" id="updated">Henter data...</p>
+
+<footer class="page-footer">
+  <p>Coded by Borup 2026</p>
+</footer>
+
+<script>
+  // ---------- Tema skift (lys / mørk) ----------
+  const themeToggle = document.getElementById("theme-toggle");
+
+  function applyThemeIcon() {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    themeToggle.textContent = isDark ? "🌙" : "☀️";
+  }
+  applyThemeIcon();
+
+  themeToggle.addEventListener("click", () => {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    const next = isDark ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    applyThemeIcon();
+  });
+
+  const STATUS_LABEL = {
+    green:  "Gode muligheder",
+    yellow: "Usikker",
+    red:    "No-go"
+  };
+
+  const WEEKDAYS = ["Søn", "Man", "Tir", "Ons", "Tor", "Fre", "Lør"];
+  const WEEKDAYS_FULL = ["søndag", "mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"];
+
+  function parseDate(iso) {
+    return new Date(iso + "T00:00:00");
+  }
+
+  function weekdayLabel(iso) {
+    return WEEKDAYS[parseDate(iso).getDay()];
+  }
+
+  function fullDateLabel(iso) {
+    const d = parseDate(iso);
+    const dd = String(d.getDate()).padStart(2, "0");
+    const mm = String(d.getMonth() + 1).padStart(2, "0");
+    return WEEKDAYS_FULL[d.getDay()] + " " + dd + "/" + mm;
+  }
+
+  function shortDateLabel(iso) {
+    const d = parseDate(iso);
+    const dd = String(d.getDate()).padStart(2, "0");
+    const mm = String(d.getMonth() + 1).padStart(2, "0");
+    return dd + "/" + mm + "/" + d.getFullYear();
+  }
+
+  // Kortere udgave (2-cifret år) til de smalle kolonner i 5 dages forecast
+  function compactDateLabel(iso) {
+    const d = parseDate(iso);
+    const dd = String(d.getDate()).padStart(2, "0");
+    const mm = String(d.getMonth() + 1).padStart(2, "0");
+    const yy = String(d.getFullYear()).slice(-2);
+    return dd + "/" + mm + "/" + yy;
+  }
+
+  function formatUpdated(iso) {
+    const d = new Date(iso);
+    const dd = String(d.getDate()).padStart(2, "0");
+    const mm = String(d.getMonth() + 1).padStart(2, "0");
+    const hh = String(d.getHours()).padStart(2, "0");
+    const mi = String(d.getMinutes()).padStart(2, "0");
+    return "Vejrinformation sidst opdateret " + dd + "/" + mm + "/" + d.getFullYear() + " " + hh + ":" + mi + " via api.open-meteo.com";
+  }
+
+  function windArrow(degrees) {
+    // Pilen peger derhen vinden blæser hen (mod vindretningen + 180 grader)
+    const rotation = (degrees + 180) % 360;
+    return '<span class="arrow" style="transform: rotate(' + rotation + 'deg)">&#8593;</span>';
+  }
+
+  // Rigtige flag som SVG i stedet for emoji. Windows viser flag-emojis som
+  // bogstaver (fx "SE", "DK") i stedet for flag, så vi tegner dem selv
+  const FLAG_SVG = {
+    SE: '<svg viewBox="0 0 37 28" xmlns="http://www.w3.org/2000/svg">' +
+          '<rect width="37" height="28" fill="#006AA7"/>' +
+          '<rect x="13" width="5" height="28" fill="#FECC02"/>' +
+          '<rect y="11" width="37" height="6" fill="#FECC02"/>' +
+        '</svg>',
+    DK: '<svg viewBox="0 0 37 28" xmlns="http://www.w3.org/2000/svg">' +
+          '<rect width="37" height="28" fill="#C8102E"/>' +
+          '<rect x="12" width="6" height="28" fill="#fff"/>' +
+          '<rect y="11" width="37" height="6" fill="#fff"/>' +
+        '</svg>'
+  };
+
+  function flagHtml(code) {
+    return FLAG_SVG[code] || "";
+  }
+
+  // Windy-koordinater for de præcise startsteder
+  const WINDY_SITES = {
+    "Heatherhill":     { path: "",             query: "56.089,12.140,15,m:feEagvp" },
+    "Hammars Backar":  { path: "55.401/14.014", query: "55.380,14.019,12,m:feEagvp" }
+  };
+
+  function windyUrl(siteName) {
+    const site = WINDY_SITES[siteName];
+    if (!site) return null;
+    return "https://www.windy.com/" + site.path + "?" + site.query;
+  }
+
+  function windyLinkHtml(siteName) {
+    const url = windyUrl(siteName);
+    if (!url) return "";
+    return '<a class="windy-link" href="' + url + '" target="_blank" rel="noopener">Se vind på Windy &#8599;</a>';
+  }
+
+  function isValidWindow(w) {
+    return w && typeof w === "object" && typeof w.wind === "number";
+  }
+
+  function windowChipsHtml(windows) {
+    if (!windows || !windows.length || !windows.every(isValidWindow)) return "";
+
+    let html = '<div class="windows-row">';
+    windows.forEach(w => {
+      html +=
+        '<div class="window-chip" title="' + w.label + ' ' + w.range + '">' +
+          '<span class="window-dot status-' + w.status + '"></span>' +
+          '<span class="window-label">' + w.label + '</span>' +
+        '</div>';
+    });
+    return html + '</div>';
+  }
+
+  function windowTableHtml(windows) {
+    if (!windows || !windows.length || !windows.every(isValidWindow)) return "";
+
+    let html = '<div class="window-table"><h3 class="window-table-title">Tidsvinduer</h3>';
+    windows.forEach(w => {
+      html +=
+        '<div class="window-row">' +
+          '<div class="window-row-top">' +
+            '<span class="window-dot status-' + w.status + '"></span>' +
+            '<span class="window-row-label">' + w.label + '</span>' +
+            '<span class="window-row-range">' + w.range + '</span>' +
+          '</div>' +
+          '<div class="window-row-stats">' +
+            '<span>' + w.wind.toFixed(1).replace(".", ",") + ' m/s</span>' +
+            '<span>' + w.gust.toFixed(1).replace(".", ",") + ' m/s gust</span>' +
+            '<span>' + windArrow(w.degrees) + ' ' + w.direction + ' ' + Math.round(w.degrees) + '&deg;</span>' +
+            '<span>' + (w.precipitation || 0).toFixed(1).replace(".", ",") + ' mm</span>' +
+          '</div>' +
+          '<p class="window-row-reason">' + w.reason + '</p>' +
+        '</div>';
+    });
+    return html + '</div>';
+  }
+
+  function dayDetailsHtml(site, day) {
+    const label = STATUS_LABEL[day.status] || "Ukendt";
+
+    return (
+      '<div class="status-pill status-' + day.status + '">' + label.toUpperCase() + '</div>' +
+      windowChipsHtml(day.windows) +
+      '<div class="card-body">' +
+        '<div class="metric">' +
+          '<div class="metric-value">' + day.wind.toFixed(1).replace(".", ",") + ' m/s</div>' +
+          '<div class="metric-label">Vind</div>' +
+        '</div>' +
+        '<div class="metric metric-direction">' +
+          windArrow(day.degrees) +
+          '<div class="metric-value">' + day.direction + ' ' + Math.round(day.degrees) + '&deg;</div>' +
+          '<div class="metric-label">Retning</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="gust-row">' +
+        '<span class="gust-label">Vindstød</span>' +
+        '<span class="gust-value">' + day.gust.toFixed(1).replace(".", ",") + ' m/s</span>' +
+      '</div>' +
+      '<div class="gust-row">' +
+        '<span class="gust-label">Nedbør</span>' +
+        '<span class="gust-value">' + (day.precipitation || 0).toFixed(1).replace(".", ",") + ' mm</span>' +
+      '</div>' +
+      '<p class="reason">' + day.reason + '</p>'
+    );
+  }
+
+  function buildCard(site) {
+    const today = site.days[0];
+
+    const card = document.createElement("article");
+    card.className = "weather-card status-" + today.status;
+
+    card.innerHTML =
+      '<div class="card-top">' +
+        '<div class="site-heading">' +
+          '<h2 class="site-name">' + site.name + '</h2>' +
+          '<span class="card-date">' + shortDateLabel(today.date) + '</span>' +
+        '</div>' +
+        '<span class="flag">' + flagHtml(site.flag) + '</span>' +
+      '</div>' +
+      dayDetailsHtml(site, today) +
+      windyLinkHtml(site.name);
+
+    return card;
+  }
+
+  function buildForecastRow(site, siteIndex) {
+    const row = document.createElement("div");
+    row.className = "forecast-row";
+
+    let cellsHtml = '<div class="forecast-site">' + site.name + '</div>';
+    site.days.forEach((day, dayIndex) => {
+      cellsHtml +=
+        '<div class="forecast-cell">' +
+          '<button type="button" class="forecast-dot status-' + day.status + '" ' +
+            'data-site="' + siteIndex + '" data-day="' + dayIndex + '" ' +
+            'aria-label="' + site.name + ', ' + weekdayLabel(day.date) + ', se detaljer"></button>' +
+        '</div>';
+    });
+
+    row.innerHTML = cellsHtml;
+    return row;
+  }
+
+  function render(data) {
+    document.getElementById("updated").textContent = formatUpdated(data.updated);
+
+    const cardsEl = document.getElementById("cards");
+    cardsEl.innerHTML = "";
+    data.sites.forEach(site => cardsEl.appendChild(buildCard(site)));
+
+    const tableEl = document.getElementById("forecast-table");
+    tableEl.innerHTML = "";
+
+    const header = document.createElement("div");
+    header.className = "forecast-row forecast-header";
+    let headerHtml = '<div class="forecast-site"></div>';
+    data.sites[0].days.forEach(day => {
+      headerHtml +=
+        '<div class="forecast-cell forecast-day-header">' +
+          weekdayLabel(day.date) +
+          '<div class="forecast-day-date">' + compactDateLabel(day.date) + '</div>' +
+        '</div>';
+    });
+    header.innerHTML = headerHtml;
+    tableEl.appendChild(header);
+
+    data.sites.forEach((site, siteIndex) => tableEl.appendChild(buildForecastRow(site, siteIndex)));
+  }
+
+  const toggleBtn = document.getElementById("assumptions-toggle");
+  const assumptionsBody = document.getElementById("assumptions-body");
+
+  // ---------- Dag-detaljer modal ----------
+
+  let WEATHER_DATA = null;
+
+  const modalOverlay = document.getElementById("day-modal-overlay");
+  const modalContent = document.getElementById("day-modal-content");
+  const modalClose = document.getElementById("day-modal-close");
+
+  function openDayModal(siteIndex, dayIndex) {
+    if (!WEATHER_DATA) return;
+
+    const site = WEATHER_DATA.sites[siteIndex];
+    const day = site.days[dayIndex];
+    if (!site || !day) return;
+
+    modalContent.innerHTML =
+      '<h2 id="day-modal-title" class="modal-title">' +
+        site.name + ' <span class="flag">' + flagHtml(site.flag) + '</span>' +
+      '</h2>' +
+      '<p class="modal-date">' + fullDateLabel(day.date) + '</p>' +
+      dayDetailsHtml(site, day) +
+      windowTableHtml(day.windows);
+
+    modalOverlay.hidden = false;
+    modalClose.focus();
+  }
+
+  function closeDayModal() {
+    modalOverlay.hidden = true;
+  }
+
+  function openAssumptionsModal() {
+    modalContent.innerHTML = '<div class="assumptions-body">' + assumptionsBody.innerHTML + '</div>';
+    modalOverlay.hidden = false;
+    modalClose.focus();
+  }
+
+  toggleBtn.addEventListener("click", openAssumptionsModal);
+
+  document.getElementById("forecast-table").addEventListener("click", (e) => {
+    const dot = e.target.closest(".forecast-dot");
+    if (!dot) return;
+    openDayModal(Number(dot.dataset.site), Number(dot.dataset.day));
+  });
+
+  modalClose.addEventListener("click", closeDayModal);
+
+  modalOverlay.addEventListener("click", (e) => {
+    if (e.target === modalOverlay) closeDayModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modalOverlay.hidden) closeDayModal();
+  });
+
+  fetch("weather.json?" + Date.now())
+    .then(r => {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    })
+    .then(data => {
+      WEATHER_DATA = data;
+      render(data);
+    })
+    .catch(err => {
+      document.getElementById("updated").textContent =
+        "Kunne ikke hente weather.json (" + err.message + ")";
+    });
+</script>
+
+</body>
+</html>
