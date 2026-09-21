@@ -56,12 +56,26 @@
   <h3>Vindstyrke</h3>
   <table class="assumptions-table">
     <thead>
-      <tr><th>Forhold</th><th>Status</th></tr>
+      <tr><th>Vind</th><th>Status</th></tr>
     </thead>
     <tbody>
-      <tr><td>&le; 5 m/s og &le; 8 m/s gust</td><td>🟢</td></tr>
-      <tr><td>&gt; 5 m/s eller &gt; 8 m/s gust</td><td>🟡</td></tr>
-      <tr><td>&gt; 6 m/s eller &gt; 10 m/s gust</td><td>🔴</td></tr>
+      <tr><td>&lt; 2 m/s</td><td>⚪ For lidt vind</td></tr>
+      <tr><td>2-3 m/s</td><td>🟡 Muligt men sandsynligvis begrænset</td></tr>
+      <tr><td>3-5 m/s</td><td>🟢 Godt</td></tr>
+      <tr><td>5-6 m/s</td><td>🟡 Mere krævende</td></tr>
+      <tr><td>&gt; 6 m/s</td><td>🔴 For kraftigt</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Vindstød</h3>
+  <table class="assumptions-table">
+    <thead>
+      <tr><th>Gust</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>&le; 8 m/s</td><td>🟢</td></tr>
+      <tr><td>8-10 m/s</td><td>🟡</td></tr>
+      <tr><td>&gt; 10 m/s</td><td>🔴</td></tr>
     </tbody>
   </table>
 
@@ -82,6 +96,7 @@
     <li>🟢 Flyvevejr: God retning + passende vind</li>
     <li>🟡 Vær opmærksom: Marginal retning eller højere vind</li>
     <li>🔴 Ikke egnet: Forkert retning eller for kraftig vind</li>
+    <li>⚪ For lidt vind: Under 2 m/s</li>
   </ul>
 
   <h3>Tidsvinduer</h3>
@@ -130,7 +145,8 @@
   const STATUS_LABEL = {
     green:  "Gode muligheder",
     yellow: "Usikker",
-    red:    "No-go"
+    red:    "No-go",
+    grey:   "For lidt vind"
   };
 
   const WEEKDAYS = ["Søn", "Man", "Tir", "Ons", "Tor", "Fre", "Lør"];
