@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-09-21T22:30:03",
+    "updated":  "2026-09-21T23:00:02",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -74,7 +74,7 @@
                                                            "wind":  3.2,
                                                            "gust":  6.9,
                                                            "precipitation":  0,
-                                                           "temperature":  14.2,
+                                                           "temperature":  14.1,
                                                            "direction":  "N",
                                                            "degrees":  355,
                                                            "reason":  "Forkert vindretning (N)"
@@ -86,7 +86,7 @@
                                                            "wind":  2.9,
                                                            "gust":  7.2,
                                                            "precipitation":  0,
-                                                           "temperature":  18.2,
+                                                           "temperature":  18.1,
                                                            "direction":  "N",
                                                            "degrees":  4,
                                                            "reason":  "Begrænset vind (2-3 m/s), Forkert vindretning (N)"
@@ -325,7 +325,7 @@
                                                            "wind":  2.6,
                                                            "gust":  5.6,
                                                            "precipitation":  0,
-                                                           "temperature":  15.2,
+                                                           "temperature":  15.1,
                                                            "direction":  "N",
                                                            "degrees":  358,
                                                            "reason":  "Begrænset vind (2-3 m/s)"
@@ -337,7 +337,7 @@
                                                            "wind":  3.6,
                                                            "gust":  7,
                                                            "precipitation":  0,
-                                                           "temperature":  16.7,
+                                                           "temperature":  16.8,
                                                            "direction":  "NV",
                                                            "degrees":  329,
                                                            "reason":  "Gode vindforhold"
