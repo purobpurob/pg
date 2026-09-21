@@ -1,2 +1,2 @@
 # pg
-Paragliding weather forecast
+Paragliding weather forecast.
