@@ -1,5 +1,5 @@
 ﻿{
-    "updated":  "2026-09-21T15:26:08",
+    "updated":  "2026-09-21T15:30:03",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -114,9 +114,9 @@
                                                            "wind":  1.5,
                                                            "gust":  3.5,
                                                            "precipitation":  0,
-                                                           "direction":  "N",
-                                                           "degrees":  14,
-                                                           "reason":  "For lidt vind, Forkert vindretning (N)"
+                                                           "direction":  "SÃ˜",
+                                                           "degrees":  143,
+                                                           "reason":  "For lidt vind, Forkert vindretning (SÃ˜)"
                                                        },
                                                        {
                                                            "label":  "Eftermiddag",
@@ -200,13 +200,13 @@
                                                        {
                                                            "label":  "Formiddag",
                                                            "range":  "09-13",
-                                                           "status":  "red",
+                                                           "status":  "yellow",
                                                            "wind":  3,
                                                            "gust":  6.5,
                                                            "precipitation":  0,
-                                                           "direction":  "NV",
-                                                           "degrees":  302,
-                                                           "reason":  "BegrÃ¦nset vind (2-3 m/s), Forkert vindretning (NV)"
+                                                           "direction":  "V",
+                                                           "degrees":  280,
+                                                           "reason":  "BegrÃ¦nset vind (2-3 m/s), Vindretning ikke optimal (V)"
                                                        },
                                                        {
                                                            "label":  "Eftermiddag",
@@ -322,8 +322,8 @@
                                                            "wind":  3.1,
                                                            "gust":  6.5,
                                                            "precipitation":  0,
-                                                           "direction":  "NV",
-                                                           "degrees":  330,
+                                                           "direction":  "N",
+                                                           "degrees":  348,
                                                            "reason":  "Gode vindforhold"
                                                        }
                                                    ]
@@ -341,13 +341,13 @@
                                                        {
                                                            "label":  "Formiddag",
                                                            "range":  "09-13",
-                                                           "status":  "red",
+                                                           "status":  "grey",
                                                            "wind":  1.4,
                                                            "gust":  3.7,
                                                            "precipitation":  0,
-                                                           "direction":  "S",
-                                                           "degrees":  189,
-                                                           "reason":  "For lidt vind, Forkert vindretning (S)"
+                                                           "direction":  "NV",
+                                                           "degrees":  298,
+                                                           "reason":  "For lidt vind"
                                                        },
                                                        {
                                                            "label":  "Eftermiddag",
@@ -390,9 +390,9 @@
                                                            "wind":  6.8,
                                                            "gust":  12.1,
                                                            "precipitation":  0.3,
-                                                           "direction":  "NV",
-                                                           "degrees":  310,
-                                                           "reason":  "For kraftig vind, For kraftige vindstÃ¸d, NedbÃ¸r i perioder"
+                                                           "direction":  "NÃ˜",
+                                                           "degrees":  30,
+                                                           "reason":  "For kraftig vind, For kraftige vindstÃ¸d, NedbÃ¸r i perioder, Vindretning ikke optimal (NÃ˜)"
                                                        },
                                                        {
                                                            "label":  "Eftermiddag",
@@ -435,9 +435,9 @@
                                                            "wind":  4,
                                                            "gust":  8.9,
                                                            "precipitation":  0.1,
-                                                           "direction":  "NV",
-                                                           "degrees":  310,
-                                                           "reason":  "Kraftige vindstÃ¸d, NedbÃ¸r i perioder"
+                                                           "direction":  "V",
+                                                           "degrees":  282,
+                                                           "reason":  "Kraftige vindstÃ¸d, NedbÃ¸r i perioder, Vindretning ikke optimal (V)"
                                                        },
                                                        {
                                                            "label":  "Eftermiddag",
