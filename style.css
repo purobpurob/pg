@@ -643,6 +643,17 @@ body {
 
 /* ---------- Responsive ---------- */
 
+/* Desktop: lavere hovedbillede, beskåret så himlen over horisonten ikke vises */
+@media (min-width: 641px) {
+  .page-header {
+    aspect-ratio: 1584 / 460;
+  }
+
+  .page-header-photo {
+    background-position: center bottom;
+  }
+}
+
 @media (max-width: 640px) {
   .cards {
     grid-template-columns: 1fr;
