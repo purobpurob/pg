@@ -18,6 +18,10 @@
   --red: #d9362b;
   --red-text: #b02a20;
 
+  --grey-bg: #eef1f4;
+  --grey: #b8c0cc;
+  --grey-text: #6b7684;
+
   --surface: #f7f8fa;
 }
 
@@ -40,6 +44,10 @@
   --red-bg: rgba(217, 54, 43, 0.20);
   --red: #e15a4f;
   --red-text: #f08a80;
+
+  --grey-bg: rgba(255, 255, 255, 0.08);
+  --grey: #6b7684;
+  --grey-text: #aeb6c0;
 
   --surface: #232831;
 }
@@ -303,6 +311,7 @@ body {
 .status-pill.status-green  { background: var(--green-bg);  color: var(--green-text); }
 .status-pill.status-yellow { background: var(--yellow-bg); color: var(--yellow-text); }
 .status-pill.status-red    { background: var(--red-bg);    color: var(--red-text); }
+.status-pill.status-grey   { background: var(--grey-bg);   color: var(--grey-text); }
 
 .windows-row {
   display: flex;
@@ -332,6 +341,7 @@ body {
 .window-dot.status-green  { background: var(--green); }
 .window-dot.status-yellow { background: var(--yellow); }
 .window-dot.status-red    { background: var(--red); }
+.window-dot.status-grey   { background: var(--grey); box-shadow: inset 0 0 0 1px rgba(107, 118, 132, 0.5); }
 
 .window-label {
   font-size: 0.72rem;
@@ -500,6 +510,7 @@ body {
 .forecast-dot.status-green  { background: var(--green); }
 .forecast-dot.status-yellow { background: var(--yellow); }
 .forecast-dot.status-red    { background: var(--red); }
+.forecast-dot.status-grey   { background: var(--grey); box-shadow: inset 0 0 0 1px rgba(107, 118, 132, 0.5); }
 
 /* ---------- Dag-detaljer modal ---------- */
 
