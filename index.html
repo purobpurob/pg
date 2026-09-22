@@ -225,8 +225,12 @@
         '</svg>'
   };
 
+  // weather.json angiver flaget som emoji (🇸🇪 / 🇩🇰). Oversæt til vores koder
+  const FLAG_EMOJI = { "🇸🇪": "SE", "🇩🇰": "DK" };
+
   function flagHtml(code) {
-    return FLAG_SVG[code] || "";
+    const key = FLAG_EMOJI[code] || code;
+    return FLAG_SVG[key] || "";
   }
 
   // Windy-koordinater for de præcise startsteder
@@ -348,7 +352,7 @@
     const row = document.createElement("div");
     row.className = "forecast-row";
 
-    let cellsHtml = '<div class="forecast-site">' + site.name + '</div>';
+    let cellsHtml = '<div class="forecast-site"><span class="forecast-flag">' + flagHtml(site.flag) + '</span>' + site.name + '</div>';
     site.days.forEach((day, dayIndex) => {
       cellsHtml +=
         '<div class="forecast-cell">' +
