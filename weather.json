@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-09-22T19:30:02",
+    "updated":  "2026-09-22T20:00:03",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -49,7 +49,7 @@
                                                            "wind":  3.7,
                                                            "gust":  9.1,
                                                            "precipitation":  0,
-                                                           "temperature":  16.5,
+                                                           "temperature":  16.2,
                                                            "direction":  "S",
                                                            "degrees":  184,
                                                            "reason":  "Muligt men krævende (3-4 m/s), Kraftige vindstød, Vindretning ikke optimal (S)"
@@ -62,7 +62,7 @@
                                        "wind":  5,
                                        "gust":  9.2,
                                        "precipitation":  0,
-                                       "temperature":  15.4,
+                                       "temperature":  15.3,
                                        "direction":  "V",
                                        "degrees":  257,
                                        "reason":  "Kraftige vindstød",
@@ -74,7 +74,7 @@
                                                            "wind":  2.2,
                                                            "gust":  5.2,
                                                            "precipitation":  0,
-                                                           "temperature":  14.2,
+                                                           "temperature":  14.1,
                                                            "direction":  "NV",
                                                            "degrees":  312,
                                                            "reason":  "For lidt vind, Forkert vindretning (NV)"
@@ -86,7 +86,7 @@
                                                            "wind":  5,
                                                            "gust":  9.2,
                                                            "precipitation":  0,
-                                                           "temperature":  17.3,
+                                                           "temperature":  17.2,
                                                            "direction":  "SV",
                                                            "degrees":  243,
                                                            "reason":  "Kraftige vindstød"
@@ -98,7 +98,7 @@
                                                            "wind":  5,
                                                            "gust":  9.2,
                                                            "precipitation":  0,
-                                                           "temperature":  15.2,
+                                                           "temperature":  15,
                                                            "direction":  "V",
                                                            "degrees":  252,
                                                            "reason":  "Kraftige vindstød"
@@ -111,7 +111,7 @@
                                        "wind":  4.2,
                                        "gust":  8,
                                        "precipitation":  0,
-                                       "temperature":  13.6,
+                                       "temperature":  13.5,
                                        "direction":  "N",
                                        "degrees":  2,
                                        "reason":  "Forkert vindretning (N)",
@@ -123,7 +123,7 @@
                                                            "wind":  3.7,
                                                            "gust":  6.9,
                                                            "precipitation":  0,
-                                                           "temperature":  12.8,
+                                                           "temperature":  12.6,
                                                            "direction":  "V",
                                                            "degrees":  275,
                                                            "reason":  "Muligt men krævende (3-4 m/s), Vindretning ikke optimal (V)"
@@ -135,7 +135,7 @@
                                                            "wind":  2.3,
                                                            "gust":  4.8,
                                                            "precipitation":  0,
-                                                           "temperature":  14.4,
+                                                           "temperature":  14.3,
                                                            "direction":  "NV",
                                                            "degrees":  333,
                                                            "reason":  "For lidt vind, Forkert vindretning (NV)"
@@ -147,7 +147,7 @@
                                                            "wind":  4.2,
                                                            "gust":  8,
                                                            "precipitation":  0,
-                                                           "temperature":  13.8,
+                                                           "temperature":  13.7,
                                                            "direction":  "N",
                                                            "degrees":  6,
                                                            "reason":  "Forkert vindretning (N)"
@@ -313,7 +313,7 @@
                                        "wind":  3,
                                        "gust":  5.4,
                                        "precipitation":  0.1,
-                                       "temperature":  15,
+                                       "temperature":  14.9,
                                        "direction":  "SV",
                                        "degrees":  211,
                                        "reason":  "Muligt men krævende (3-4 m/s), Nedbør i perioder, Forkert vindretning (SV)",
@@ -325,7 +325,7 @@
                                                            "wind":  2.5,
                                                            "gust":  4.8,
                                                            "precipitation":  0,
-                                                           "temperature":  14.3,
+                                                           "temperature":  14.2,
                                                            "direction":  "SV",
                                                            "degrees":  216,
                                                            "reason":  "For lidt vind, Forkert vindretning (SV)"
@@ -337,7 +337,7 @@
                                                            "wind":  2.9,
                                                            "gust":  5.1,
                                                            "precipitation":  0.1,
-                                                           "temperature":  15.5,
+                                                           "temperature":  15.4,
                                                            "direction":  "SV",
                                                            "degrees":  207,
                                                            "reason":  "For lidt vind, Nedbør i perioder, Forkert vindretning (SV)"
@@ -362,7 +362,7 @@
                                        "wind":  5,
                                        "gust":  8.6,
                                        "precipitation":  0,
-                                       "temperature":  15,
+                                       "temperature":  14.9,
                                        "direction":  "N",
                                        "degrees":  1,
                                        "reason":  "Kraftige vindstød",
@@ -374,7 +374,7 @@
                                                            "wind":  2.6,
                                                            "gust":  5.2,
                                                            "precipitation":  0,
-                                                           "temperature":  13.9,
+                                                           "temperature":  13.8,
                                                            "direction":  "N",
                                                            "degrees":  358,
                                                            "reason":  "For lidt vind"
@@ -386,7 +386,7 @@
                                                            "wind":  4.4,
                                                            "gust":  8.3,
                                                            "precipitation":  0,
-                                                           "temperature":  15.8,
+                                                           "temperature":  15.7,
                                                            "direction":  "N",
                                                            "degrees":  354,
                                                            "reason":  "Kraftige vindstød"
@@ -398,7 +398,7 @@
                                                            "wind":  5,
                                                            "gust":  8.6,
                                                            "precipitation":  0,
-                                                           "temperature":  15.5,
+                                                           "temperature":  15.4,
                                                            "direction":  "N",
                                                            "degrees":  8,
                                                            "reason":  "Kraftige vindstød"
