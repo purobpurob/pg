@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
 <title>Paragliding Weather Forecast</title>
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=10">
 <script>
   (function () {
     try {
@@ -352,7 +352,7 @@
     const row = document.createElement("div");
     row.className = "forecast-row";
 
-    let cellsHtml = '<div class="forecast-site"><span class="forecast-flag">' + flagHtml(site.flag) + '</span>' + site.name + '</div>';
+    let cellsHtml = '<div class="forecast-site">' + site.name + '</div>';
     site.days.forEach((day, dayIndex) => {
       cellsHtml +=
         '<div class="forecast-cell">' +
