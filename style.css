@@ -476,8 +476,24 @@ body {
 }
 
 .forecast-site {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-weight: 600;
   font-size: 0.9rem;
+}
+
+.forecast-flag {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.forecast-flag svg {
+  width: 18px;
+  height: 13px;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(20, 25, 35, 0.12);
+  display: block;
 }
 
 .forecast-cell {
