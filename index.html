@@ -13,7 +13,7 @@
 <meta property="og:description" content="5 dages flyvevejr for paragliding på Hammars Backar og Heatherhill.">
 <meta property="og:url" content="https://www.8orup.dk/pg/">
 <meta property="og:image" content="https://www.8orup.dk/pg/borup.jpg">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 <script>
   (function () {
     try {
@@ -370,26 +370,27 @@
       '<div class="status-pill status-' + day.status + '">' + label.toUpperCase() + '</div>' +
       (day.bestTime ? '<p class="best-time">Bedste flyvetid: ' + day.bestTime + '</p>' : "") +
       windowChipsHtml(day.windows) +
-      '<div class="card-body">' +
-        '<div class="metric">' +
-          '<div class="metric-value">' + num1(day.wind) + ' m/s</div>' +
-          '<div class="metric-label">Vind</div>' +
+      // Vind, vindstød og gust spread samlet i én kompakt række
+      '<div class="stat-grid">' +
+        '<div class="stat">' +
+          '<div class="stat-value">' + num1(day.wind) + '</div>' +
+          '<div class="stat-label">Vind m/s</div>' +
         '</div>' +
-        '<div class="metric metric-direction">' +
-          windArrow(day.degrees) +
-          '<div class="metric-value">' + day.direction + ' ' + Math.round(day.degrees) + '&deg;</div>' +
-          '<div class="metric-label">Retning</div>' +
+        '<div class="stat">' +
+          '<div class="stat-value">' + num1(day.gust) + '</div>' +
+          '<div class="stat-label">Vindstød m/s</div>' +
         '</div>' +
+        (gs !== null ?
+          '<div class="stat">' +
+            '<div class="stat-value">' + num1(gs) + '</div>' +
+            '<div class="stat-label">Gust spread m/s</div>' +
+          '</div>' : "") +
       '</div>' +
-      '<div class="gust-row">' +
-        '<span class="gust-label">Vindstød</span>' +
-        '<span class="gust-value">' + num1(day.gust) + ' m/s</span>' +
+      '<div class="metric metric-direction metric-full">' +
+        windArrow(day.degrees) +
+        '<div class="metric-value">' + day.direction + ' ' + Math.round(day.degrees) + '&deg;</div>' +
+        '<div class="metric-label">Retning</div>' +
       '</div>' +
-      (gs !== null ?
-        '<div class="gust-row">' +
-          '<span class="gust-label">Gust spread</span>' +
-          '<span class="gust-value">' + num1(gs) + ' m/s</span>' +
-        '</div>' : "") +
       '<div class="gust-row">' +
         '<span class="gust-label">Nedbør</span>' +
         '<span class="gust-value">' + (day.precipitation || 0).toFixed(1).replace(".", ",") + ' mm</span>' +
