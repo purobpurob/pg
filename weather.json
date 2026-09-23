@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-09-23T16:00:02",
+    "updated":  "2026-09-23T16:22:20",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -168,10 +168,9 @@
                                        "direction":  "V",
                                        "degrees":  276,
                                        "weatherCode":  3,
-                                       "reason":  "Vindretningen er marginal (V), Marginal vind (3-4 m/s), Forskel mellem middelvind og vindstød",
+                                       "reason":  "Vindretningen er marginal (V), Forskel mellem middelvind og vindstød",
                                        "primaryReason":  "Vindretningen er marginal (V)",
                                        "secondaryReasons":  [
-                                                                "Marginal vind (3-4 m/s)",
                                                                 "Forskel mellem middelvind og vindstød"
                                                             ],
                                        "bestTime":  "13-19",
@@ -206,10 +205,9 @@
                                                            "direction":  "V",
                                                            "degrees":  276,
                                                            "weatherCode":  3,
-                                                           "reason":  "Vindretningen er marginal (V), Marginal vind (3-4 m/s), Forskel mellem middelvind og vindstød",
+                                                           "reason":  "Vindretningen er marginal (V), Forskel mellem middelvind og vindstød",
                                                            "primaryReason":  "Vindretningen er marginal (V)",
                                                            "secondaryReasons":  [
-                                                                                    "Marginal vind (3-4 m/s)",
                                                                                     "Forskel mellem middelvind og vindstød"
                                                                                 ]
                                                        },
@@ -244,10 +242,9 @@
                                        "direction":  "SV",
                                        "degrees":  240,
                                        "weatherCode":  1,
-                                       "reason":  "For stor forskel mellem middelvind og vindstød, Krævende vind (5,5-6,5 m/s), Kraftigere vindstød",
+                                       "reason":  "For stor forskel mellem middelvind og vindstød, Kraftigere vindstød",
                                        "primaryReason":  "For stor forskel mellem middelvind og vindstød",
                                        "secondaryReasons":  [
-                                                                "Krævende vind (5,5-6,5 m/s)",
                                                                 "Kraftigere vindstød"
                                                             ],
                                        "bestTime":  "",
@@ -264,10 +261,9 @@
                                                            "direction":  "SV",
                                                            "degrees":  240,
                                                            "weatherCode":  1,
-                                                           "reason":  "For stor forskel mellem middelvind og vindstød, Krævende vind (5,5-6,5 m/s), Kraftigere vindstød",
+                                                           "reason":  "For stor forskel mellem middelvind og vindstød, Kraftigere vindstød",
                                                            "primaryReason":  "For stor forskel mellem middelvind og vindstød",
                                                            "secondaryReasons":  [
-                                                                                    "Krævende vind (5,5-6,5 m/s)",
                                                                                     "Kraftigere vindstød"
                                                                                 ]
                                                        },
@@ -283,11 +279,10 @@
                                                            "direction":  "SV",
                                                            "degrees":  235,
                                                            "weatherCode":  3,
-                                                           "reason":  "For stor forskel mellem middelvind og vindstød, For kraftige vindstød, Krævende vind (5,5-6,5 m/s)",
+                                                           "reason":  "For stor forskel mellem middelvind og vindstød, For kraftige vindstød",
                                                            "primaryReason":  "For stor forskel mellem middelvind og vindstød",
                                                            "secondaryReasons":  [
-                                                                                    "For kraftige vindstød",
-                                                                                    "Krævende vind (5,5-6,5 m/s)"
+                                                                                    "For kraftige vindstød"
                                                                                 ]
                                                        },
                                                        {
@@ -358,10 +353,9 @@
                                                            "direction":  "Ø",
                                                            "degrees":  92,
                                                            "weatherCode":  1,
-                                                           "reason":  "Forkert vindretning (Ø), Marginal vind (3-4 m/s), Forskel mellem middelvind og vindstød",
+                                                           "reason":  "Forkert vindretning (Ø), Forskel mellem middelvind og vindstød",
                                                            "primaryReason":  "Forkert vindretning (Ø)",
                                                            "secondaryReasons":  [
-                                                                                    "Marginal vind (3-4 m/s)",
                                                                                     "Forskel mellem middelvind og vindstød"
                                                                                 ]
                                                        },
@@ -377,9 +371,10 @@
                                                            "direction":  "Ø",
                                                            "degrees":  89,
                                                            "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (Ø), Forskel mellem middelvind og vindstød",
+                                                           "reason":  "Forkert vindretning (Ø), Marginal vind (3,5-4,5 m/s), Forskel mellem middelvind og vindstød",
                                                            "primaryReason":  "Forkert vindretning (Ø)",
                                                            "secondaryReasons":  [
+                                                                                    "Marginal vind (3,5-4,5 m/s)",
                                                                                     "Forskel mellem middelvind og vindstød"
                                                                                 ]
                                                        }
@@ -402,10 +397,9 @@
                                        "direction":  "SV",
                                        "degrees":  242,
                                        "weatherCode":  51,
-                                       "reason":  "Forkert vindretning (SV), Marginal vind (3-4 m/s), Forskel mellem middelvind og vindstød, Nedbør i perioder",
+                                       "reason":  "Forkert vindretning (SV), Forskel mellem middelvind og vindstød, Nedbør i perioder",
                                        "primaryReason":  "Forkert vindretning (SV)",
                                        "secondaryReasons":  [
-                                                                "Marginal vind (3-4 m/s)",
                                                                 "Forskel mellem middelvind og vindstød",
                                                                 "Nedbør i perioder"
                                                             ],
@@ -423,10 +417,9 @@
                                                            "direction":  "SV",
                                                            "degrees":  242,
                                                            "weatherCode":  51,
-                                                           "reason":  "Forkert vindretning (SV), Marginal vind (3-4 m/s), Forskel mellem middelvind og vindstød, Nedbør i perioder",
+                                                           "reason":  "Forkert vindretning (SV), Forskel mellem middelvind og vindstød, Nedbør i perioder",
                                                            "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
-                                                                                    "Marginal vind (3-4 m/s)",
                                                                                     "Forskel mellem middelvind og vindstød",
                                                                                     "Nedbør i perioder"
                                                                                 ]
@@ -443,9 +436,10 @@
                                                            "direction":  "SV",
                                                            "degrees":  244,
                                                            "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (SV), Forskel mellem middelvind og vindstød",
+                                                           "reason":  "Forkert vindretning (SV), Marginal vind (3,5-4,5 m/s), Forskel mellem middelvind og vindstød",
                                                            "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
+                                                                                    "Marginal vind (3,5-4,5 m/s)",
                                                                                     "Forskel mellem middelvind og vindstød"
                                                                                 ]
                                                        },
@@ -461,10 +455,9 @@
                                                            "direction":  "S",
                                                            "degrees":  197,
                                                            "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (S), Marginal vind (3-4 m/s), Forskel mellem middelvind og vindstød",
+                                                           "reason":  "Forkert vindretning (S), Forskel mellem middelvind og vindstød",
                                                            "primaryReason":  "Forkert vindretning (S)",
                                                            "secondaryReasons":  [
-                                                                                    "Marginal vind (3-4 m/s)",
                                                                                     "Forskel mellem middelvind og vindstød"
                                                                                 ]
                                                        }
@@ -518,10 +511,10 @@
                                                            "direction":  "NV",
                                                            "degrees":  313,
                                                            "weatherCode":  3,
-                                                           "reason":  "For stor forskel mellem middelvind og vindstød, Marginal vind (3-4 m/s)",
+                                                           "reason":  "For stor forskel mellem middelvind og vindstød, Marginal vind (3,5-4,5 m/s)",
                                                            "primaryReason":  "For stor forskel mellem middelvind og vindstød",
                                                            "secondaryReasons":  [
-                                                                                    "Marginal vind (3-4 m/s)"
+                                                                                    "Marginal vind (3,5-4,5 m/s)"
                                                                                 ]
                                                        },
                                                        {
@@ -555,10 +548,9 @@
                                        "direction":  "NV",
                                        "degrees":  307,
                                        "weatherCode":  51,
-                                       "reason":  "For stor forskel mellem middelvind og vindstød, Krævende vind (5,5-6,5 m/s), Kraftigere vindstød, Nedbør i perioder",
+                                       "reason":  "For stor forskel mellem middelvind og vindstød, Kraftigere vindstød, Nedbør i perioder",
                                        "primaryReason":  "For stor forskel mellem middelvind og vindstød",
                                        "secondaryReasons":  [
-                                                                "Krævende vind (5,5-6,5 m/s)",
                                                                 "Kraftigere vindstød",
                                                                 "Nedbør i perioder"
                                                             ],
@@ -576,10 +568,9 @@
                                                            "direction":  "NV",
                                                            "degrees":  307,
                                                            "weatherCode":  51,
-                                                           "reason":  "For stor forskel mellem middelvind og vindstød, Krævende vind (5,5-6,5 m/s), Kraftigere vindstød, Nedbør i perioder",
+                                                           "reason":  "For stor forskel mellem middelvind og vindstød, Kraftigere vindstød, Nedbør i perioder",
                                                            "primaryReason":  "For stor forskel mellem middelvind og vindstød",
                                                            "secondaryReasons":  [
-                                                                                    "Krævende vind (5,5-6,5 m/s)",
                                                                                     "Kraftigere vindstød",
                                                                                     "Nedbør i perioder"
                                                                                 ]
@@ -614,10 +605,10 @@
                                                            "direction":  "V",
                                                            "degrees":  265,
                                                            "weatherCode":  0,
-                                                           "reason":  "Forkert vindretning (V), Marginal vind (3-4 m/s), Forskel mellem middelvind og vindstød",
+                                                           "reason":  "Forkert vindretning (V), Marginal vind (3,5-4,5 m/s), Forskel mellem middelvind og vindstød",
                                                            "primaryReason":  "Forkert vindretning (V)",
                                                            "secondaryReasons":  [
-                                                                                    "Marginal vind (3-4 m/s)",
+                                                                                    "Marginal vind (3,5-4,5 m/s)",
                                                                                     "Forskel mellem middelvind og vindstød"
                                                                                 ]
                                                        }
@@ -634,10 +625,11 @@
                                        "direction":  "SV",
                                        "degrees":  216,
                                        "weatherCode":  3,
-                                       "reason":  "Forkert vindretning (SV), For stor forskel mellem middelvind og vindstød",
+                                       "reason":  "Forkert vindretning (SV), For stor forskel mellem middelvind og vindstød, Marginal vind (3,5-4,5 m/s)",
                                        "primaryReason":  "Forkert vindretning (SV)",
                                        "secondaryReasons":  [
-                                                                "For stor forskel mellem middelvind og vindstød"
+                                                                "For stor forskel mellem middelvind og vindstød",
+                                                                "Marginal vind (3,5-4,5 m/s)"
                                                             ],
                                        "bestTime":  "",
                                        "windows":  [
@@ -653,10 +645,11 @@
                                                            "direction":  "SV",
                                                            "degrees":  216,
                                                            "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (SV), For stor forskel mellem middelvind og vindstød",
+                                                           "reason":  "Forkert vindretning (SV), For stor forskel mellem middelvind og vindstød, Marginal vind (3,5-4,5 m/s)",
                                                            "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
-                                                                                    "For stor forskel mellem middelvind og vindstød"
+                                                                                    "For stor forskel mellem middelvind og vindstød",
+                                                                                    "Marginal vind (3,5-4,5 m/s)"
                                                                                 ]
                                                        },
                                                        {
@@ -691,9 +684,10 @@
                                                            "direction":  "NV",
                                                            "degrees":  312,
                                                            "weatherCode":  51,
-                                                           "reason":  "For stor forskel mellem middelvind og vindstød, Kraftigere vindstød, Nedbør i perioder",
+                                                           "reason":  "For stor forskel mellem middelvind og vindstød, Marginal vind (3,5-4,5 m/s), Kraftigere vindstød, Nedbør i perioder",
                                                            "primaryReason":  "For stor forskel mellem middelvind og vindstød",
                                                            "secondaryReasons":  [
+                                                                                    "Marginal vind (3,5-4,5 m/s)",
                                                                                     "Kraftigere vindstød",
                                                                                     "Nedbør i perioder"
                                                                                 ]
@@ -748,11 +742,10 @@
                                                            "direction":  "SØ",
                                                            "degrees":  120,
                                                            "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (SØ), For stor forskel mellem middelvind og vindstød, Marginal vind (3-4 m/s)",
+                                                           "reason":  "Forkert vindretning (SØ), For stor forskel mellem middelvind og vindstød",
                                                            "primaryReason":  "Forkert vindretning (SØ)",
                                                            "secondaryReasons":  [
-                                                                                    "For stor forskel mellem middelvind og vindstød",
-                                                                                    "Marginal vind (3-4 m/s)"
+                                                                                    "For stor forskel mellem middelvind og vindstød"
                                                                                 ]
                                                        },
                                                        {
@@ -767,10 +760,10 @@
                                                            "direction":  "SØ",
                                                            "degrees":  128,
                                                            "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (SØ), Marginal vind (3-4 m/s), Forskel mellem middelvind og vindstød",
+                                                           "reason":  "Forkert vindretning (SØ), Marginal vind (3,5-4,5 m/s), Forskel mellem middelvind og vindstød",
                                                            "primaryReason":  "Forkert vindretning (SØ)",
                                                            "secondaryReasons":  [
-                                                                                    "Marginal vind (3-4 m/s)",
+                                                                                    "Marginal vind (3,5-4,5 m/s)",
                                                                                     "Forskel mellem middelvind og vindstød"
                                                                                 ]
                                                        }
