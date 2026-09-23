@@ -13,7 +13,7 @@
 <meta property="og:description" content="5 dages flyvevejr for paragliding på Hammars Backar og Heatherhill.">
 <meta property="og:url" content="https://www.8orup.dk/pg/">
 <meta property="og:image" content="https://www.8orup.dk/pg/borup.jpg">
-<link rel="stylesheet" href="style.css?v=14">
+<link rel="stylesheet" href="style.css?v=16">
 <script>
   (function () {
     try {
@@ -298,6 +298,67 @@
     return FLAG_SVG[key] || "";
   }
 
+  // Egne SVG-vejrikoner (tegnet her, ikke fra en ekstern ikonpakke), så de
+  // ser ens ud på tværs af Windows, Mac og mobil
+  const WEATHER_ICON = {
+    clear:
+      '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="#f6b73c"/>' +
+      '<g stroke="#f6b73c" stroke-width="2" stroke-linecap="round">' +
+      '<line x1="12" y1="1.5" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22.5"/>' +
+      '<line x1="1.5" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22.5" y2="12"/>' +
+      '<line x1="4.6" y1="4.6" x2="6.3" y2="6.3"/><line x1="17.7" y1="17.7" x2="19.4" y2="19.4"/>' +
+      '<line x1="4.6" y1="19.4" x2="6.3" y2="17.7"/><line x1="17.7" y1="6.3" x2="19.4" y2="4.6"/></g></svg>',
+    partly:
+      '<svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3.2" fill="#f6b73c"/>' +
+      '<g stroke="#f6b73c" stroke-width="1.6" stroke-linecap="round">' +
+      '<line x1="8" y1="1.8" x2="8" y2="3"/><line x1="1.8" y1="8" x2="3" y2="8"/>' +
+      '<line x1="3.6" y1="3.6" x2="4.5" y2="4.5"/><line x1="12.4" y1="3.6" x2="11.5" y2="4.5"/></g>' +
+      '<path d="M9 19a3.6 3.6 0 0 1-.5-7.15A5 5 0 0 1 18.5 12.5 3.2 3.2 0 0 1 18 19H9z" fill="#aab3c0"/></svg>',
+    cloud:
+      '<svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.6-7.95A5.5 5.5 0 0 1 17.5 11 3.5 3.5 0 0 1 17 18H7z" fill="#aab3c0"/></svg>',
+    fog:
+      '<svg viewBox="0 0 24 24"><path d="M7 13a4 4 0 0 1-.6-7.95A5.5 5.5 0 0 1 17.5 6 3.5 3.5 0 0 1 17 13H7z" fill="#aab3c0"/>' +
+      '<g stroke="#9aa4b2" stroke-width="2" stroke-linecap="round"><line x1="6" y1="17" x2="18" y2="17"/><line x1="8" y1="20" x2="16" y2="20"/></g></svg>',
+    rain:
+      '<svg viewBox="0 0 24 24"><path d="M7 15a4 4 0 0 1-.6-7.95A5.5 5.5 0 0 1 17.5 8 3.5 3.5 0 0 1 17 15H7z" fill="#aab3c0"/>' +
+      '<g stroke="#4a90d9" stroke-width="2" stroke-linecap="round"><line x1="9" y1="18" x2="8" y2="21"/><line x1="13" y1="18" x2="12" y2="21"/><line x1="17" y1="18" x2="16" y2="21"/></g></svg>',
+    snow:
+      '<svg viewBox="0 0 24 24"><path d="M7 14a4 4 0 0 1-.6-7.95A5.5 5.5 0 0 1 17.5 7 3.5 3.5 0 0 1 17 14H7z" fill="#aab3c0"/>' +
+      '<g fill="#8fbce8"><circle cx="9" cy="19" r="1.3"/><circle cx="13" cy="19" r="1.3"/><circle cx="17" cy="19" r="1.3"/></g></svg>',
+    thunder:
+      '<svg viewBox="0 0 24 24"><path d="M7 14a4 4 0 0 1-.6-7.95A5.5 5.5 0 0 1 17.5 7 3.5 3.5 0 0 1 17 14H7z" fill="#aab3c0"/>' +
+      '<path d="M12 13l-3 5h2.2l-1 4 4-6h-2.4l1.2-3z" fill="#f6b73c"/></svg>'
+  };
+
+  // WMO-vejrkode fra open-meteo oversat til et af vores ikoner
+  function weatherIconKey(code) {
+    if (code === 0) return "clear";
+    if (code <= 2) return "partly";
+    if (code === 3) return "cloud";
+    if (code === 45 || code === 48) return "fog";
+    if (code >= 51 && code <= 67) return "rain";
+    if (code >= 71 && code <= 77) return "snow";
+    if (code >= 80 && code <= 82) return "rain";
+    if (code >= 85 && code <= 86) return "snow";
+    if (code >= 95) return "thunder";
+    return "cloud";
+  }
+
+  function weatherIconHtml(code) {
+    if (typeof code !== "number") return "";
+    return '<span class="wx-icon">' + (WEATHER_ICON[weatherIconKey(code)] || "") + '</span>';
+  }
+
+  // Vejr samlet: ikon + temperatur, og mm kun når der faktisk er nedbør.
+  // Ikonet fortæller om det er tørt, så 0,0 mm behøver ikke vises
+  function weatherInline(obj) {
+    const precip = obj.precipitation || 0;
+    let html = weatherIconHtml(obj.weatherCode);
+    if (typeof obj.temperature === "number") html += num1(obj.temperature) + "&deg;C";
+    if (precip > 0) html += ' <span class="wx-precip">' + num1(precip) + ' mm</span>';
+    return html;
+  }
+
   // Windy-koordinater for de præcise startsteder
   const WINDY_SITES = {
     "Heatherhill":     { path: "",             query: "56.089,12.140,15,m:feEagvp" },
@@ -353,8 +414,7 @@
             '<span>Vindstød ' + num1(w.gust) + ' m/s</span>' +
             (gs !== null ? '<span>Gust spread ' + num1(gs) + ' m/s</span>' : "") +
             '<span>' + windArrow(w.degrees) + ' ' + w.direction + ' ' + Math.round(w.degrees) + '&deg;</span>' +
-            '<span>' + (w.precipitation || 0).toFixed(1).replace(".", ",") + ' mm</span>' +
-            (typeof w.temperature === "number" ? '<span>' + num1(w.temperature) + '&deg;C</span>' : "") +
+            '<span class="temp-value">' + weatherInline(w) + '</span>' +
           '</div>' +
           '<p class="window-row-reason">' + (w.primaryReason || w.reason) + '</p>' +
         '</div>';
@@ -392,14 +452,9 @@
         '<div class="metric-label">Retning</div>' +
       '</div>' +
       '<div class="gust-row">' +
-        '<span class="gust-label">Nedbør</span>' +
-        '<span class="gust-value">' + (day.precipitation || 0).toFixed(1).replace(".", ",") + ' mm</span>' +
+        '<span class="gust-label">Vejr</span>' +
+        '<span class="gust-value temp-value">' + weatherInline(day) + '</span>' +
       '</div>' +
-      (typeof day.temperature === "number" ?
-        '<div class="gust-row">' +
-          '<span class="gust-label">Temperatur</span>' +
-          '<span class="gust-value">' + num1(day.temperature) + '&deg;C</span>' +
-        '</div>' : "") +
       reasonBlockHtml(day)
     );
   }
