@@ -1,5 +1,5 @@
 :root {
-  --bg: #ffffff;
+  --bg: #f8fbff;
   --text: #4b5563;
   --muted: #6b7684;
   --line: #e7eaee;
@@ -81,6 +81,19 @@ html[data-theme="dark"] { background: #14171c; }
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Skjult for øjet, men læses af Google og skærmlæsere */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
