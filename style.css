@@ -383,6 +383,39 @@ body {
   position: relative;
 }
 
+/* Kompakt række: vind, vindstød og gust spread samlet */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.stat {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 10px 6px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-top: 2px;
+}
+
+/* Retningsfeltet i fuld bredde under den kompakte række */
+.metric-full {
+  margin-bottom: 12px;
+}
+
 .metric-value {
   font-size: 1.25rem;
   font-weight: 700;
@@ -425,6 +458,29 @@ body {
 .reason {
   color: var(--muted);
   font-size: 0.85rem;
+}
+
+.reason strong {
+  color: var(--text);
+}
+
+.reason-secondary {
+  margin-top: 2px;
+  font-size: 0.8rem;
+}
+
+/* Bedste flyvetid vises under den samlede status */
+.best-time {
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.window-table-note {
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin-bottom: 10px;
 }
 
 .windy-link {
