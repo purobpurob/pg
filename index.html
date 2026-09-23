@@ -13,7 +13,7 @@
 <meta property="og:description" content="5 dages flyvevejr for paragliding på Hammars Backar og Heatherhill.">
 <meta property="og:url" content="https://www.8orup.dk/pg/">
 <meta property="og:image" content="https://www.8orup.dk/pg/borup.jpg">
-<link rel="stylesheet" href="style.css?v=11">
+<link rel="stylesheet" href="style.css?v=13">
 <script>
   (function () {
     try {
@@ -71,11 +71,11 @@
     </thead>
     <tbody>
       <tr><td>&lt; 3 m/s</td><td>⚪ For lidt vind</td></tr>
-      <tr><td>3-4 m/s</td><td>🟡 Muligt men krævende</td></tr>
-      <tr><td>4-4,5 m/s</td><td>🟢 Muligt</td></tr>
-      <tr><td>4,5-5,5 m/s</td><td>🟢 Godt</td></tr>
-      <tr><td>5,5-6,5 m/s</td><td>🟡 Mere krævende</td></tr>
-      <tr><td>&gt; 6,5 m/s</td><td>🔴 For kraftigt</td></tr>
+      <tr><td>3-4 m/s</td><td>🟡 Marginalt</td></tr>
+      <tr><td>4-4,5 m/s</td><td>🟢 Flyvbart</td></tr>
+      <tr><td>4,5-5,5 m/s</td><td>🟢 Gode forhold</td></tr>
+      <tr><td>5,5-6,5 m/s</td><td>🟡 Krævende</td></tr>
+      <tr><td>&gt; 6,5 m/s</td><td>🔴 Kraftig vind</td></tr>
     </tbody>
   </table>
 
@@ -85,9 +85,23 @@
       <tr><th>Gust</th><th>Status</th></tr>
     </thead>
     <tbody>
-      <tr><td>&le; 8 m/s</td><td>🟢</td></tr>
-      <tr><td>8-10 m/s</td><td>🟡</td></tr>
-      <tr><td>&gt; 10 m/s</td><td>🔴</td></tr>
+      <tr><td>&le; 9 m/s</td><td>🟢</td></tr>
+      <tr><td>9-11 m/s</td><td>🟡</td></tr>
+      <tr><td>&gt; 11 m/s</td><td>🔴</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Gust spread</h3>
+  <p>Forskellen mellem middelvind og vindstød. En stor forskel betyder ujævn, rusket vind og trækker vurderingen ned, også når middelvinden i sig selv er grøn.</p>
+  <table class="assumptions-table">
+    <thead>
+      <tr><th>Forskel</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>&le; 2 m/s</td><td>🟢</td></tr>
+      <tr><td>2-3 m/s</td><td>🟡</td></tr>
+      <tr><td>3-4 m/s</td><td>🟠</td></tr>
+      <tr><td>&gt; 4 m/s</td><td>🔴</td></tr>
     </tbody>
   </table>
 
@@ -104,15 +118,18 @@
   </table>
 
   <h3>Samlet vurdering</h3>
+  <p>Statussen findes ud fra alle faktorer: vindretning, vindstyrke, vindstød, gust spread og nedbør.</p>
   <ul>
-    <li>🟢 Flyvevejr: God retning + passende vind</li>
-    <li>🟡 Vær opmærksom: Marginal retning eller højere vind</li>
-    <li>🔴 Ikke egnet: Forkert retning eller for kraftig vind</li>
-    <li>⚪ For lidt vind: Under 3 m/s</li>
+    <li>🔴 Ikke egnet: mindst én kritisk faktor er rød. Kritisk rød er rød vindretning, vind over 6,5 m/s, vindstød over 11 m/s, gust spread over 4 m/s eller regn.</li>
+    <li>🟡 Vær opmærksom: ingen røde, men mindst én gul eller orange faktor, fx marginal retning, vind 3-4 eller 5,5-6,5 m/s, vindstød 9-11 m/s, gust spread over 2 m/s eller periodisk nedbør.</li>
+    <li>🟢 Flyvevejr: alle relevante faktorer er grønne.</li>
+    <li>⚪ For lidt vind: under 3 m/s.</li>
   </ul>
 
   <h3>Tidsvinduer</h3>
-  <p>Hver dag er delt op i tre tidsvinduer: formiddag (09-13), eftermiddag (13-16) og sen eftermiddag (16-19). Dagens samlede farve er det værste udfald blandt de tre vinduer. Klik på en prik i 5 dages forecast for at se detaljer for hvert tidsvindue.</p>
+  <p>Hver dag er delt op i tre tidsvinduer: formiddag (09-13), eftermiddag (13-16) og sen eftermiddag (16-19). Dagens farve viser det bedste opnåelige tidsvindue, ikke det værste, så en enkelt dårlig periode ikke gør hele dagen dårlig. Detaljerne viser hvert vindues faktiske status samt bedste flyvetid. Klik på en prik i 5 dages forecast for at se det.</p>
+
+  <p class="assumptions-note">Modellen er lavet til elever og skal hjælpe med hurtigt at finde potentielt egnede tidsvinduer. Den er ikke en flyvetilladelse og erstatter ikke pilotens egen vurdering på stedet.</p>
   </div>
 </section>
 
@@ -165,11 +182,49 @@
   });
 
   const STATUS_LABEL = {
-    green:  "Gode muligheder",
-    yellow: "Usikker",
-    red:    "No-go",
+    green:  "Flyvevejr",
+    yellow: "Vær opmærksom",
+    red:    "Ikke egnet",
     grey:   "For lidt vind"
   };
+
+  // Gust spread = vindstød minus middelvind. Hjælpere til at hente og
+  // formatere værdien, med fallback hvis feltet mangler i gamle data
+  function gustSpreadValue(obj) {
+    if (obj && typeof obj.gustSpread === "number") return obj.gustSpread;
+    if (obj && typeof obj.gust === "number" && typeof obj.wind === "number") {
+      return obj.gust - obj.wind;
+    }
+    return null;
+  }
+
+  function num1(v) {
+    return v.toFixed(1).replace(".", ",");
+  }
+
+  // PowerShell 5.1 kan skrive et array med ét element som en tekst i JSON.
+  // Denne hjælper sikrer at vi altid arbejder med et array
+  function toArray(v) {
+    if (!v) return [];
+    return Array.isArray(v) ? v : [v];
+  }
+
+  // Primær årsag med eventuelle sekundære årsager under den samlede status
+  function reasonBlockHtml(obj) {
+    const primary = obj.primaryReason || obj.reason || "";
+    const secondaryList = toArray(obj.secondaryReasons);
+    const secondary = secondaryList.length ? secondaryList.join(", ") : "";
+
+    if (obj.status === "green" || obj.status === "grey") {
+      return '<p class="reason">' + primary + '</p>';
+    }
+
+    let html = '<p class="reason"><strong>Primær årsag:</strong> ' + primary + '</p>';
+    if (secondary) {
+      html += '<p class="reason reason-secondary">Desuden: ' + secondary + '</p>';
+    }
+    return html;
+  }
 
   const WEEKDAYS = ["Søn", "Man", "Tir", "Ons", "Tor", "Fre", "Lør"];
   const WEEKDAYS_FULL = ["søndag", "mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"];
@@ -282,8 +337,10 @@
   function windowTableHtml(windows) {
     if (!windows || !windows.length || !windows.every(isValidWindow)) return "";
 
-    let html = '<div class="window-table"><h3 class="window-table-title">Tidsvinduer</h3>';
+    let html = '<div class="window-table"><h3 class="window-table-title">Tidsvinduer</h3>' +
+      '<p class="window-table-note">Gust spread er forskellen mellem middelvind og vindstød.</p>';
     windows.forEach(w => {
+      const gs = gustSpreadValue(w);
       html +=
         '<div class="window-row">' +
           '<div class="window-row-top">' +
@@ -292,13 +349,14 @@
             '<span class="window-row-range">' + w.range + '</span>' +
           '</div>' +
           '<div class="window-row-stats">' +
-            '<span>' + w.wind.toFixed(1).replace(".", ",") + ' m/s</span>' +
-            '<span>' + w.gust.toFixed(1).replace(".", ",") + ' m/s gust</span>' +
+            '<span>Vind ' + num1(w.wind) + ' m/s</span>' +
+            '<span>Vindstød ' + num1(w.gust) + ' m/s</span>' +
+            (gs !== null ? '<span>Gust spread ' + num1(gs) + ' m/s</span>' : "") +
             '<span>' + windArrow(w.degrees) + ' ' + w.direction + ' ' + Math.round(w.degrees) + '&deg;</span>' +
             '<span>' + (w.precipitation || 0).toFixed(1).replace(".", ",") + ' mm</span>' +
-            (typeof w.temperature === "number" ? '<span>' + w.temperature.toFixed(1).replace(".", ",") + '&deg;C</span>' : "") +
+            (typeof w.temperature === "number" ? '<span>' + num1(w.temperature) + '&deg;C</span>' : "") +
           '</div>' +
-          '<p class="window-row-reason">' + w.reason + '</p>' +
+          '<p class="window-row-reason">' + (w.primaryReason || w.reason) + '</p>' +
         '</div>';
     });
     return html + '</div>';
@@ -306,13 +364,15 @@
 
   function dayDetailsHtml(site, day) {
     const label = STATUS_LABEL[day.status] || "Ukendt";
+    const gs = gustSpreadValue(day);
 
     return (
       '<div class="status-pill status-' + day.status + '">' + label.toUpperCase() + '</div>' +
+      (day.bestTime ? '<p class="best-time">Bedste flyvetid: ' + day.bestTime + '</p>' : "") +
       windowChipsHtml(day.windows) +
       '<div class="card-body">' +
         '<div class="metric">' +
-          '<div class="metric-value">' + day.wind.toFixed(1).replace(".", ",") + ' m/s</div>' +
+          '<div class="metric-value">' + num1(day.wind) + ' m/s</div>' +
           '<div class="metric-label">Vind</div>' +
         '</div>' +
         '<div class="metric metric-direction">' +
@@ -323,8 +383,13 @@
       '</div>' +
       '<div class="gust-row">' +
         '<span class="gust-label">Vindstød</span>' +
-        '<span class="gust-value">' + day.gust.toFixed(1).replace(".", ",") + ' m/s</span>' +
+        '<span class="gust-value">' + num1(day.gust) + ' m/s</span>' +
       '</div>' +
+      (gs !== null ?
+        '<div class="gust-row">' +
+          '<span class="gust-label">Gust spread</span>' +
+          '<span class="gust-value">' + num1(gs) + ' m/s</span>' +
+        '</div>' : "") +
       '<div class="gust-row">' +
         '<span class="gust-label">Nedbør</span>' +
         '<span class="gust-value">' + (day.precipitation || 0).toFixed(1).replace(".", ",") + ' mm</span>' +
@@ -332,9 +397,9 @@
       (typeof day.temperature === "number" ?
         '<div class="gust-row">' +
           '<span class="gust-label">Temperatur</span>' +
-          '<span class="gust-value">' + day.temperature.toFixed(1).replace(".", ",") + '&deg;C</span>' +
+          '<span class="gust-value">' + num1(day.temperature) + '&deg;C</span>' +
         '</div>' : "") +
-      '<p class="reason">' + day.reason + '</p>'
+      reasonBlockHtml(day)
     );
   }
 
