@@ -383,10 +383,10 @@ body {
   position: relative;
 }
 
-/* Kompakt række: vind, vindstød og gust spread samlet */
+/* Kompakt række: vind og vindstød samlet */
 .stat-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
   margin-bottom: 10px;
 }
