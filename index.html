@@ -13,7 +13,7 @@
 <meta property="og:description" content="5 dages flyvevejr for paragliding på Hammars Backar og Heatherhill.">
 <meta property="og:url" content="https://www.8orup.dk/pg/">
 <meta property="og:image" content="https://www.8orup.dk/pg/borup.jpg">
-<link rel="stylesheet" href="style.css?v=16">
+<link rel="stylesheet" href="style.css?v=17">
 <script>
   (function () {
     try {
@@ -91,20 +91,6 @@
     </tbody>
   </table>
 
-  <h3>Gust spread</h3>
-  <p>Forskellen mellem middelvind og vindstød. En stor forskel betyder ujævn, rusket vind og trækker vurderingen ned, også når middelvinden i sig selv er grøn.</p>
-  <table class="assumptions-table">
-    <thead>
-      <tr><th>Forskel</th><th>Status</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>&le; 2 m/s</td><td>🟢</td></tr>
-      <tr><td>2-3 m/s</td><td>🟡</td></tr>
-      <tr><td>3-4 m/s</td><td>🟠</td></tr>
-      <tr><td>&gt; 4 m/s</td><td>🔴</td></tr>
-    </tbody>
-  </table>
-
   <h3>Nedbør</h3>
   <table class="assumptions-table">
     <thead>
@@ -118,10 +104,10 @@
   </table>
 
   <h3>Samlet vurdering</h3>
-  <p>Statussen findes ud fra alle faktorer: vindretning, vindstyrke, vindstød, gust spread og nedbør.</p>
+  <p>Statussen findes ud fra alle relevante faktorer: vindretning, vindstyrke, vindstød og nedbør.</p>
   <ul>
-    <li>🔴 Ikke egnet: mindst én kritisk faktor er rød. Kritisk rød er rød vindretning, vind over 7 m/s, vindstød over 11 m/s, gust spread over 4 m/s eller regn.</li>
-    <li>🟡 Vær opmærksom: ingen røde, men mindst én gul eller orange faktor, fx marginal retning, vind 3,5-4,5 eller 6-7 m/s, vindstød 9-11 m/s, gust spread over 2 m/s eller periodisk nedbør.</li>
+    <li>🔴 Ikke egnet: mindst én kritisk faktor er rød. Kritisk rød er rød vindretning, vind over 7 m/s, vindstød over 11 m/s eller regn over 1 mm/t.</li>
+    <li>🟡 Vær opmærksom: ingen røde, men mindst én gul faktor, fx marginal retning, vind 3,5-4,5 m/s eller 6-7 m/s, vindstød 9-11 m/s eller periodisk nedbør.</li>
     <li>🟢 Flyvevejr: alle relevante faktorer er grønne.</li>
     <li>⚪ For lidt vind: under 3,5 m/s.</li>
   </ul>
@@ -187,16 +173,6 @@
     red:    "Ikke egnet",
     grey:   "For lidt vind"
   };
-
-  // Gust spread = vindstød minus middelvind. Hjælpere til at hente og
-  // formatere værdien, med fallback hvis feltet mangler i gamle data
-  function gustSpreadValue(obj) {
-    if (obj && typeof obj.gustSpread === "number") return obj.gustSpread;
-    if (obj && typeof obj.gust === "number" && typeof obj.wind === "number") {
-      return obj.gust - obj.wind;
-    }
-    return null;
-  }
 
   function num1(v) {
     return v.toFixed(1).replace(".", ",");
@@ -398,10 +374,8 @@
   function windowTableHtml(windows) {
     if (!windows || !windows.length || !windows.every(isValidWindow)) return "";
 
-    let html = '<div class="window-table"><h3 class="window-table-title">Tidsvinduer</h3>' +
-      '<p class="window-table-note">Gust spread er forskellen mellem middelvind og vindstød.</p>';
+    let html = '<div class="window-table"><h3 class="window-table-title">Tidsvinduer</h3>';
     windows.forEach(w => {
-      const gs = gustSpreadValue(w);
       html +=
         '<div class="window-row">' +
           '<div class="window-row-top">' +
@@ -412,7 +386,6 @@
           '<div class="window-row-stats">' +
             '<span>Vind ' + num1(w.wind) + ' m/s</span>' +
             '<span>Vindstød ' + num1(w.gust) + ' m/s</span>' +
-            (gs !== null ? '<span>Gust spread ' + num1(gs) + ' m/s</span>' : "") +
             '<span>' + windArrow(w.degrees) + ' ' + w.direction + ' ' + Math.round(w.degrees) + '&deg;</span>' +
             '<span class="temp-value">' + weatherInline(w) + '</span>' +
           '</div>' +
@@ -424,13 +397,12 @@
 
   function dayDetailsHtml(site, day) {
     const label = STATUS_LABEL[day.status] || "Ukendt";
-    const gs = gustSpreadValue(day);
 
     return (
       '<div class="status-pill status-' + day.status + '">' + label.toUpperCase() + '</div>' +
       (day.bestTime ? '<p class="best-time">Bedste flyvetid: ' + day.bestTime + '</p>' : "") +
       windowChipsHtml(day.windows) +
-      // Vind, vindstød og gust spread samlet i én kompakt række
+      // Vind og vindstød i én kompakt række
       '<div class="stat-grid">' +
         '<div class="stat">' +
           '<div class="stat-value">' + num1(day.wind) + '</div>' +
@@ -440,11 +412,6 @@
           '<div class="stat-value">' + num1(day.gust) + '</div>' +
           '<div class="stat-label">Vindstød m/s</div>' +
         '</div>' +
-        (gs !== null ?
-          '<div class="stat">' +
-            '<div class="stat-value">' + num1(gs) + '</div>' +
-            '<div class="stat-label">Gust spread m/s</div>' +
-          '</div>' : "") +
       '</div>' +
       '<div class="metric metric-direction metric-full">' +
         windArrow(day.degrees) +
