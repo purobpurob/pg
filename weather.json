@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-09-24T09:00:02",
+    "updated":  "2026-09-24T09:02:30",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -533,11 +533,10 @@
                                                            "direction":  "SV",
                                                            "degrees":  224,
                                                            "weatherCode":  51,
-                                                           "reason":  "Forkert vindretning (SV), For kraftige vindstød, Krævende vind (6-7 m/s), Nedbør i perioder",
+                                                           "reason":  "Forkert vindretning (SV), For kraftige vindstød, Nedbør i perioder",
                                                            "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
                                                                                     "For kraftige vindstød",
-                                                                                    "Krævende vind (6-7 m/s)",
                                                                                     "Nedbør i perioder"
                                                                                 ]
                                                        },
