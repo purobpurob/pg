@@ -13,7 +13,7 @@
 <meta property="og:description" content="5 dages flyvevejr for paragliding på Hammars Backar og Heatherhill.">
 <meta property="og:url" content="https://www.8orup.dk/pg/">
 <meta property="og:image" content="https://www.8orup.dk/pg/borup.jpg">
-<link rel="stylesheet" href="style.css?v=17">
+<link rel="stylesheet" href="style.css?v=18">
 <script>
   (function () {
     try {
@@ -402,7 +402,7 @@
       '<div class="status-pill status-' + day.status + '">' + label.toUpperCase() + '</div>' +
       (day.bestTime ? '<p class="best-time">Bedste flyvetid: ' + day.bestTime + '</p>' : "") +
       windowChipsHtml(day.windows) +
-      // Vind og vindstød i én kompakt række
+      // Vind, vindstød og retning i én kompakt række
       '<div class="stat-grid">' +
         '<div class="stat">' +
           '<div class="stat-value">' + num1(day.wind) + '</div>' +
@@ -412,11 +412,11 @@
           '<div class="stat-value">' + num1(day.gust) + '</div>' +
           '<div class="stat-label">Vindstød m/s</div>' +
         '</div>' +
-      '</div>' +
-      '<div class="metric metric-direction metric-full">' +
-        windArrow(day.degrees) +
-        '<div class="metric-value">' + day.direction + ' ' + Math.round(day.degrees) + '&deg;</div>' +
-        '<div class="metric-label">Retning</div>' +
+        '<div class="stat">' +
+          '<div class="stat-value stat-direction">' + windArrow(day.degrees) +
+            '<span>' + day.direction + ' ' + Math.round(day.degrees) + '&deg;</span></div>' +
+          '<div class="stat-label">Retning</div>' +
+        '</div>' +
       '</div>' +
       '<div class="gust-row">' +
         '<span class="gust-label">Vejr</span>' +
