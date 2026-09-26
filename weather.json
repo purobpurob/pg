@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-09-26T21:30:03",
+    "updated":  "2026-09-26T22:00:03",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -190,7 +190,7 @@
                                                            "wind":  5.5,
                                                            "gust":  10.9,
                                                            "precipitation":  0,
-                                                           "temperature":  17,
+                                                           "temperature":  16.9,
                                                            "direction":  "S",
                                                            "degrees":  168,
                                                            "weatherCode":  3,
@@ -478,7 +478,7 @@
                                                            "wind":  6,
                                                            "gust":  11.2,
                                                            "precipitation":  0,
-                                                           "temperature":  18.4,
+                                                           "temperature":  18.3,
                                                            "direction":  "SØ",
                                                            "degrees":  141,
                                                            "weatherCode":  0,
@@ -495,7 +495,7 @@
                                                            "wind":  7.2,
                                                            "gust":  12.7,
                                                            "precipitation":  0,
-                                                           "temperature":  17.2,
+                                                           "temperature":  17.1,
                                                            "direction":  "SØ",
                                                            "degrees":  132,
                                                            "weatherCode":  1,
