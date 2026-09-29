@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-09-29T14:00:03",
+    "updated":  "2026-09-29T14:30:02",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -261,7 +261,7 @@
                                                            "temperature":  17.3,
                                                            "direction":  "SV",
                                                            "degrees":  213,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  2,
                                                            "reason":  "Marginal vind (3-4 m/s)",
                                                            "primaryReason":  "Marginal vind (3-4 m/s)",
                                                            "secondaryReasons":  [
@@ -278,7 +278,7 @@
                                                            "temperature":  17.8,
                                                            "direction":  "NV",
                                                            "degrees":  300,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  1,
                                                            "reason":  "Forkert vindretning (NV), Marginal vind (3-4 m/s)",
                                                            "primaryReason":  "Forkert vindretning (NV)",
                                                            "secondaryReasons":  [
@@ -331,7 +331,7 @@
                                                            "temperature":  15.6,
                                                            "direction":  "V",
                                                            "degrees":  252,
-                                                           "weatherCode":  1,
+                                                           "weatherCode":  3,
                                                            "reason":  "Marginal vind (3-4 m/s)",
                                                            "primaryReason":  "Marginal vind (3-4 m/s)",
                                                            "secondaryReasons":  [
@@ -636,7 +636,7 @@
                                                            "temperature":  15,
                                                            "direction":  "V",
                                                            "degrees":  278,
-                                                           "weatherCode":  1,
+                                                           "weatherCode":  0,
                                                            "reason":  "Vindretningen er marginal (V)",
                                                            "primaryReason":  "Vindretningen er marginal (V)",
                                                            "secondaryReasons":  [
@@ -689,7 +689,7 @@
                                                            "temperature":  16,
                                                            "direction":  "SV",
                                                            "degrees":  218,
-                                                           "weatherCode":  2,
+                                                           "weatherCode":  3,
                                                            "reason":  "Forkert vindretning (SV)",
                                                            "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
@@ -706,7 +706,7 @@
                                                            "temperature":  15.3,
                                                            "direction":  "SV",
                                                            "degrees":  220,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  1,
                                                            "reason":  "Forkert vindretning (SV)",
                                                            "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
