@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-09-30T21:30:03",
+    "updated":  "2026-09-30T22:00:03",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -207,7 +207,7 @@
                                                            "wind":  4.7,
                                                            "gust":  8,
                                                            "precipitation":  0,
-                                                           "temperature":  16.6,
+                                                           "temperature":  16.5,
                                                            "direction":  "NV",
                                                            "degrees":  300,
                                                            "weatherCode":  3,
@@ -571,7 +571,7 @@
                                                            "wind":  4.1,
                                                            "gust":  7.4,
                                                            "precipitation":  0.5,
-                                                           "temperature":  15.3,
+                                                           "temperature":  15.4,
                                                            "direction":  "NV",
                                                            "degrees":  303,
                                                            "weatherCode":  53,
