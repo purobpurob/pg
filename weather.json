@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-10-02T00:30:02",
+    "updated":  "2026-10-02T01:00:02",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -65,7 +65,7 @@
                                                            "wind":  4,
                                                            "gust":  6.5,
                                                            "precipitation":  0.1,
-                                                           "temperature":  14.9,
+                                                           "temperature":  14.8,
                                                            "direction":  "V",
                                                            "degrees":  282,
                                                            "weatherCode":  51,
