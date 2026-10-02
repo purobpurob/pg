@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-10-02T14:00:02",
+    "updated":  "2026-10-02T14:30:02",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -162,7 +162,7 @@
                                        "secondaryReasons":  [
 
                                                             ],
-                                       "bestTime":  "09-16",
+                                       "bestTime":  "09-19",
                                        "windows":  [
                                                        {
                                                            "label":  "Formiddag",
@@ -201,16 +201,16 @@
                                                        {
                                                            "label":  "Sen eftermiddag",
                                                            "range":  "16-19",
-                                                           "status":  "red",
+                                                           "status":  "yellow",
                                                            "wind":  4.9,
                                                            "gust":  8.5,
                                                            "precipitation":  0,
                                                            "temperature":  14.4,
                                                            "direction":  "V",
-                                                           "degrees":  285,
+                                                           "degrees":  284,
                                                            "weatherCode":  1,
-                                                           "reason":  "Forkert vindretning (V)",
-                                                           "primaryReason":  "Forkert vindretning (V)",
+                                                           "reason":  "Vindretningen er marginal (V)",
+                                                           "primaryReason":  "Vindretningen er marginal (V)",
                                                            "secondaryReasons":  [
 
                                                                                 ]
@@ -220,18 +220,17 @@
                                    {
                                        "date":  "2026-10-05",
                                        "status":  "red",
-                                       "wind":  8.6,
-                                       "gust":  16,
-                                       "precipitation":  0.3,
-                                       "temperature":  13.8,
+                                       "wind":  7.8,
+                                       "gust":  14.2,
+                                       "precipitation":  0,
+                                       "temperature":  13.9,
                                        "direction":  "SV",
-                                       "degrees":  241,
-                                       "weatherCode":  51,
-                                       "reason":  "For kraftig vind, For kraftige vindstød, Nedbør i perioder",
-                                       "primaryReason":  "For kraftig vind",
+                                       "degrees":  246,
+                                       "weatherCode":  3,
+                                       "reason":  "For kraftige vindstød, Krævende vind (7-8 m/s)",
+                                       "primaryReason":  "For kraftige vindstød",
                                        "secondaryReasons":  [
-                                                                "For kraftige vindstød",
-                                                                "Nedbør i perioder"
+                                                                "Krævende vind (7-8 m/s)"
                                                             ],
                                        "bestTime":  "",
                                        "windows":  [
@@ -239,52 +238,51 @@
                                                            "label":  "Formiddag",
                                                            "range":  "09-13",
                                                            "status":  "red",
-                                                           "wind":  8.6,
-                                                           "gust":  16,
-                                                           "precipitation":  0.3,
-                                                           "temperature":  13.8,
+                                                           "wind":  7.8,
+                                                           "gust":  14.2,
+                                                           "precipitation":  0,
+                                                           "temperature":  13.9,
                                                            "direction":  "SV",
-                                                           "degrees":  241,
-                                                           "weatherCode":  51,
-                                                           "reason":  "For kraftig vind, For kraftige vindstød, Nedbør i perioder",
-                                                           "primaryReason":  "For kraftig vind",
+                                                           "degrees":  246,
+                                                           "weatherCode":  3,
+                                                           "reason":  "For kraftige vindstød, Krævende vind (7-8 m/s)",
+                                                           "primaryReason":  "For kraftige vindstød",
                                                            "secondaryReasons":  [
-                                                                                    "For kraftige vindstød",
-                                                                                    "Nedbør i perioder"
+                                                                                    "Krævende vind (7-8 m/s)"
                                                                                 ]
                                                        },
                                                        {
                                                            "label":  "Eftermiddag",
                                                            "range":  "13-16",
                                                            "status":  "red",
-                                                           "wind":  8.1,
-                                                           "gust":  15.2,
+                                                           "wind":  7.8,
+                                                           "gust":  14.8,
                                                            "precipitation":  0,
-                                                           "temperature":  14.9,
+                                                           "temperature":  15.3,
                                                            "direction":  "SV",
-                                                           "degrees":  241,
+                                                           "degrees":  240,
                                                            "weatherCode":  3,
-                                                           "reason":  "For kraftig vind, For kraftige vindstød",
-                                                           "primaryReason":  "For kraftig vind",
+                                                           "reason":  "For kraftige vindstød, Krævende vind (7-8 m/s)",
+                                                           "primaryReason":  "For kraftige vindstød",
                                                            "secondaryReasons":  [
-                                                                                    "For kraftige vindstød"
+                                                                                    "Krævende vind (7-8 m/s)"
                                                                                 ]
                                                        },
                                                        {
                                                            "label":  "Sen eftermiddag",
                                                            "range":  "16-19",
                                                            "status":  "red",
-                                                           "wind":  8,
-                                                           "gust":  14.5,
+                                                           "wind":  7.9,
+                                                           "gust":  14.8,
                                                            "precipitation":  0,
-                                                           "temperature":  15.7,
+                                                           "temperature":  15.2,
                                                            "direction":  "SV",
-                                                           "degrees":  244,
+                                                           "degrees":  243,
                                                            "weatherCode":  3,
-                                                           "reason":  "For kraftig vind, For kraftige vindstød",
-                                                           "primaryReason":  "For kraftig vind",
+                                                           "reason":  "For kraftige vindstød, Krævende vind (7-8 m/s)",
+                                                           "primaryReason":  "For kraftige vindstød",
                                                            "secondaryReasons":  [
-                                                                                    "For kraftige vindstød"
+                                                                                    "Krævende vind (7-8 m/s)"
                                                                                 ]
                                                        }
                                                    ]
@@ -292,67 +290,67 @@
                                    {
                                        "date":  "2026-10-06",
                                        "status":  "green",
-                                       "wind":  5,
-                                       "gust":  10.1,
+                                       "wind":  5.5,
+                                       "gust":  10.2,
                                        "precipitation":  0,
-                                       "temperature":  15.8,
+                                       "temperature":  15.2,
                                        "direction":  "V",
-                                       "degrees":  254,
+                                       "degrees":  253,
                                        "weatherCode":  3,
                                        "reason":  "Gode vindforhold",
                                        "primaryReason":  "Gode forhold for den valgte lokation",
                                        "secondaryReasons":  [
 
                                                             ],
-                                       "bestTime":  "16-19",
+                                       "bestTime":  "09-13",
                                        "windows":  [
                                                        {
                                                            "label":  "Formiddag",
                                                            "range":  "09-13",
-                                                           "status":  "yellow",
-                                                           "wind":  5.9,
-                                                           "gust":  11.6,
-                                                           "precipitation":  0.1,
-                                                           "temperature":  15.8,
+                                                           "status":  "green",
+                                                           "wind":  5.5,
+                                                           "gust":  10.2,
+                                                           "precipitation":  0,
+                                                           "temperature":  15.2,
                                                            "direction":  "V",
-                                                           "degrees":  258,
-                                                           "weatherCode":  51,
-                                                           "reason":  "Kraftigere vindstød, Nedbør i perioder",
-                                                           "primaryReason":  "Kraftigere vindstød",
+                                                           "degrees":  253,
+                                                           "weatherCode":  3,
+                                                           "reason":  "Gode vindforhold",
+                                                           "primaryReason":  "Gode forhold for den valgte lokation",
                                                            "secondaryReasons":  [
-                                                                                    "Nedbør i perioder"
+
                                                                                 ]
                                                        },
                                                        {
                                                            "label":  "Eftermiddag",
                                                            "range":  "13-16",
                                                            "status":  "yellow",
-                                                           "wind":  5.2,
-                                                           "gust":  11.2,
-                                                           "precipitation":  0.1,
-                                                           "temperature":  16.4,
-                                                           "direction":  "V",
-                                                           "degrees":  257,
-                                                           "weatherCode":  51,
-                                                           "reason":  "Kraftigere vindstød, Nedbør i perioder",
+                                                           "wind":  6.2,
+                                                           "gust":  11.6,
+                                                           "precipitation":  0,
+                                                           "temperature":  16.2,
+                                                           "direction":  "SV",
+                                                           "degrees":  239,
+                                                           "weatherCode":  2,
+                                                           "reason":  "Kraftigere vindstød",
                                                            "primaryReason":  "Kraftigere vindstød",
                                                            "secondaryReasons":  [
-                                                                                    "Nedbør i perioder"
+
                                                                                 ]
                                                        },
                                                        {
                                                            "label":  "Sen eftermiddag",
                                                            "range":  "16-19",
-                                                           "status":  "green",
-                                                           "wind":  5,
-                                                           "gust":  10.1,
+                                                           "status":  "yellow",
+                                                           "wind":  5.9,
+                                                           "gust":  11.7,
                                                            "precipitation":  0,
-                                                           "temperature":  15.8,
-                                                           "direction":  "V",
-                                                           "degrees":  254,
-                                                           "weatherCode":  3,
-                                                           "reason":  "Gode vindforhold",
-                                                           "primaryReason":  "Gode forhold for den valgte lokation",
+                                                           "temperature":  15.4,
+                                                           "direction":  "SV",
+                                                           "degrees":  237,
+                                                           "weatherCode":  0,
+                                                           "reason":  "Kraftigere vindstød",
+                                                           "primaryReason":  "Kraftigere vindstød",
                                                            "secondaryReasons":  [
 
                                                                                 ]
@@ -563,9 +561,9 @@
                                                            "wind":  5,
                                                            "gust":  9,
                                                            "precipitation":  0,
-                                                           "temperature":  14.4,
+                                                           "temperature":  14.3,
                                                            "direction":  "V",
-                                                           "degrees":  257,
+                                                           "degrees":  260,
                                                            "weatherCode":  3,
                                                            "reason":  "Forkert vindretning (V)",
                                                            "primaryReason":  "Forkert vindretning (V)",
@@ -578,18 +576,90 @@
                                    {
                                        "date":  "2026-10-05",
                                        "status":  "red",
-                                       "wind":  7.6,
-                                       "gust":  14.7,
-                                       "precipitation":  0.8,
-                                       "temperature":  14.7,
+                                       "wind":  6.3,
+                                       "gust":  12.2,
+                                       "precipitation":  0,
+                                       "temperature":  14.5,
                                        "direction":  "SV",
-                                       "degrees":  238,
-                                       "weatherCode":  53,
-                                       "reason":  "Forkert vindretning (SV), For kraftige vindstød, Krævende vind (7-8 m/s), Nedbør i perioder",
+                                       "degrees":  219,
+                                       "weatherCode":  3,
+                                       "reason":  "Forkert vindretning (SV), Kraftigere vindstød",
                                        "primaryReason":  "Forkert vindretning (SV)",
                                        "secondaryReasons":  [
-                                                                "For kraftige vindstød",
-                                                                "Krævende vind (7-8 m/s)",
+                                                                "Kraftigere vindstød"
+                                                            ],
+                                       "bestTime":  "",
+                                       "windows":  [
+                                                       {
+                                                           "label":  "Formiddag",
+                                                           "range":  "09-13",
+                                                           "status":  "red",
+                                                           "wind":  6.3,
+                                                           "gust":  12.2,
+                                                           "precipitation":  0,
+                                                           "temperature":  14.5,
+                                                           "direction":  "SV",
+                                                           "degrees":  219,
+                                                           "weatherCode":  3,
+                                                           "reason":  "Forkert vindretning (SV), Kraftigere vindstød",
+                                                           "primaryReason":  "Forkert vindretning (SV)",
+                                                           "secondaryReasons":  [
+                                                                                    "Kraftigere vindstød"
+                                                                                ]
+                                                       },
+                                                       {
+                                                           "label":  "Eftermiddag",
+                                                           "range":  "13-16",
+                                                           "status":  "red",
+                                                           "wind":  8.5,
+                                                           "gust":  17.2,
+                                                           "precipitation":  0,
+                                                           "temperature":  17.3,
+                                                           "direction":  "SV",
+                                                           "degrees":  238,
+                                                           "weatherCode":  3,
+                                                           "reason":  "Forkert vindretning (SV), For kraftig vind, For kraftige vindstød",
+                                                           "primaryReason":  "Forkert vindretning (SV)",
+                                                           "secondaryReasons":  [
+                                                                                    "For kraftig vind",
+                                                                                    "For kraftige vindstød"
+                                                                                ]
+                                                       },
+                                                       {
+                                                           "label":  "Sen eftermiddag",
+                                                           "range":  "16-19",
+                                                           "status":  "red",
+                                                           "wind":  7.7,
+                                                           "gust":  16.6,
+                                                           "precipitation":  0.1,
+                                                           "temperature":  17,
+                                                           "direction":  "SV",
+                                                           "degrees":  242,
+                                                           "weatherCode":  51,
+                                                           "reason":  "Forkert vindretning (SV), For kraftige vindstød, Krævende vind (7-8 m/s), Nedbør i perioder",
+                                                           "primaryReason":  "Forkert vindretning (SV)",
+                                                           "secondaryReasons":  [
+                                                                                    "For kraftige vindstød",
+                                                                                    "Krævende vind (7-8 m/s)",
+                                                                                    "Nedbør i perioder"
+                                                                                ]
+                                                       }
+                                                   ]
+                                   },
+                                   {
+                                       "date":  "2026-10-06",
+                                       "status":  "red",
+                                       "wind":  5.4,
+                                       "gust":  11.3,
+                                       "precipitation":  0.3,
+                                       "temperature":  15.2,
+                                       "direction":  "V",
+                                       "degrees":  265,
+                                       "weatherCode":  51,
+                                       "reason":  "Forkert vindretning (V), Kraftigere vindstød, Nedbør i perioder",
+                                       "primaryReason":  "Forkert vindretning (V)",
+                                       "secondaryReasons":  [
+                                                                "Kraftigere vindstød",
                                                                 "Nedbør i perioder"
                                                             ],
                                        "bestTime":  "",
@@ -598,91 +668,15 @@
                                                            "label":  "Formiddag",
                                                            "range":  "09-13",
                                                            "status":  "red",
-                                                           "wind":  7.6,
-                                                           "gust":  14.7,
-                                                           "precipitation":  0.8,
-                                                           "temperature":  14.7,
-                                                           "direction":  "SV",
-                                                           "degrees":  238,
-                                                           "weatherCode":  53,
-                                                           "reason":  "Forkert vindretning (SV), For kraftige vindstød, Krævende vind (7-8 m/s), Nedbør i perioder",
-                                                           "primaryReason":  "Forkert vindretning (SV)",
-                                                           "secondaryReasons":  [
-                                                                                    "For kraftige vindstød",
-                                                                                    "Krævende vind (7-8 m/s)",
-                                                                                    "Nedbør i perioder"
-                                                                                ]
-                                                       },
-                                                       {
-                                                           "label":  "Eftermiddag",
-                                                           "range":  "13-16",
-                                                           "status":  "red",
-                                                           "wind":  8.1,
-                                                           "gust":  15.9,
-                                                           "precipitation":  0.1,
-                                                           "temperature":  17.2,
-                                                           "direction":  "SV",
-                                                           "degrees":  247,
-                                                           "weatherCode":  51,
-                                                           "reason":  "Forkert vindretning (SV), For kraftig vind, For kraftige vindstød, Nedbør i perioder",
-                                                           "primaryReason":  "Forkert vindretning (SV)",
-                                                           "secondaryReasons":  [
-                                                                                    "For kraftig vind",
-                                                                                    "For kraftige vindstød",
-                                                                                    "Nedbør i perioder"
-                                                                                ]
-                                                       },
-                                                       {
-                                                           "label":  "Sen eftermiddag",
-                                                           "range":  "16-19",
-                                                           "status":  "red",
-                                                           "wind":  7.6,
-                                                           "gust":  15.5,
-                                                           "precipitation":  0,
-                                                           "temperature":  16.6,
-                                                           "direction":  "SV",
-                                                           "degrees":  244,
-                                                           "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (SV), For kraftige vindstød, Krævende vind (7-8 m/s)",
-                                                           "primaryReason":  "Forkert vindretning (SV)",
-                                                           "secondaryReasons":  [
-                                                                                    "For kraftige vindstød",
-                                                                                    "Krævende vind (7-8 m/s)"
-                                                                                ]
-                                                       }
-                                                   ]
-                                   },
-                                   {
-                                       "date":  "2026-10-06",
-                                       "status":  "yellow",
-                                       "wind":  5.7,
-                                       "gust":  11.4,
-                                       "precipitation":  0.1,
-                                       "temperature":  15.8,
-                                       "direction":  "V",
-                                       "degrees":  272,
-                                       "weatherCode":  51,
-                                       "reason":  "Vindretningen er marginal (V), Kraftigere vindstød, Nedbør i perioder",
-                                       "primaryReason":  "Vindretningen er marginal (V)",
-                                       "secondaryReasons":  [
-                                                                "Kraftigere vindstød",
-                                                                "Nedbør i perioder"
-                                                            ],
-                                       "bestTime":  "09-13",
-                                       "windows":  [
-                                                       {
-                                                           "label":  "Formiddag",
-                                                           "range":  "09-13",
-                                                           "status":  "yellow",
-                                                           "wind":  5.7,
-                                                           "gust":  11.4,
-                                                           "precipitation":  0.1,
-                                                           "temperature":  15.8,
+                                                           "wind":  5.4,
+                                                           "gust":  11.3,
+                                                           "precipitation":  0.3,
+                                                           "temperature":  15.2,
                                                            "direction":  "V",
-                                                           "degrees":  272,
+                                                           "degrees":  265,
                                                            "weatherCode":  51,
-                                                           "reason":  "Vindretningen er marginal (V), Kraftigere vindstød, Nedbør i perioder",
-                                                           "primaryReason":  "Vindretningen er marginal (V)",
+                                                           "reason":  "Forkert vindretning (V), Kraftigere vindstød, Nedbør i perioder",
+                                                           "primaryReason":  "Forkert vindretning (V)",
                                                            "secondaryReasons":  [
                                                                                     "Kraftigere vindstød",
                                                                                     "Nedbør i perioder"
@@ -692,12 +686,12 @@
                                                            "label":  "Eftermiddag",
                                                            "range":  "13-16",
                                                            "status":  "red",
-                                                           "wind":  4.3,
-                                                           "gust":  11.6,
-                                                           "precipitation":  0.1,
-                                                           "temperature":  15.8,
+                                                           "wind":  5.1,
+                                                           "gust":  11.1,
+                                                           "precipitation":  0.3,
+                                                           "temperature":  16.5,
                                                            "direction":  "V",
-                                                           "degrees":  268,
+                                                           "degrees":  255,
                                                            "weatherCode":  51,
                                                            "reason":  "Forkert vindretning (V), Kraftigere vindstød, Nedbør i perioder",
                                                            "primaryReason":  "Forkert vindretning (V)",
@@ -710,17 +704,17 @@
                                                            "label":  "Sen eftermiddag",
                                                            "range":  "16-19",
                                                            "status":  "red",
-                                                           "wind":  3.1,
-                                                           "gust":  8.7,
+                                                           "wind":  4.4,
+                                                           "gust":  10.2,
                                                            "precipitation":  0,
-                                                           "temperature":  15.3,
-                                                           "direction":  "V",
-                                                           "degrees":  260,
+                                                           "temperature":  16.4,
+                                                           "direction":  "SV",
+                                                           "degrees":  237,
                                                            "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (V), Marginal vind (3-4 m/s)",
-                                                           "primaryReason":  "Forkert vindretning (V)",
+                                                           "reason":  "Forkert vindretning (SV)",
+                                                           "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
-                                                                                    "Marginal vind (3-4 m/s)"
+
                                                                                 ]
                                                        }
                                                    ]
