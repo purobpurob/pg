@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-10-02T20:00:02",
+    "updated":  "2026-10-02T20:30:02",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -226,7 +226,7 @@
                                        "temperature":  13.9,
                                        "direction":  "SV",
                                        "degrees":  246,
-                                       "weatherCode":  3,
+                                       "weatherCode":  2,
                                        "reason":  "For kraftige vindstød, Krævende vind (7-8 m/s)",
                                        "primaryReason":  "For kraftige vindstød",
                                        "secondaryReasons":  [
@@ -244,7 +244,7 @@
                                                            "temperature":  13.9,
                                                            "direction":  "SV",
                                                            "degrees":  246,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  2,
                                                            "reason":  "For kraftige vindstød, Krævende vind (7-8 m/s)",
                                                            "primaryReason":  "For kraftige vindstød",
                                                            "secondaryReasons":  [
@@ -278,7 +278,7 @@
                                                            "temperature":  15.2,
                                                            "direction":  "SV",
                                                            "degrees":  243,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  2,
                                                            "reason":  "For kraftige vindstød, Krævende vind (7-8 m/s)",
                                                            "primaryReason":  "For kraftige vindstød",
                                                            "secondaryReasons":  [
@@ -331,7 +331,7 @@
                                                            "temperature":  16.2,
                                                            "direction":  "SV",
                                                            "degrees":  239,
-                                                           "weatherCode":  2,
+                                                           "weatherCode":  3,
                                                            "reason":  "Kraftigere vindstød",
                                                            "primaryReason":  "Kraftigere vindstød",
                                                            "secondaryReasons":  [
@@ -348,7 +348,7 @@
                                                            "temperature":  15.4,
                                                            "direction":  "SV",
                                                            "degrees":  237,
-                                                           "weatherCode":  0,
+                                                           "weatherCode":  2,
                                                            "reason":  "Kraftigere vindstød",
                                                            "primaryReason":  "Kraftigere vindstød",
                                                            "secondaryReasons":  [
