@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-10-04T00:30:03",
+    "updated":  "2026-10-04T01:00:02",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -48,7 +48,7 @@
                                                            "wind":  5.2,
                                                            "gust":  9.5,
                                                            "precipitation":  0,
-                                                           "temperature":  16.3,
+                                                           "temperature":  16.4,
                                                            "direction":  "V",
                                                            "degrees":  289,
                                                            "weatherCode":  1,
@@ -447,7 +447,7 @@
                                        "wind":  7.5,
                                        "gust":  13.3,
                                        "precipitation":  0,
-                                       "temperature":  15.7,
+                                       "temperature":  15.8,
                                        "direction":  "SV",
                                        "degrees":  234,
                                        "weatherCode":  3,
@@ -466,7 +466,7 @@
                                                            "wind":  7.5,
                                                            "gust":  13.3,
                                                            "precipitation":  0,
-                                                           "temperature":  15.7,
+                                                           "temperature":  15.8,
                                                            "direction":  "SV",
                                                            "degrees":  234,
                                                            "weatherCode":  3,
