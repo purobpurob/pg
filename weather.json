@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-10-03T08:00:02",
+    "updated":  "2026-10-03T08:30:02",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -208,7 +208,7 @@
                                                            "temperature":  14.4,
                                                            "direction":  "SV",
                                                            "degrees":  238,
-                                                           "weatherCode":  2,
+                                                           "weatherCode":  3,
                                                            "reason":  "For kraftig vind, For kraftige vindstød",
                                                            "primaryReason":  "For kraftig vind",
                                                            "secondaryReasons":  [
@@ -226,7 +226,7 @@
                                        "temperature":  15.6,
                                        "direction":  "SV",
                                        "degrees":  246,
-                                       "weatherCode":  2,
+                                       "weatherCode":  3,
                                        "reason":  "Gode vindforhold",
                                        "primaryReason":  "Gode forhold for den valgte lokation",
                                        "secondaryReasons":  [
@@ -278,7 +278,7 @@
                                                            "temperature":  15.6,
                                                            "direction":  "SV",
                                                            "degrees":  246,
-                                                           "weatherCode":  2,
+                                                           "weatherCode":  3,
                                                            "reason":  "Gode vindforhold",
                                                            "primaryReason":  "Gode forhold for den valgte lokation",
                                                            "secondaryReasons":  [
@@ -638,7 +638,7 @@
                                                            "temperature":  16.1,
                                                            "direction":  "SV",
                                                            "degrees":  219,
-                                                           "weatherCode":  2,
+                                                           "weatherCode":  3,
                                                            "reason":  "Forkert vindretning (SV), Marginal vind (3-4 m/s)",
                                                            "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
