@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-10-04T20:00:02",
+    "updated":  "2026-10-04T20:30:02",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -226,7 +226,7 @@
                                        "temperature":  14.3,
                                        "direction":  "SØ",
                                        "degrees":  140,
-                                       "weatherCode":  3,
+                                       "weatherCode":  2,
                                        "reason":  "Forkert vindretning (SØ), Marginal vind (3-4 m/s)",
                                        "primaryReason":  "Forkert vindretning (SØ)",
                                        "secondaryReasons":  [
@@ -244,7 +244,7 @@
                                                            "temperature":  14.3,
                                                            "direction":  "SØ",
                                                            "degrees":  140,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  2,
                                                            "reason":  "Forkert vindretning (SØ), Marginal vind (3-4 m/s)",
                                                            "primaryReason":  "Forkert vindretning (SØ)",
                                                            "secondaryReasons":  [
