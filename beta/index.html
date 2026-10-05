@@ -13,7 +13,7 @@
 <meta property="og:description" content="5 dages flyvevejr for paragliding på Hammars Backar, Heatherhill og Kyndeløse.">
 <meta property="og:url" content="https://www.8orup.dk/pg/">
 <meta property="og:image" content="https://www.8orup.dk/pg/borup.jpg">
-<link rel="stylesheet" href="style.css?v=19">
+<link rel="stylesheet" href="style.css?v=20">
 <script>
   (function () {
     try {
@@ -30,7 +30,10 @@
 <h1 class="visually-hidden">Elev flyvevejr for paragliding</h1>
 
 <header class="hero">
-  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Skift mellem lys og mørk">🌙</button>
+  <div class="theme-switch" role="group" aria-label="Tema">
+    <button type="button" data-theme-choice="light">Lys</button>
+    <button type="button" data-theme-choice="dark">Mørk</button>
+  </div>
   <p class="hero-text" id="hero-sub">Elev flyvevejr</p>
 </header>
 
@@ -110,21 +113,20 @@
 
 <script>
   // ---------- Tema skift (lys / mørk) ----------
-  const themeToggle = document.getElementById("theme-toggle");
+  const themeButtons = document.querySelectorAll("[data-theme-choice]");
 
-  function applyThemeIcon() {
-    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-    themeToggle.textContent = isDark ? "🌙" : "☀️";
+  function applyThemeButtons() {
+    const current = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+    themeButtons.forEach(b => b.setAttribute("aria-pressed", b.dataset.themeChoice === current));
   }
-  applyThemeIcon();
+  applyThemeButtons();
 
-  themeToggle.addEventListener("click", () => {
-    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-    const next = isDark ? "light" : "dark";
+  themeButtons.forEach(b => b.addEventListener("click", () => {
+    const next = b.dataset.themeChoice;
     document.documentElement.setAttribute("data-theme", next);
     try { localStorage.setItem("theme", next); } catch (e) {}
-    applyThemeIcon();
-  });
+    applyThemeButtons();
+  }));
 
   // ---------- Konstanter og hjælpere ----------
   const STATUS_LABEL = { green: "Flyvevejr", yellow: "Vær opmærksom", red: "Ikke egnet", grey: "For lidt vind" };
@@ -355,6 +357,7 @@
     const rep = windows.find(w => w.status === day.status) || day;
 
     let h =
+      '<div class="detail-info">' +
       '<div class="detail-head">' +
         '<div><h2>' + site.name + ' ' + flagHtml(countryOf(site)) + '</h2>' +
         '<div class="date">' + WEEKDAYS_FULL[parseDate(day.date).getDay()] + ' ' + ddmm(day.date) + '</div></div>' +
@@ -364,7 +367,9 @@
       (day.bestTime ? '<p class="best">Bedste flyvetid <b>' + day.bestTime + '</b></p>' : '') +
       '<p class="reason">' + (day.primaryReason || day.reason) +
         (secondary.length && day.status !== "green" ? '<small>Desuden: ' + secondary.join(", ") + '</small>' : '') +
-      '</p>';
+      '</p>' +
+      (site.windy ? '<div class="links"><a href="' + site.windy + '" target="_blank" rel="noopener">Se vind på Windy &#8599;</a></div>' : '') +
+      '</div>';
 
     if (windows.length) {
       h += '<div class="windows">';
@@ -390,10 +395,6 @@
                '<li><i class="dot bg-red"></i>Resten</li>' +
                '<li class="hint">Pilen viser vinden i det bedste vindue</li>' +
              '</ul></div>';
-    }
-
-    if (site.windy) {
-      h += '<div class="links"><a href="' + site.windy + '" target="_blank" rel="noopener">Se vind på Windy &#8599;</a></div>';
     }
 
     el.innerHTML = h;
@@ -436,6 +437,10 @@
     renderMatrix();
     renderDetail();
     openDetail();
+    // På computer ligger detaljerne under oversigten. Rul dem i syne hvis de er skjult
+    if (window.matchMedia("(min-width: 901px)").matches) {
+      detailEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
   });
 
   scrimEl.addEventListener("click", closeDetail);
