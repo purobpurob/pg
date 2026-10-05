@@ -13,7 +13,7 @@
 <meta property="og:description" content="5 dages flyvevejr for paragliding på Hammars Backar, Heatherhill og Kyndeløse.">
 <meta property="og:url" content="https://www.8orup.dk/pg/">
 <meta property="og:image" content="https://www.8orup.dk/pg/borup.jpg">
-<link rel="stylesheet" href="style.css?v=25">
+<link rel="stylesheet" href="style.css?v=30">
 <script>
   (function () {
     try {
@@ -48,30 +48,33 @@
           <button type="button" data-show="all" aria-pressed="true">Alle <span class="count" id="count-all"></span></button>
           <button type="button" data-show="fly" aria-pressed="false">Flyvbare <span class="count" id="count-fly"></span></button>
         </div>
-        <span class="spacer"></span>
-        <div class="legend">
-          <span><i class="dot bg-green"></i>Flyvevejr</span>
-          <span><i class="dot bg-yellow"></i>Vær opmærksom</span>
-          <span><i class="dot bg-red"></i>Ikke egnet</span>
-          <span><i class="dot bg-grey"></i>For lidt vind</span>
-        </div>
       </div>
-      <p class="meta" id="meta">Henter data...</p>
     </div>
 
     <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
     <div class="site-list" id="site-list"></div>
 
     <div class="board-foot">
-      <span id="foot-info"></span>
-      <span>Tryk på et felt for detaljer</span>
+      <div class="legend">
+          <span><i class="dot bg-green"></i>Flyvevejr</span>
+          <span><i class="dot bg-yellow"></i>Vær opmærksom</span>
+          <span><i class="dot bg-red"></i>Ikke egnet</span>
+          <span><i class="dot bg-grey"></i>For lidt vind</span>
+        </div>
+      <div class="foot-meta">
+        <span class="hint">Tryk på et felt for detaljer</span>
+        <span class="meta">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span id="meta">Henter data...</span>
+        </span>
+      </div>
     </div>
   </section>
 
   <aside class="panel detail" id="detail" aria-live="polite"></aside>
 
   <details class="panel rules">
-  <summary>Forudsætninger for vurdering</summary>
+  <summary>Om vejrvurderingen</summary>
   <div class="rules-grid">
     <div>
       <h3>Vindretning</h3>
@@ -118,7 +121,19 @@
     Grøn betyder åben, gul betyder særlige regler og rød betyder lukket for start.</p>
   <div class="site-info" id="site-info"></div>
 
-  <p class="note">Modellen er lavet til elever og er bevidst konservativ. Den er ikke en flyvetilladelse og erstatter ikke pilotens egen vurdering på stedet.</p>
+  <div class="note">
+    <p>Modellen er udviklet med elever og mindre erfarne piloter i tankerne. Den skal gøre det nemmere hurtigt at identificere perioder med potentielt egnede flyveforhold.</p>
+    <p>Vurderingen er bevidst konservativ og skal ses som et hjælpemiddel. Den kan ikke erstatte pilotens egen vurdering af forholdene på stedet.</p>
+    <p>Vindforhold kan ændre sig hurtigt og lokale forhold kan afvige fra prognosen. Tjek derfor altid forholdene på stedet før du flyver.</p>
+    <p>Ser du ingen andre piloter i luften eller på startpladsen, kan der være en god grund til det. Undersøg forholdene og spørg gerne lokale piloter eller en instruktør hvis du er i tvivl.</p>
+    <p class="note-strong">Er du i tvivl, så lad være med at flyve.</p>
+  </div>
+
+  <div class="suggest">
+    <h3>Har du et forslag?</h3>
+    <p>Forslag til nye flyvesteder eller forbedringer af siden er meget velkomne.</p>
+    <p><a href="mailto:thomas.borup@hotmail.com">📧 thomas.borup@hotmail.com</a></p>
+  </div>
 </details>
 
   <footer class="page-footer">
@@ -353,7 +368,7 @@
     const cols = days.length + 1;
 
     // Tabel til bred skærm
-    let h = '<thead><tr><th class="site">Lokation · grøn retning</th>';
+    let h = '<thead><tr><th class="site">Lokation</th>';
     days.forEach(d => {
       h += '<th class="' + (d.date === todayIso ? 'today' : '') + '">' + dayLabel(d.date, todayIso) +
              '<small>' + ddmm(d.date) + '</small></th>';
@@ -361,7 +376,7 @@
     h += '</tr></thead><tbody>';
 
     list.forEach(site => {
-      h += '<tr><td class="site"><div class="site-name">' + badgeHtml(site) + site.name + '</div>' + siteMetaHtml(site) + '</td>';
+      h += '<tr><td class="site"><div class="site-name">' + badgeHtml(site) + site.name + '</div>'  + '</td>';
       site.days.forEach((d, i) => h += '<td>' + cellHtml(site, d, i) + '</td>');
       h += '</tr>';
     });
@@ -373,7 +388,7 @@
     let m = '';
     list.forEach(site => {
       m += '<div class="site-card">' +
-             '<div class="site-card-head"><div><div class="site-name">' + badgeHtml(site) + site.name + '</div>' + siteMetaHtml(site) + '</div>' +
+             '<div class="site-card-head"><div><div class="site-name">' + badgeHtml(site) + site.name + '</div>'  + '</div>' +
              '<span class="country-tag">' + (COUNTRY_NAME[countryOf(site)] || countryOf(site)) + '</span></div>' +
              '<div class="mini-days" style="--days:' + site.days.length + '">';
       site.days.forEach((d, i) => {
@@ -523,7 +538,7 @@
   function renderMeta() {
     if (!DATA) return;
     document.getElementById("meta").textContent =
-      "Opdateret " + relativeTime(DATA.updated) + " · Data fra api.open-meteo.com · Vind i 10 m højde · Flyvetid " + (DATA.flyingHours || "");
+      "Opdateret " + relativeTime(DATA.updated);
   }
 
   // Finder første dag efter i dag hvor mindst én lokation kan flyves.
@@ -585,6 +600,27 @@
     };
   }
 
+  // Første besøg: den valgte boks pulserer 2 gange og viser "Tryk for detaljer".
+  // Det huskes i browseren, så det ikke gentages ved næste besøg
+  const HINT_KEY = "tapHintShown";
+
+  function showTapHint() {
+    try { if (localStorage.getItem(HINT_KEY)) return; } catch (e) {}
+
+    // Både tabel og mobilkort findes i siden. Brug den der er synlig
+    const cell = [...document.querySelectorAll(".cell.selected")].find(c => c.offsetParent !== null);
+    if (!cell) return;
+
+    setTimeout(() => {
+      cell.classList.add("hint-pulse");
+      cell.addEventListener("animationend", e => {
+        if (e.animationName === "tap-pulse") cell.classList.remove("hint-pulse");
+      });
+    }, 700);
+
+    try { localStorage.setItem(HINT_KEY, "1"); } catch (e) {}
+  }
+
   function formatUpdated(iso) {
     const d = new Date(iso);
     return "Vejrinformation sidst opdateret " + pad2(d.getDate()) + "/" + pad2(d.getMonth() + 1) + "/" + d.getFullYear() +
@@ -607,12 +643,18 @@
         (STATUS_RANK[(a.days[0] || {}).status] ?? 9) - (STATUS_RANK[(b.days[0] || {}).status] ?? 9))[0];
       state.site = first ? first.name : null;
 
-      document.getElementById("foot-info").textContent =
-        data.sites.length + " lokationer · " + (data.forecastDays || data.sites[0].days.length) + " dage · vind, stød og nedbør";
+      // Kan der ikke flyves nogen steder i dag, vælges næste mulighed i stedet
+      const todayStatus = first && first.days[0] ? first.days[0].status : null;
+      if (todayStatus !== "green" && todayStatus !== "yellow") {
+        const next = nextFlyable(localIso(new Date()));
+        if (next) { state.site = next.hits[0].site.name; state.day = next.hits[0].di; }
+      }
+
       renderMeta();
       renderLiveChip();
       setInterval(renderMeta, 60000);
       renderAll();
+      showTapHint();
     })
     .catch(err => {
       document.getElementById("meta").textContent = "Kunne ikke hente weather.json (" + err.message + ")";
