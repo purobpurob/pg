@@ -13,7 +13,7 @@
 <meta property="og:description" content="5 dages flyvevejr for paragliding på Hammars Backar, Heatherhill og Kyndeløse.">
 <meta property="og:url" content="https://www.8orup.dk/pg/">
 <meta property="og:image" content="https://www.8orup.dk/pg/borup.jpg">
-<link rel="stylesheet" href="style.css?v=23">
+<link rel="stylesheet" href="style.css?v=24">
 <script>
   (function () {
     try {
@@ -31,7 +31,7 @@
 
 <header class="hero">
   <div class="hero-top">
-    <span class="live-chip" id="live-chip"><i class="pulse"></i><span>Henter data</span></span>
+    <span class="live-chip" id="live-chip" role="status"><i class="pulse"></i><span>Henter data</span></span>
     <div class="theme-switch" role="group" aria-label="Tema">
       <button type="button" data-theme-choice="light"><i class="sw-dot sw-sun"></i>Lys</button>
       <button type="button" data-theme-choice="dark"><i class="sw-dot sw-moon"></i>Mørk</button>
@@ -44,9 +44,10 @@
   <section class="board">
     <div class="board-head">
       <div class="toolbar">
-        <div class="filters" id="filters"></div>
-        <button class="chip" id="only-fly" type="button" aria-pressed="false">Kun flyvbare</button>
-        <button class="chip" id="sort" type="button" aria-pressed="false">Bedst først</button>
+        <div class="segment" id="show" role="group" aria-label="Vis lokationer">
+          <button type="button" data-show="all" aria-pressed="true">Alle <span class="count" id="count-all"></span></button>
+          <button type="button" data-show="fly" aria-pressed="false">Flyvbare <span class="count" id="count-fly"></span></button>
+        </div>
         <span class="spacer"></span>
         <div class="legend">
           <span><i class="dot bg-green"></i>Flyvevejr</span>
@@ -296,17 +297,12 @@
   }
 
   // ---------- Filtre ----------
+  // Antal i knapperne Alle og Flyvbare
   function renderFilters() {
-    const countries = countryList(DATA.sites);
-    const el = document.getElementById("filters");
-
-    // Filtre giver kun mening når der er mere end ét land
-    if (countries.length < 2) { el.innerHTML = ""; return; }
-
-    const opts = [["ALL", "Alle"]].concat(countries.map(c => [c, COUNTRY_NAME[c] || c]));
-    el.innerHTML = opts.map(o =>
-      '<button class="chip" type="button" data-c="' + o[0] + '" aria-pressed="' + (state.country === o[0]) + '">' + o[1] + '</button>'
-    ).join("");
+    document.getElementById("count-all").textContent = DATA.sites.length;
+    document.getElementById("count-fly").textContent = DATA.sites.filter(isFlyable).length;
+    document.querySelectorAll("[data-show]").forEach(b =>
+      b.setAttribute("aria-pressed", (b.dataset.show === "fly") === state.onlyFly));
   }
 
   // ---------- Oversigt ----------
@@ -449,22 +445,11 @@
   function renderAll() { renderFilters(); renderMatrix(); renderDetail(); }
 
   // ---------- Hændelser ----------
-  document.getElementById("filters").addEventListener("click", e => {
-    const b = e.target.closest("[data-c]");
+  document.getElementById("show").addEventListener("click", e => {
+    const b = e.target.closest("[data-show]");
     if (!b) return;
-    state.country = b.dataset.c;
-    renderAll();
-  });
-
-  document.getElementById("only-fly").addEventListener("click", e => {
-    state.onlyFly = !state.onlyFly;
-    e.currentTarget.setAttribute("aria-pressed", state.onlyFly);
-    renderMatrix();
-  });
-
-  document.getElementById("sort").addEventListener("click", e => {
-    state.sort = !state.sort;
-    e.currentTarget.setAttribute("aria-pressed", state.sort);
+    state.onlyFly = b.dataset.show === "fly";
+    renderFilters();
     renderMatrix();
   });
 
@@ -505,16 +490,63 @@
       "Opdateret " + relativeTime(DATA.updated) + " · Data fra api.open-meteo.com · Vind i 10 m højde · Flyvetid " + (DATA.flyingHours || "");
   }
 
+  // Finder første dag efter i dag hvor mindst én lokation kan flyves.
+  // Grøn foretrækkes frem for gul samme dag
+  function nextFlyable(todayIso) {
+    const dates = DATA.sites[0].days.map(d => d.date).filter(d => d > todayIso);
+    for (const date of dates) {
+      const hits = [];
+      DATA.sites.forEach(site => {
+        const di = site.days.findIndex(d => d.date === date);
+        const d = site.days[di];
+        if (d && (d.status === "green" || d.status === "yellow")) hits.push({ site, day: d, di });
+      });
+      if (hits.length) {
+        hits.sort((a, b) => STATUS_RANK[a.day.status] - STATUS_RANK[b.day.status]);
+        return { date, hits };
+      }
+    }
+    return null;
+  }
+
   function renderLiveChip() {
     const todayIso = localIso(new Date());
     const n = DATA.sites.filter(s => {
       const d = s.days.find(x => x.date === todayIso);
       return d && (d.status === "green" || d.status === "yellow");
     }).length;
+
     const chip = document.getElementById("live-chip");
-    chip.classList.toggle("none", n === 0);
-    chip.querySelector("span").textContent =
-      (n === 0 ? "Ingen" : n + " af " + DATA.sites.length) + " lokationer flyvbare i dag";
+    const text = chip.querySelector("span");
+    chip.classList.remove("none", "next");
+    chip.onclick = null;
+
+    if (n > 0) {
+      text.textContent = n + " af " + DATA.sites.length + " lokationer flyvbare i dag";
+      return;
+    }
+
+    const next = nextFlyable(todayIso);
+    if (!next) {
+      chip.classList.add("none");
+      text.textContent = "Ingen flyvbare dage de næste " + DATA.sites[0].days.length + " dage";
+      return;
+    }
+
+    // Vis næste mulighed. Et klik på chippen åbner detaljerne for den
+    const best = next.hits[0];
+    const more = next.hits.length > 1 ? " +" + (next.hits.length - 1) : "";
+    chip.classList.add("next");
+    text.textContent = "Ingen i dag · Næste " + WEEKDAYS[parseDate(next.date).getDay()].toLowerCase() + " " + ddmm(next.date) +
+                       " · " + best.site.name + (best.day.bestTime ? " " + best.day.bestTime.split(", ")[0] : "") + more;
+    chip.onclick = () => {
+      state.site = best.site.name;
+      state.day = best.di;
+      renderMatrix();
+      renderDetail();
+      openDetail();
+      detailEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    };
   }
 
   function formatUpdated(iso) {
