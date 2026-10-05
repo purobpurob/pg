@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-10-05T15:30:05",
+    "updated":  "2026-10-05T16:00:02",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -152,11 +152,11 @@
                                        "status":  "red",
                                        "wind":  2,
                                        "gust":  3.3,
-                                       "precipitation":  0.8,
+                                       "precipitation":  1,
                                        "temperature":  12.1,
                                        "direction":  "NØ",
                                        "degrees":  43,
-                                       "weatherCode":  53,
+                                       "weatherCode":  55,
                                        "reason":  "Forkert vindretning (NØ), Nedbør i perioder",
                                        "primaryReason":  "Forkert vindretning (NØ)",
                                        "secondaryReasons":  [
@@ -170,11 +170,11 @@
                                                            "status":  "red",
                                                            "wind":  2,
                                                            "gust":  3.3,
-                                                           "precipitation":  0.8,
+                                                           "precipitation":  1,
                                                            "temperature":  12.1,
                                                            "direction":  "NØ",
                                                            "degrees":  43,
-                                                           "weatherCode":  53,
+                                                           "weatherCode":  55,
                                                            "reason":  "Forkert vindretning (NØ), Nedbør i perioder",
                                                            "primaryReason":  "Forkert vindretning (NØ)",
                                                            "secondaryReasons":  [
@@ -187,15 +187,16 @@
                                                            "status":  "red",
                                                            "wind":  3.5,
                                                            "gust":  6.4,
-                                                           "precipitation":  0,
+                                                           "precipitation":  0.1,
                                                            "temperature":  14,
                                                            "direction":  "Ø",
                                                            "degrees":  90,
-                                                           "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (Ø), Marginal vind (3-4 m/s)",
+                                                           "weatherCode":  51,
+                                                           "reason":  "Forkert vindretning (Ø), Marginal vind (3-4 m/s), Nedbør i perioder",
                                                            "primaryReason":  "Forkert vindretning (Ø)",
                                                            "secondaryReasons":  [
-                                                                                    "Marginal vind (3-4 m/s)"
+                                                                                    "Marginal vind (3-4 m/s)",
+                                                                                    "Nedbør i perioder"
                                                                                 ]
                                                        },
                                                        {
