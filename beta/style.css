@@ -266,12 +266,6 @@ button { font: inherit; color: inherit; }
 .mini-label { font-size: 0.65rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
 .mini-day .cell { min-width: 0; padding: 8px 2px; }
 
-/* Infokort */
-.info-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.info { padding: 18px 20px; }
-.info h3 { font-size: 0.9rem; color: var(--strong); margin-bottom: 6px; }
-.info p { font-size: 0.83rem; }
-
 /* ---------- Værktøjslinje ---------- */
 
 .toolbar {
@@ -587,7 +581,6 @@ details.rules summary { cursor: pointer; font-weight: 600; color: var(--strong);
 /* ---------- Mobil ---------- */
 
 @media (max-width: 900px) {
-  .info-cards { grid-template-columns: 1fr; }
 
   .detail { display: block; padding: 18px; }
   .detail .windows { margin-top: 14px; }
