@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
-<title>Flyvevejr for Hammars Backar og Heatherhill</title>
-<meta name="description" content="5 dages flyvevejr for paragliding på Hammars Backar og Heatherhill. Vind, vindstød, retning og nedbør, vurderet med elever i tanke.">
+<title>Elev flyvevejr for paragliding i Danmark og Sverige</title>
+<meta name="description" content="5 dages flyvevejr for paragliding på Hammars Backar, Heatherhill og Kyndeløse. Vind, vindstød, retning og nedbør, vurderet med elever i tanke.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.8orup.dk/pg/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Flyvevejr for Hammars Backar og Heatherhill">
-<meta property="og:description" content="5 dages flyvevejr for paragliding på Hammars Backar og Heatherhill.">
+<meta property="og:title" content="Elev flyvevejr for paragliding">
+<meta property="og:description" content="5 dages flyvevejr for paragliding på Hammars Backar, Heatherhill og Kyndeløse.">
 <meta property="og:url" content="https://www.8orup.dk/pg/">
 <meta property="og:image" content="https://www.8orup.dk/pg/borup.jpg">
-<link rel="stylesheet" href="style.css?v=18">
+<link rel="stylesheet" href="style.css?v=25">
 <script>
   (function () {
     try {
@@ -27,255 +27,178 @@
 </head>
 <body>
 
-<h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Flyvevejr for Hammars Backar og Heatherhill</h1>
+<h1 class="visually-hidden">Elev flyvevejr for paragliding</h1>
 
-<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Skift mellem lys og mørk">🌙</button>
-
-<header class="page-header">
-  <div class="page-header-photo"></div>
-  <div class="page-header-content">
-    <p class="sub">Elev Flyvevejr for Hammars Backar &amp; Heatherhill</p>
+<header class="hero">
+  <div class="hero-top">
+    <span class="live-chip" id="live-chip" role="status"><i class="pulse"></i><span>Henter data</span></span>
+    <div class="theme-switch" role="group" aria-label="Tema">
+      <button type="button" data-theme-choice="light"><i class="sw-dot sw-sun"></i>Lys</button>
+      <button type="button" data-theme-choice="dark"><i class="sw-dot sw-moon"></i>Mørk</button>
+    </div>
   </div>
 </header>
 
-<div class="assumptions-toggle-wrap">
-  <button class="assumptions-toggle" id="assumptions-toggle" type="button" aria-haspopup="dialog">
-    Forudsætninger for vurdering
-  </button>
-</div>
+<main class="wrap">
 
-<section class="assumptions-panel" id="assumptions-panel" hidden>
-  <div class="assumptions-body" id="assumptions-body">
-  <h2>Forudsætninger for vurdering</h2>
+  <section class="board">
+    <div class="board-head">
+      <div class="toolbar">
+        <div class="segment" id="show" role="group" aria-label="Vis lokationer">
+          <button type="button" data-show="all" aria-pressed="true">Alle <span class="count" id="count-all"></span></button>
+          <button type="button" data-show="fly" aria-pressed="false">Flyvbare <span class="count" id="count-fly"></span></button>
+        </div>
+        <span class="spacer"></span>
+        <div class="legend">
+          <span><i class="dot bg-green"></i>Flyvevejr</span>
+          <span><i class="dot bg-yellow"></i>Vær opmærksom</span>
+          <span><i class="dot bg-red"></i>Ikke egnet</span>
+          <span><i class="dot bg-grey"></i>For lidt vind</span>
+        </div>
+      </div>
+      <p class="meta" id="meta">Henter data...</p>
+    </div>
 
-  <p class="assumptions-note">Vurderingerne er lavet med elever i tanke og er bevidst konservative. Ved tvivl vises en skarpere farve, end en erfaren pilot måske selv ville vælge.</p>
+    <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
+    <div class="site-list" id="site-list"></div>
 
-  <h3>Hammars Backar</h3>
-  <ul>
-    <li>🟢 Grøn: 190&deg;-260&deg;</li>
-    <li>🟡 Gul: 170&deg;-190&deg; og 260&deg;-285&deg;</li>
-    <li>🔴 Rød: Resten</li>
-  </ul>
+    <div class="board-foot">
+      <span id="foot-info"></span>
+      <span>Tryk på et felt for detaljer</span>
+    </div>
+  </section>
 
-  <h3>Heatherhill</h3>
-  <ul>
-    <li>🟢 Grøn: 292&deg;-360&deg; og 0&deg;-22&deg;</li>
-    <li>🟡 Gul: 270&deg;-292&deg; og 22&deg;-45&deg;</li>
-    <li>🔴 Rød: Resten</li>
-  </ul>
+  <aside class="panel detail" id="detail" aria-live="polite"></aside>
 
-  <h3>Vindstyrke</h3>
-  <table class="assumptions-table">
-    <thead>
-      <tr><th>Vind</th><th>Status</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>&lt; 3,0 m/s</td><td>⚪ For lidt vind</td></tr>
-      <tr><td>3,0-4,0 m/s</td><td>🟡 Marginalt</td></tr>
-      <tr><td>4,0-6,0 m/s</td><td>🟢 Flyvbart</td></tr>
-      <tr><td>6,0-7,0 m/s</td><td>🟢 Gode forhold</td></tr>
-      <tr><td>7,0-8,0 m/s</td><td>🟡 Krævende</td></tr>
-      <tr><td>&gt; 8,0 m/s</td><td>🔴 Kraftig vind</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Vindstød</h3>
-  <table class="assumptions-table">
-    <thead>
-      <tr><th>Gust</th><th>Status</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>&le; 11 m/s</td><td>🟢 Gode forhold</td></tr>
-      <tr><td>11-13 m/s</td><td>🟡 Krævende</td></tr>
-      <tr><td>&gt; 13 m/s</td><td>🔴 Kraftige vindstød</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Nedbør</h3>
-  <table class="assumptions-table">
-    <thead>
-      <tr><th>Forhold</th><th>Status</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Ingen målbar nedbør</td><td>🟢</td></tr>
-      <tr><td>Nedbør i perioder</td><td>🟡</td></tr>
-      <tr><td>Regn (over 1 mm/t)</td><td>🔴</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Samlet vurdering</h3>
-  <p>Statussen findes ud fra alle relevante faktorer: vindretning, vindstyrke, vindstød og nedbør.</p>
-  <ul>
-    <li>🔴 Ikke egnet: mindst én kritisk faktor er rød. Kritisk rød er rød vindretning, vind over 8 m/s, vindstød over 13 m/s eller regn over 1 mm/t.</li>
-    <li>🟡 Vær opmærksom: ingen røde, men mindst én gul faktor, fx marginal retning, vind 3-4 m/s eller 7-8 m/s, vindstød 11-13 m/s eller periodisk nedbør.</li>
-    <li>🟢 Flyvevejr: alle relevante faktorer er grønne.</li>
-    <li>⚪ For lidt vind: under 3,5 m/s.</li>
-  </ul>
-
-  <h3>Tidsvinduer</h3>
-  <p>Hver dag er delt op i tre tidsvinduer: formiddag (09-13), eftermiddag (13-16) og sen eftermiddag (16-19). Dagens farve viser det bedste opnåelige tidsvindue, ikke det værste, så en enkelt dårlig periode ikke gør hele dagen dårlig. Detaljerne viser hvert vindues faktiske status samt bedste flyvetid. Klik på en prik i 5 dages forecast for at se det.</p>
-
-  <p class="assumptions-note">Modellen er lavet til elever og skal hjælpe med hurtigt at finde potentielt egnede tidsvinduer. Den er ikke en flyvetilladelse og erstatter ikke pilotens egen vurdering på stedet.</p>
+  <details class="panel rules">
+  <summary>Forudsætninger for vurdering</summary>
+  <div class="rules-grid">
+    <div>
+      <h3>Vindretning</h3>
+      <p>Hver lokation har sine egne grønne og gule retninger. De vises som kompas når du trykker på et felt.</p>
+    </div>
+    <div>
+      <h3>Vindstyrke</h3>
+      <ul>
+        <li>⚪ Under 3 m/s for lidt vind</li>
+        <li>🟡 3-4 m/s marginalt</li>
+        <li>🟢 4-7 m/s flyvbart</li>
+        <li>🟡 7-8 m/s krævende</li>
+        <li>🔴 Over 8 m/s for kraftig</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Vindstød</h3>
+      <ul>
+        <li>🟢 Til og med 11 m/s</li>
+        <li>🟡 11-13 m/s</li>
+        <li>🔴 Over 13 m/s</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Nedbør</h3>
+      <ul>
+        <li>🟢 Ingen målbar nedbør</li>
+        <li>🟡 Nedbør i perioder</li>
+        <li>🔴 Regn over 1 mm/t</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Samlet vurdering</h3>
+      <p>Én rød faktor gør perioden rød. Ingen røde men mindst én gul gør den gul. Alt grønt giver grøn.</p>
+    </div>
+    <div>
+      <h3>Tidsvinduer</h3>
+      <p>09-13, 13-16 og 16-19. Dagens farve viser det bedste vindue, så én dårlig periode ikke gør hele dagen dårlig.</p>
+    </div>
   </div>
-</section>
+  <h3 class="rules-sub">Flyvesteder</h3>
+  <p class="rules-lead">Tjek altid flyvestedets status og regler før du flyver. Danske flyvesteder står i
+    <a href="https://dhpu.dk/kort-flyveoversigten/" target="_blank" rel="noopener">DHPU's flyveoversigt</a>.
+    Grøn betyder åben, gul betyder særlige regler og rød betyder lukket for start.</p>
+  <div class="site-info" id="site-info"></div>
 
-<main id="cards" class="cards"></main>
+  <p class="note">Modellen er lavet til elever og er bevidst konservativ. Den er ikke en flyvetilladelse og erstatter ikke pilotens egen vurdering på stedet.</p>
+</details>
 
-<section class="forecast" id="forecast">
-  <h2>5 dages forecast</h2>
-  <p class="forecast-hint">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M22 14a8 8 0 0 1-8 8"/>
-      <path d="M18 11v-1a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/>
-      <path d="M14 10V9a2 2 0 0 0-2-2a2 2 0 0 0-2 2v1"/>
-      <path d="M10 9.5V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v10"/>
-      <path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
-    </svg>
-    Tryk på en prik for at se detaljer
-  </p>
-  <div class="forecast-table" id="forecast-table"></div>
-</section>
+  <footer class="page-footer">
+    <p>Coded by 8orup 2026 | <a href="https://www.8orup.dk" target="_blank" rel="noopener">www.8orup.dk</a></p>
+  </footer>
 
-<div class="modal-overlay" id="day-modal-overlay" hidden>
-  <div class="modal" id="day-modal" role="dialog" aria-modal="true" aria-labelledby="day-modal-title">
-    <button class="modal-close" id="day-modal-close" type="button" aria-label="Luk">&times;</button>
-    <div id="day-modal-content"></div>
-  </div>
-</div>
+</main>
 
-<p class="updated" id="updated">Henter data...</p>
-
-<footer class="page-footer">
-  <p>Coded by 8orup 2026 | <a href="https://www.8orup.dk" target="_blank" rel="noopener">www.8orup.dk</a></p>
-</footer>
+<div class="scrim" id="scrim"></div>
 
 <script>
   // ---------- Tema skift (lys / mørk) ----------
-  const themeToggle = document.getElementById("theme-toggle");
+  const themeButtons = document.querySelectorAll("[data-theme-choice]");
 
-  function applyThemeIcon() {
-    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-    themeToggle.textContent = isDark ? "🌙" : "☀️";
+  function applyThemeButtons() {
+    const current = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+    themeButtons.forEach(b => b.setAttribute("aria-pressed", b.dataset.themeChoice === current));
   }
-  applyThemeIcon();
+  applyThemeButtons();
 
-  themeToggle.addEventListener("click", () => {
-    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-    const next = isDark ? "light" : "dark";
+  themeButtons.forEach(b => b.addEventListener("click", () => {
+    const next = b.dataset.themeChoice;
     document.documentElement.setAttribute("data-theme", next);
     try { localStorage.setItem("theme", next); } catch (e) {}
-    applyThemeIcon();
-  });
+    applyThemeButtons();
+  }));
 
-  const STATUS_LABEL = {
-    green:  "Flyvevejr",
-    yellow: "Vær opmærksom",
-    red:    "Ikke egnet",
-    grey:   "For lidt vind"
+  // ---------- Konstanter og hjælpere ----------
+  const STATUS_LABEL = { green: "Flyvevejr", yellow: "Vær opmærksom", red: "Ikke egnet", grey: "For lidt vind" };
+  const STATUS_SHORT = { green: "Ja", yellow: "Gul", red: "Nej", grey: "Lav" };
+  const STATUS_RANK  = { green: 0, yellow: 1, grey: 2, red: 3 };
+
+  const COUNTRY_NAME = { DK: "Danmark", SE: "Sverige", NO: "Norge", DE: "Tyskland" };
+  // Rækkefølge af lande i oversigt og filtre. Ukendte lande kommer til sidst
+  const COUNTRY_ORDER = ["DK", "SE", "NO", "DE"];
+  const FLAG_EMOJI   = { "🇸🇪": "SE", "🇩🇰": "DK", "🇳🇴": "NO", "🇩🇪": "DE" };
+
+  // Rigtige flag som SVG. Windows viser flag-emojis som bogstaver
+  const FLAG_SVG = {
+    SE: '<svg viewBox="0 0 37 28"><rect width="37" height="28" fill="#006AA7"/><rect x="13" width="5" height="28" fill="#FECC02"/><rect y="11" width="37" height="6" fill="#FECC02"/></svg>',
+    DK: '<svg viewBox="0 0 37 28"><rect width="37" height="28" fill="#C8102E"/><rect x="12" width="6" height="28" fill="#fff"/><rect y="11" width="37" height="6" fill="#fff"/></svg>',
+    NO: '<svg viewBox="0 0 22 16"><rect width="22" height="16" fill="#BA0C2F"/><rect x="6" width="4" height="16" fill="#fff"/><rect y="6" width="22" height="4" fill="#fff"/><rect x="7" width="2" height="16" fill="#00205B"/><rect y="7" width="22" height="2" fill="#00205B"/></svg>',
+    DE: '<svg viewBox="0 0 5 3"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#DD0000"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg>'
   };
 
-  function num1(v) {
-    return v.toFixed(1).replace(".", ",");
-  }
-
-  // PowerShell 5.1 kan skrive et array med ét element som en tekst i JSON.
-  // Denne hjælper sikrer at vi altid arbejder med et array
-  function toArray(v) {
-    if (!v) return [];
-    return Array.isArray(v) ? v : [v];
-  }
-
-  // Primær årsag med eventuelle sekundære årsager under den samlede status
-  function reasonBlockHtml(obj) {
-    const primary = obj.primaryReason || obj.reason || "";
-    const secondaryList = toArray(obj.secondaryReasons);
-    const secondary = secondaryList.length ? secondaryList.join(", ") : "";
-
-    if (obj.status === "green" || obj.status === "grey") {
-      return '<p class="reason">' + primary + '</p>';
-    }
-
-    let html = '<p class="reason"><strong>Primær årsag:</strong> ' + primary + '</p>';
-    if (secondary) {
-      html += '<p class="reason reason-secondary">Desuden: ' + secondary + '</p>';
-    }
-    return html;
-  }
-
-  const WEEKDAYS = ["Søn", "Man", "Tir", "Ons", "Tor", "Fre", "Lør"];
+  const WEEKDAYS      = ["Søn", "Man", "Tir", "Ons", "Tor", "Fre", "Lør"];
   const WEEKDAYS_FULL = ["søndag", "mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"];
 
-  function parseDate(iso) {
-    return new Date(iso + "T00:00:00");
+  const num1 = v => v.toFixed(1).replace(".", ",");
+  const pad2 = v => String(v).padStart(2, "0");
+  const parseDate = iso => new Date(iso + "T00:00:00");
+  const ddmm = iso => { const d = parseDate(iso); return pad2(d.getDate()) + "/" + pad2(d.getMonth() + 1); };
+
+  // PowerShell 5.1 kan skrive et array med ét element som en enkelt værdi
+  function toArray(v) {
+    if (!v) return [];
+    if (Array.isArray(v)) return v;
+    if (Array.isArray(v.value)) return v.value;
+    return [v];
   }
 
-  function weekdayLabel(iso) {
-    return WEEKDAYS[parseDate(iso).getDay()];
+  function countryOf(site) {
+    return site.country || FLAG_EMOJI[site.flag] || "XX";
   }
 
-  function fullDateLabel(iso) {
-    const d = parseDate(iso);
-    const dd = String(d.getDate()).padStart(2, "0");
-    const mm = String(d.getMonth() + 1).padStart(2, "0");
-    return WEEKDAYS_FULL[d.getDay()] + " " + dd + "/" + mm;
+  function countryList(sites) {
+    const rank = c => { const i = COUNTRY_ORDER.indexOf(c); return i < 0 ? 99 : i; };
+    return [...new Set(sites.map(countryOf))].sort((a, b) => rank(a) - rank(b));
   }
 
-  function shortDateLabel(iso) {
-    const d = parseDate(iso);
-    const dd = String(d.getDate()).padStart(2, "0");
-    const mm = String(d.getMonth() + 1).padStart(2, "0");
-    return dd + "/" + mm + "/" + d.getFullYear();
-  }
-
-  // Kortere udgave (2-cifret år) til de smalle kolonner i 5 dages forecast
-  function compactDateLabel(iso) {
-    const d = parseDate(iso);
-    const dd = String(d.getDate()).padStart(2, "0");
-    const mm = String(d.getMonth() + 1).padStart(2, "0");
-    const yy = String(d.getFullYear()).slice(-2);
-    return dd + "/" + mm + "/" + yy;
-  }
-
-  function formatUpdated(iso) {
-    const d = new Date(iso);
-    const dd = String(d.getDate()).padStart(2, "0");
-    const mm = String(d.getMonth() + 1).padStart(2, "0");
-    const hh = String(d.getHours()).padStart(2, "0");
-    const mi = String(d.getMinutes()).padStart(2, "0");
-    return "Vejrinformation sidst opdateret " + dd + "/" + mm + "/" + d.getFullYear() + " " + hh + ":" + mi + " via api.open-meteo.com";
+  function flagHtml(code) {
+    return FLAG_SVG[code] ? '<span class="flag">' + FLAG_SVG[code] + '</span>' : "";
   }
 
   function windArrow(degrees) {
-    // Pilen peger derhen vinden blæser hen (mod vindretningen + 180 grader)
-    const rotation = (degrees + 180) % 360;
-    return '<span class="arrow" style="transform: rotate(' + rotation + 'deg)">&#8593;</span>';
+    // Pilen peger derhen vinden blæser hen
+    return '<span class="arrow" style="transform: rotate(' + ((degrees + 180) % 360) + 'deg)">&#8593;</span>';
   }
 
-  // Rigtige flag som SVG i stedet for emoji. Windows viser flag-emojis som
-  // bogstaver (fx "SE", "DK") i stedet for flag, så vi tegner dem selv
-  const FLAG_SVG = {
-    SE: '<svg viewBox="0 0 37 28" xmlns="http://www.w3.org/2000/svg">' +
-          '<rect width="37" height="28" fill="#006AA7"/>' +
-          '<rect x="13" width="5" height="28" fill="#FECC02"/>' +
-          '<rect y="11" width="37" height="6" fill="#FECC02"/>' +
-        '</svg>',
-    DK: '<svg viewBox="0 0 37 28" xmlns="http://www.w3.org/2000/svg">' +
-          '<rect width="37" height="28" fill="#C8102E"/>' +
-          '<rect x="12" width="6" height="28" fill="#fff"/>' +
-          '<rect y="11" width="37" height="6" fill="#fff"/>' +
-        '</svg>'
-  };
-
-  // weather.json angiver flaget som emoji (🇸🇪 / 🇩🇰). Oversæt til vores koder
-  const FLAG_EMOJI = { "🇸🇪": "SE", "🇩🇰": "DK" };
-
-  function flagHtml(code) {
-    const key = FLAG_EMOJI[code] || code;
-    return FLAG_SVG[key] || "";
-  }
-
-  // Egne SVG-vejrikoner (tegnet her, ikke fra en ekstern ikonpakke), så de
-  // ser ens ud på tværs af Windows, Mac og mobil
+  // Egne SVG-vejrikoner så de ser ens ud på alle platforme
   const WEATHER_ICON = {
     clear:
       '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="#f6b73c"/>' +
@@ -322,244 +245,377 @@
 
   function weatherIconHtml(code) {
     if (typeof code !== "number") return "";
-    return '<span class="wx-icon">' + (WEATHER_ICON[weatherIconKey(code)] || "") + '</span>';
+    return WEATHER_ICON[weatherIconKey(code)] || "";
   }
 
-  // Vejr samlet: ikon + temperatur, og mm kun når der faktisk er nedbør.
-  // Ikonet fortæller om det er tørt, så 0,0 mm behøver ikke vises
-  function weatherInline(obj) {
-    const precip = obj.precipitation || 0;
-    let html = weatherIconHtml(obj.weatherCode);
-    if (typeof obj.temperature === "number") html += num1(obj.temperature) + "&deg;C";
-    if (precip > 0) html += ' <span class="wx-precip">' + num1(precip) + ' mm</span>';
-    return html;
+  // ---------- Kompas ----------
+
+  // Buer fra weather.json kan være {from,to} eller [from,to]
+  function arcList(v) {
+    return toArray(v).map(a => Array.isArray(a) ? { from: a[0], to: a[1] } : { from: a.from, to: a.to })
+                     .filter(a => typeof a.from === "number" && typeof a.to === "number");
   }
 
-  // Windy-koordinater for de præcise startsteder
-  const WINDY_SITES = {
-    "Heatherhill":     { path: "",             query: "56.089,12.140,15,m:feEagvp" },
-    "Hammars Backar":  { path: "55.401/14.014", query: "55.380,14.019,12,m:feEagvp" }
-  };
-
-  function windyUrl(siteName) {
-    const site = WINDY_SITES[siteName];
-    if (!site) return null;
-    return "https://www.windy.com/" + site.path + "?" + site.query;
+  function arcText(v) {
+    return arcList(v).map(a => a.from + "°-" + a.to + "°").join(" og ");
   }
 
-  function windyLinkHtml(siteName) {
-    const url = windyUrl(siteName);
-    if (!url) return "";
-    return '<a class="windy-link" href="' + url + '" target="_blank" rel="noopener">Se vind på Windy &#8599;</a>';
+  function arcPath(cx, cy, r, from, to) {
+    if (to < from) to += 360;
+    const a1 = (from - 90) * Math.PI / 180;
+    const a2 = (to - 90) * Math.PI / 180;
+    const large = (to - from) > 180 ? 1 : 0;
+    return "M" + (cx + r * Math.cos(a1)) + " " + (cy + r * Math.sin(a1)) +
+           " A" + r + " " + r + " 0 " + large + " 1 " + (cx + r * Math.cos(a2)) + " " + (cy + r * Math.sin(a2));
   }
 
-  function isValidWindow(w) {
-    return w && typeof w === "object" && typeof w.wind === "number";
+  function compassSvg(site, degrees) {
+    let s = '<svg width="96" height="96" viewBox="0 0 96 96" role="img" aria-label="Kompas med gode vindretninger">';
+    s += '<circle cx="48" cy="48" r="36" fill="none" stroke="var(--red)" stroke-opacity=".35" stroke-width="9"/>';
+    arcList(site.fairArcs).forEach(a => s += '<path d="' + arcPath(48, 48, 36, a.from, a.to) + '" fill="none" stroke="var(--yellow)" stroke-width="9"/>');
+    arcList(site.goodArcs).forEach(a => s += '<path d="' + arcPath(48, 48, 36, a.from, a.to) + '" fill="none" stroke="var(--green)" stroke-width="9"/>');
+    [["N", 48, 9], ["Ø", 89, 51], ["S", 48, 94], ["V", 7, 51]].forEach(l =>
+      s += '<text x="' + l[1] + '" y="' + l[2] + '" font-size="8" text-anchor="middle" fill="var(--muted)">' + l[0] + '</text>');
+    // Pilen kommer ind fra vindretningen mod midten
+    s += '<g transform="rotate(' + degrees + ' 48 48)">' +
+           '<line x1="48" y1="16" x2="48" y2="56" stroke="var(--strong)" stroke-width="3" stroke-linecap="round"/>' +
+           '<path d="M41 52 L48 62 L55 52 Z" fill="var(--strong)"/></g>';
+    return s + '</svg>';
   }
 
-  function windowChipsHtml(windows) {
-    if (!windows || !windows.length || !windows.every(isValidWindow)) return "";
+  // ---------- Tilstand ----------
+  let DATA = null;
+  const state = { country: "ALL", onlyFly: false, sort: false, site: null, day: 0 };
 
-    let html = '<div class="windows-row">';
-    windows.forEach(w => {
-      html +=
-        '<div class="window-chip" title="' + w.label + ' ' + w.range + '">' +
-          '<span class="window-dot status-' + w.status + '"></span>' +
-          '<span class="window-label">' + w.label + '</span>' +
-        '</div>';
+  function isFlyable(site) {
+    return site.days.some(d => d.status === "green" || d.status === "yellow");
+  }
+
+  function visibleSites() {
+    let list = DATA.sites.slice();
+    if (state.country !== "ALL") list = list.filter(s => countryOf(s) === state.country);
+    if (state.onlyFly) list = list.filter(isFlyable);
+    if (state.sort) {
+      const di = state.day;
+      list.sort((a, b) => (STATUS_RANK[(a.days[di] || {}).status] ?? 9) - (STATUS_RANK[(b.days[di] || {}).status] ?? 9));
+    }
+    return list;
+  }
+
+  // ---------- Filtre ----------
+  // Antal i knapperne Alle og Flyvbare
+  function renderFilters() {
+    document.getElementById("count-all").textContent = DATA.sites.length;
+    document.getElementById("count-fly").textContent = DATA.sites.filter(isFlyable).length;
+    document.querySelectorAll("[data-show]").forEach(b =>
+      b.setAttribute("aria-pressed", (b.dataset.show === "fly") === state.onlyFly));
+  }
+
+  // ---------- Oversigt ----------
+  function cellHtml(site, day, dayIndex, compact) {
+    const selected = state.site === site.name && state.day === dayIndex;
+    const label = compact ? STATUS_SHORT[day.status] : STATUS_LABEL[day.status];
+    const top = day.bestTime ? day.bestTime.split(", ")[0] : label;
+
+    return '<button type="button" class="cell st-' + day.status + (selected ? ' selected' : '') + '" ' +
+             'data-site="' + site.name + '" data-day="' + dayIndex + '" ' +
+             'aria-label="' + site.name + ', ' + WEEKDAYS_FULL[parseDate(day.date).getDay()] + ': ' + STATUS_LABEL[day.status] + '">' +
+             '<b>' + top + '</b>' +
+             (compact ? '' : '<span class="sub">' + Math.round(day.wind) + ' m/s ' + day.direction + '</span>') +
+           '</button>';
+  }
+
+  function dayLabel(iso, todayIso) {
+    return iso === todayIso ? "I dag" : WEEKDAYS[parseDate(iso).getDay()];
+  }
+
+  function siteMetaHtml(site) {
+    const good = arcText(site.goodArcs);
+    return good ? '<div class="site-meta">Grøn ' + good + '</div>' : '';
+  }
+
+  function badgeHtml(site) {
+    const c = countryOf(site);
+    return '<span class="cc cc-' + c + '">' + c + '</span>';
+  }
+
+  // Lande i fast rækkefølge, medmindre der sorteres efter bedste status
+  function orderedSites() {
+    const list = visibleSites();
+    if (state.sort) return list;
+    return countryList(list).flatMap(c => list.filter(s => countryOf(s) === c));
+  }
+
+  function renderMatrix() {
+    const list = orderedSites();
+    const days = DATA.sites[0].days;
+    const todayIso = localIso(new Date());
+    const cols = days.length + 1;
+
+    // Tabel til bred skærm
+    let h = '<thead><tr><th class="site">Lokation · grøn retning</th>';
+    days.forEach(d => {
+      h += '<th class="' + (d.date === todayIso ? 'today' : '') + '">' + dayLabel(d.date, todayIso) +
+             '<small>' + ddmm(d.date) + '</small></th>';
     });
-    return html + '</div>';
-  }
+    h += '</tr></thead><tbody>';
 
-  function windowTableHtml(windows) {
-    if (!windows || !windows.length || !windows.every(isValidWindow)) return "";
-
-    let html = '<div class="window-table"><h3 class="window-table-title">Tidsvinduer</h3>';
-    windows.forEach(w => {
-      html +=
-        '<div class="window-row">' +
-          '<div class="window-row-top">' +
-            '<span class="window-dot status-' + w.status + '"></span>' +
-            '<span class="window-row-label">' + w.label + '</span>' +
-            '<span class="window-row-range">' + w.range + '</span>' +
-          '</div>' +
-          '<div class="window-row-stats">' +
-            '<span>Vind ' + num1(w.wind) + ' m/s</span>' +
-            '<span>Vindstød ' + num1(w.gust) + ' m/s</span>' +
-            '<span>' + windArrow(w.degrees) + ' ' + w.direction + ' ' + Math.round(w.degrees) + '&deg;</span>' +
-            '<span class="temp-value">' + weatherInline(w) + '</span>' +
-          '</div>' +
-          '<p class="window-row-reason">' + (w.primaryReason || w.reason) + '</p>' +
-        '</div>';
+    list.forEach(site => {
+      h += '<tr><td class="site"><div class="site-name">' + badgeHtml(site) + site.name + '</div>' + siteMetaHtml(site) + '</td>';
+      site.days.forEach((d, i) => h += '<td>' + cellHtml(site, d, i) + '</td>');
+      h += '</tr>';
     });
-    return html + '</div>';
+
+    if (!list.length) h += '<tr><td colspan="' + cols + '" class="empty">Ingen lokationer matcher filteret</td></tr>';
+    document.getElementById("matrix").innerHTML = h + '</tbody>';
+
+    // Kort pr. lokation til mobil
+    let m = '';
+    list.forEach(site => {
+      m += '<div class="site-card">' +
+             '<div class="site-card-head"><div><div class="site-name">' + badgeHtml(site) + site.name + '</div>' + siteMetaHtml(site) + '</div>' +
+             '<span class="country-tag">' + (COUNTRY_NAME[countryOf(site)] || countryOf(site)) + '</span></div>' +
+             '<div class="mini-days" style="--days:' + site.days.length + '">';
+      site.days.forEach((d, i) => {
+        m += '<div class="mini-day"><span class="mini-label">' + dayLabel(d.date, todayIso) + '</span>' + cellHtml(site, d, i, true) + '</div>';
+      });
+      m += '</div></div>';
+    });
+    if (!list.length) m = '<p class="empty">Ingen lokationer matcher filteret</p>';
+    document.getElementById("site-list").innerHTML = m;
   }
 
-  function dayDetailsHtml(site, day) {
-    const label = STATUS_LABEL[day.status] || "Ukendt";
+  // ---------- Detaljer ----------
+  function renderDetail() {
+    const el = document.getElementById("detail");
+    const site = DATA.sites.find(s => s.name === state.site);
+    const day = site && site.days[state.day];
 
-    return (
-      '<div class="status-pill status-' + day.status + '">' + label.toUpperCase() + '</div>' +
-      (day.bestTime ? '<p class="best-time">Bedste flyvetid: ' + day.bestTime + '</p>' : "") +
-      windowChipsHtml(day.windows) +
-      // Vind, vindstød og retning i én kompakt række
-      '<div class="stat-grid">' +
-        '<div class="stat">' +
-          '<div class="stat-value">' + num1(day.wind) + '</div>' +
-          '<div class="stat-label">Vind m/s</div>' +
-        '</div>' +
-        '<div class="stat">' +
-          '<div class="stat-value">' + num1(day.gust) + '</div>' +
-          '<div class="stat-label">Vindstød m/s</div>' +
-        '</div>' +
-        '<div class="stat">' +
-          '<div class="stat-value stat-direction">' + windArrow(day.degrees) +
-            '<span>' + day.direction + ' ' + Math.round(day.degrees) + '&deg;</span></div>' +
-          '<div class="stat-label">Retning</div>' +
-        '</div>' +
+    if (!day) { el.innerHTML = '<p class="empty">Vælg et felt i oversigten</p>'; return; }
+
+    const windows = toArray(day.windows).filter(w => w && typeof w.wind === "number");
+    const secondary = toArray(day.secondaryReasons);
+    const rep = windows.find(w => w.status === day.status) || day;
+
+    let h =
+      '<div class="detail-info">' +
+      '<div class="detail-head">' +
+        '<div><h2>' + site.name + ' ' + flagHtml(countryOf(site)) + '</h2>' +
+        '<div class="date">' + WEEKDAYS_FULL[parseDate(day.date).getDay()] + ' ' + ddmm(day.date) + '</div></div>' +
+        '<button class="close" id="detail-close" type="button" aria-label="Luk">&times;</button>' +
       '</div>' +
-      '<div class="gust-row">' +
-        '<span class="gust-label">Vejr</span>' +
-        '<span class="gust-value temp-value">' + weatherInline(day) + '</span>' +
-      '</div>' +
-      reasonBlockHtml(day)
-    );
+      '<span class="pill st-' + day.status + '">' + STATUS_LABEL[day.status].toUpperCase() + '</span>' +
+      (day.bestTime ? '<p class="best">Bedste flyvetid <b>' + day.bestTime + '</b></p>' : '') +
+      '<p class="reason">' + (day.primaryReason || day.reason) +
+        (secondary.length && day.status !== "green" ? '<small>Desuden: ' + secondary.join(", ") + '</small>' : '') +
+      '</p>' +
+      (site.windy ? '<div class="links"><a href="' + site.windy + '" target="_blank" rel="noopener">Se vind på Windy &#8599;</a></div>' : '') +
+      '</div>';
+
+    if (windows.length) {
+      h += '<div class="windows">';
+      windows.forEach(w => {
+        h += '<div class="win st-' + w.status + '" title="' + w.label + '">' +
+               '<div class="t">' + w.range + '</div>' +
+               '<div class="w">' + num1(w.wind) + '</div>' +
+               '<div class="g">stød ' + num1(w.gust) + ' m/s</div>' +
+               '<div class="d">' + windArrow(w.degrees) + w.direction + ' ' + Math.round(w.degrees) + '°</div>' +
+               '<div class="wx">' + weatherIconHtml(w.weatherCode) + num1(w.temperature) + '°' +
+                 (w.precipitation > 0 ? ' · ' + num1(w.precipitation) + ' mm' : '') + '</div>' +
+               '<div class="why">' + (w.primaryReason || w.reason) + '</div>' +
+             '</div>';
+      });
+      h += '</div>';
+    }
+
+    if (arcList(site.goodArcs).length) {
+      h += '<div class="compass-row">' + compassSvg(site, rep.degrees) +
+             '<ul class="compass-txt">' +
+               '<li><i class="dot bg-green"></i>' + arcText(site.goodArcs) + '</li>' +
+               (arcList(site.fairArcs).length ? '<li><i class="dot bg-yellow"></i>' + arcText(site.fairArcs) + '</li>' : '') +
+               '<li><i class="dot bg-red"></i>Resten</li>' +
+               '<li class="hint">Pilen viser vinden i det bedste vindue</li>' +
+             '</ul></div>';
+    }
+
+    el.innerHTML = h;
+    document.getElementById("detail-close").addEventListener("click", closeDetail);
   }
 
-  function buildCard(site) {
-    const today = site.days[0];
+  const detailEl = document.getElementById("detail");
+  const scrimEl = document.getElementById("scrim");
 
-    const card = document.createElement("article");
-    card.className = "weather-card status-" + today.status;
+  function openDetail()  { detailEl.classList.add("open");    scrimEl.classList.add("open"); }
+  function closeDetail() { detailEl.classList.remove("open"); scrimEl.classList.remove("open"); }
 
-    card.innerHTML =
-      '<div class="card-top">' +
-        '<div class="site-heading">' +
-          '<h2 class="site-name">' + site.name + '</h2>' +
-          '<span class="card-date">' + shortDateLabel(today.date) + '</span>' +
-        '</div>' +
-        '<span class="flag">' + flagHtml(site.flag) + '</span>' +
-      '</div>' +
-      dayDetailsHtml(site, today) +
-      windyLinkHtml(site.name);
+  // Flyvesteder under Forudsætninger for vurdering. Alt kommer fra weather.json
+  function renderSiteInfo() {
+    const el = document.getElementById("site-info");
+    el.innerHTML = orderedSitesAll().map(site => {
+      const good = arcText(site.goodArcs);
+      const fair = arcText(site.fairArcs);
+      const hasPos = typeof site.latitude === "number" && typeof site.longitude === "number";
+      const links = [];
+      if (hasPos) links.push('<a href="https://www.google.com/maps?q=' + site.latitude + ',' + site.longitude + '" target="_blank" rel="noopener">Kort &#8599;</a>');
+      if (site.windy) links.push('<a href="' + site.windy + '" target="_blank" rel="noopener">Windy &#8599;</a>');
+      if (site.infoUrl) links.push('<a href="' + site.infoUrl + '" target="_blank" rel="noopener">' + (site.infoLabel || "Status og regler") + ' &#8599;</a>');
 
-    return card;
+      return '<div class="site-info-item">' +
+               '<div class="site-name">' + badgeHtml(site) + site.name + '</div>' +
+               '<ul>' +
+                 (good ? '<li><i class="dot bg-green"></i>' + good + '</li>' : '') +
+                 (fair ? '<li><i class="dot bg-yellow"></i>' + fair + '</li>' : '') +
+                 (good ? '<li><i class="dot bg-red"></i>Resten</li>' : '') +
+               '</ul>' +
+               (site.info ? '<p>' + site.info + '</p>' : '') +
+               (links.length ? '<p class="site-links">' + links.join(" · ") + '</p>' : '') +
+             '</div>';
+    }).join("");
   }
 
-  function buildForecastRow(site, siteIndex) {
-    const row = document.createElement("div");
-    row.className = "forecast-row";
-
-    let cellsHtml = '<div class="forecast-site">' + site.name + '</div>';
-    site.days.forEach((day, dayIndex) => {
-      cellsHtml +=
-        '<div class="forecast-cell">' +
-          '<button type="button" class="forecast-dot status-' + day.status + '" ' +
-            'data-site="' + siteIndex + '" data-day="' + dayIndex + '" ' +
-            'aria-label="' + site.name + ', ' + weekdayLabel(day.date) + ', se detaljer"></button>' +
-        '</div>';
-    });
-
-    row.innerHTML = cellsHtml;
-    return row;
+  // Alle lokationer i landerækkefølge uden filter
+  function orderedSitesAll() {
+    return countryList(DATA.sites).flatMap(c => DATA.sites.filter(s => countryOf(s) === c));
   }
 
-  function render(data) {
-    document.getElementById("updated").textContent = formatUpdated(data.updated);
+  function renderAll() { renderFilters(); renderMatrix(); renderDetail(); renderSiteInfo(); }
 
-    const cardsEl = document.getElementById("cards");
-    cardsEl.innerHTML = "";
-    data.sites.forEach(site => cardsEl.appendChild(buildCard(site)));
-
-    const tableEl = document.getElementById("forecast-table");
-    tableEl.innerHTML = "";
-
-    const header = document.createElement("div");
-    header.className = "forecast-row forecast-header";
-    let headerHtml = '<div class="forecast-site"></div>';
-    data.sites[0].days.forEach(day => {
-      headerHtml +=
-        '<div class="forecast-cell forecast-day-header">' +
-          weekdayLabel(day.date) +
-          '<div class="forecast-day-date">' + compactDateLabel(day.date) + '</div>' +
-        '</div>';
-    });
-    header.innerHTML = headerHtml;
-    tableEl.appendChild(header);
-
-    data.sites.forEach((site, siteIndex) => tableEl.appendChild(buildForecastRow(site, siteIndex)));
-  }
-
-  const toggleBtn = document.getElementById("assumptions-toggle");
-  const assumptionsBody = document.getElementById("assumptions-body");
-
-  // ---------- Dag-detaljer modal ----------
-
-  let WEATHER_DATA = null;
-
-  const modalOverlay = document.getElementById("day-modal-overlay");
-  const modalContent = document.getElementById("day-modal-content");
-  const modalClose = document.getElementById("day-modal-close");
-
-  function openDayModal(siteIndex, dayIndex) {
-    if (!WEATHER_DATA) return;
-
-    const site = WEATHER_DATA.sites[siteIndex];
-    const day = site.days[dayIndex];
-    if (!site || !day) return;
-
-    modalContent.innerHTML =
-      '<h2 id="day-modal-title" class="modal-title">' +
-        site.name + ' <span class="flag">' + flagHtml(site.flag) + '</span>' +
-      '</h2>' +
-      '<p class="modal-date">' + fullDateLabel(day.date) + '</p>' +
-      dayDetailsHtml(site, day) +
-      windowTableHtml(day.windows);
-
-    modalOverlay.hidden = false;
-    modalClose.focus();
-  }
-
-  function closeDayModal() {
-    modalOverlay.hidden = true;
-  }
-
-  function openAssumptionsModal() {
-    modalContent.innerHTML = '<div class="assumptions-body">' + assumptionsBody.innerHTML + '</div>';
-    modalOverlay.hidden = false;
-    modalClose.focus();
-  }
-
-  toggleBtn.addEventListener("click", openAssumptionsModal);
-
-  document.getElementById("forecast-table").addEventListener("click", (e) => {
-    const dot = e.target.closest(".forecast-dot");
-    if (!dot) return;
-    openDayModal(Number(dot.dataset.site), Number(dot.dataset.day));
+  // ---------- Hændelser ----------
+  document.getElementById("show").addEventListener("click", e => {
+    const b = e.target.closest("[data-show]");
+    if (!b) return;
+    state.onlyFly = b.dataset.show === "fly";
+    renderFilters();
+    renderMatrix();
   });
 
-  modalClose.addEventListener("click", closeDayModal);
-
-  modalOverlay.addEventListener("click", (e) => {
-    if (e.target === modalOverlay) closeDayModal();
+  document.getElementById("matrix").addEventListener("click", e => {
+    const b = e.target.closest(".cell");
+    if (!b) return;
+    state.site = b.dataset.site;
+    state.day = Number(b.dataset.day);
+    renderMatrix();
+    renderDetail();
+    openDetail();
+    // På computer ligger detaljerne under oversigten. Rul dem i syne hvis de er skjult
+    if (window.matchMedia("(min-width: 901px)").matches) {
+      detailEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
   });
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modalOverlay.hidden) closeDayModal();
-  });
+  scrimEl.addEventListener("click", closeDetail);
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeDetail(); });
 
+  // Lokal dato som yyyy-MM-dd. toISOString giver UTC og kan skifte dag ved midnat
+  function localIso(d) {
+    return d.getFullYear() + "-" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate());
+  }
+
+  function relativeTime(iso) {
+    const min = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+    if (min < 1) return "lige nu";
+    if (min < 60) return "for " + min + " min siden";
+    const t = Math.floor(min / 60);
+    if (t < 24) return "for " + t + (t === 1 ? " time" : " timer") + " siden";
+    return "den " + ddmm(iso.slice(0, 10));
+  }
+
+  function renderMeta() {
+    if (!DATA) return;
+    document.getElementById("meta").textContent =
+      "Opdateret " + relativeTime(DATA.updated) + " · Data fra api.open-meteo.com · Vind i 10 m højde · Flyvetid " + (DATA.flyingHours || "");
+  }
+
+  // Finder første dag efter i dag hvor mindst én lokation kan flyves.
+  // Grøn foretrækkes frem for gul samme dag
+  function nextFlyable(todayIso) {
+    const dates = DATA.sites[0].days.map(d => d.date).filter(d => d > todayIso);
+    for (const date of dates) {
+      const hits = [];
+      DATA.sites.forEach(site => {
+        const di = site.days.findIndex(d => d.date === date);
+        const d = site.days[di];
+        if (d && (d.status === "green" || d.status === "yellow")) hits.push({ site, day: d, di });
+      });
+      if (hits.length) {
+        hits.sort((a, b) => STATUS_RANK[a.day.status] - STATUS_RANK[b.day.status]);
+        return { date, hits };
+      }
+    }
+    return null;
+  }
+
+  function renderLiveChip() {
+    const todayIso = localIso(new Date());
+    const n = DATA.sites.filter(s => {
+      const d = s.days.find(x => x.date === todayIso);
+      return d && (d.status === "green" || d.status === "yellow");
+    }).length;
+
+    const chip = document.getElementById("live-chip");
+    const text = chip.querySelector("span");
+    chip.classList.remove("none", "next");
+    chip.onclick = null;
+
+    if (n > 0) {
+      text.textContent = n + " af " + DATA.sites.length + " lokationer flyvbare i dag";
+      return;
+    }
+
+    const next = nextFlyable(todayIso);
+    if (!next) {
+      chip.classList.add("none");
+      text.textContent = "Ingen flyvbare dage de næste " + DATA.sites[0].days.length + " dage";
+      return;
+    }
+
+    // Vis næste mulighed. Et klik på chippen åbner detaljerne for den
+    const best = next.hits[0];
+    const more = next.hits.length > 1 ? " +" + (next.hits.length - 1) : "";
+    chip.classList.add("next");
+    text.textContent = "Ingen i dag · Næste " + WEEKDAYS[parseDate(next.date).getDay()].toLowerCase() + " " + ddmm(next.date) +
+                       " · " + best.site.name + (best.day.bestTime ? " " + best.day.bestTime.split(", ")[0] : "") + more;
+    chip.onclick = () => {
+      state.site = best.site.name;
+      state.day = best.di;
+      renderMatrix();
+      renderDetail();
+      openDetail();
+      detailEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    };
+  }
+
+  function formatUpdated(iso) {
+    const d = new Date(iso);
+    return "Vejrinformation sidst opdateret " + pad2(d.getDate()) + "/" + pad2(d.getMonth() + 1) + "/" + d.getFullYear() +
+           " " + pad2(d.getHours()) + ":" + pad2(d.getMinutes()) + " via api.open-meteo.com";
+  }
+
+  // ---------- Hent data ----------
   fetch("weather.json?" + Date.now())
     .then(r => {
       if (!r.ok) throw new Error("HTTP " + r.status);
       return r.json();
     })
     .then(data => {
-      WEATHER_DATA = data;
-      render(data);
+      data.sites = toArray(data.sites);
+      data.sites.forEach(s => s.days = toArray(s.days));
+      DATA = data;
+
+      // Start med den lokation der ser bedst ud i dag
+      const first = data.sites.slice().sort((a, b) =>
+        (STATUS_RANK[(a.days[0] || {}).status] ?? 9) - (STATUS_RANK[(b.days[0] || {}).status] ?? 9))[0];
+      state.site = first ? first.name : null;
+
+      document.getElementById("foot-info").textContent =
+        data.sites.length + " lokationer · " + (data.forecastDays || data.sites[0].days.length) + " dage · vind, stød og nedbør";
+      renderMeta();
+      renderLiveChip();
+      setInterval(renderMeta, 60000);
+      renderAll();
     })
     .catch(err => {
-      document.getElementById("updated").textContent =
-        "Kunne ikke hente weather.json (" + err.message + ")";
+      document.getElementById("meta").textContent = "Kunne ikke hente weather.json (" + err.message + ")";
     });
 </script>
 
