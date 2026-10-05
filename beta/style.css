@@ -114,19 +114,32 @@ button { font: inherit; color: inherit; }
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
-.theme-toggle {
+.theme-switch {
   position: absolute;
   top: 12px;
   right: 12px;
   z-index: 2;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 0;
+  display: flex;
+  padding: 3px;
+  border-radius: 999px;
   background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.theme-switch button {
+  border: 0;
+  background: none;
+  color: #1f2937;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 1rem;
-  line-height: 1;
+}
+
+.theme-switch button[aria-pressed="true"] {
+  background: #1f2937;
+  color: #fff;
 }
 
 /* ---------- Værktøjslinje ---------- */
@@ -185,11 +198,11 @@ button { font: inherit; color: inherit; }
 
 /* ---------- Layout ---------- */
 
+/* Oversigt øverst og detaljer under. Virker ens med 3 eller 30 lokationer */
 .layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 380px;
+  grid-template-columns: 1fr;
   gap: 16px;
-  align-items: start;
 }
 
 .panel {
@@ -287,7 +300,41 @@ button { font: inherit; color: inherit; }
 
 /* ---------- Detaljer ---------- */
 
-.detail { padding: 18px; position: sticky; top: 16px; }
+.detail {
+  padding: 18px 20px;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(0, 1.6fr) auto;
+  gap: 24px;
+  align-items: start;
+  scroll-margin: 16px;
+}
+
+.detail > .empty { grid-column: 1 / -1; }
+.detail .windows { margin-top: 0; }
+
+/* Kompasset står lodret i sin egen kolonne på bred skærm */
+.detail .compass-row {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+  padding-left: 24px;
+  border-left: 1px solid var(--line);
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+  .detail { grid-template-columns: minmax(200px, 1fr) minmax(0, 1.6fr); }
+  .detail .compass-row {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 0;
+    border-left: 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+}
 
 .detail-head { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
 .detail h2 { font-size: 1.2rem; color: var(--strong); line-height: 1.2; }
@@ -394,7 +441,16 @@ details.rules summary { cursor: pointer; font-weight: 600; color: var(--strong);
 /* ---------- Mobil ---------- */
 
 @media (max-width: 900px) {
-  .layout { grid-template-columns: 1fr; }
+  .detail { display: block; padding: 18px; }
+  .detail .windows { margin-top: 14px; }
+  .detail .compass-row {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 16px;
+    padding: 14px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
 
   /* Detaljer glider op som et bundark */
   .detail {
@@ -437,4 +493,6 @@ details.rules summary { cursor: pointer; font-weight: 600; color: var(--strong);
   .cell { min-width: 48px; padding: 9px 2px; font-size: 0.72rem; }
 
   .legend { width: 100%; }
+
+  .theme-switch button { padding: 4px 10px; font-size: 0.75rem; }
 }
