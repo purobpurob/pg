@@ -13,7 +13,7 @@
 <meta property="og:description" content="5 dages flyvevejr for paragliding på Hammars Backar, Heatherhill og Kyndeløse.">
 <meta property="og:url" content="https://www.8orup.dk/pg/">
 <meta property="og:image" content="https://www.8orup.dk/pg/borup.jpg">
-<link rel="stylesheet" href="style.css?v=21">
+<link rel="stylesheet" href="style.css?v=22">
 <script>
   (function () {
     try {
@@ -30,37 +30,62 @@
 <h1 class="visually-hidden">Elev flyvevejr for paragliding</h1>
 
 <header class="hero">
-  <div class="theme-switch" role="group" aria-label="Tema">
-    <button type="button" data-theme-choice="light">Lys</button>
-    <button type="button" data-theme-choice="dark">Mørk</button>
+  <div class="hero-top">
+    <span class="live-chip" id="live-chip"><i class="pulse"></i><span>Henter data</span></span>
+    <div class="theme-switch" role="group" aria-label="Tema">
+      <button type="button" data-theme-choice="light"><i class="sw-dot sw-sun"></i>Lys</button>
+      <button type="button" data-theme-choice="dark"><i class="sw-dot sw-moon"></i>Mørk</button>
+    </div>
   </div>
 </header>
 
-<div class="toolbar">
-  <div class="filters" id="filters"></div>
-  <button class="chip" id="only-fly" type="button" aria-pressed="false">Kun flyvbare</button>
-  <button class="chip" id="sort" type="button" aria-pressed="false">Bedst først</button>
-  <span class="spacer"></span>
-  <div class="legend">
-    <span><i class="dot bg-green"></i>Flyvevejr</span>
-    <span><i class="dot bg-yellow"></i>Vær opmærksom</span>
-    <span><i class="dot bg-red"></i>Ikke egnet</span>
-    <span><i class="dot bg-grey"></i>For lidt vind</span>
-  </div>
-</div>
+<main class="wrap">
 
-<div class="layout">
-  <section class="panel">
+  <section class="board">
+    <div class="board-head">
+      <div class="toolbar">
+        <div class="filters" id="filters"></div>
+        <button class="chip" id="only-fly" type="button" aria-pressed="false">Kun flyvbare</button>
+        <button class="chip" id="sort" type="button" aria-pressed="false">Bedst først</button>
+        <span class="spacer"></span>
+        <div class="legend">
+          <span><i class="dot bg-green"></i>Flyvevejr</span>
+          <span><i class="dot bg-yellow"></i>Vær opmærksom</span>
+          <span><i class="dot bg-red"></i>Ikke egnet</span>
+          <span><i class="dot bg-grey"></i>For lidt vind</span>
+        </div>
+      </div>
+      <p class="meta" id="meta">Henter data...</p>
+    </div>
+
     <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
-    <p class="matrix-foot">Teksten i feltet er bedste flyvetid. Tryk på et felt for detaljer.</p>
+    <div class="site-list" id="site-list"></div>
+
+    <div class="board-foot">
+      <span id="foot-info"></span>
+      <span>Tryk på et felt for detaljer</span>
+    </div>
   </section>
+
   <aside class="panel detail" id="detail" aria-live="polite"></aside>
-</div>
 
-<div class="scrim" id="scrim"></div>
+  <section class="info-cards">
+    <div class="panel info">
+      <h3>Sådan læses oversigten</h3>
+      <p>Feltet viser bedste flyvetid. Grøn er flyvevejr i bedste tidsvindue. Gul betyder vær opmærksom. Grå er for lidt vind.</p>
+    </div>
+    <div class="panel info">
+      <h3>Vindretning</h3>
+      <p>Hver lokation har sine egne retninger. Kompasset i detaljerne viser grønt for ideelt og gult for marginalt.</p>
+    </div>
+    <div class="panel info">
+      <h3>Ansvar</h3>
+      <p>Modellen er lavet til elever og er bevidst konservativ. Den er ikke en flyvetilladelse og erstatter ikke din egen vurdering på stedet.</p>
+    </div>
+  </section>
 
-<details class="panel rules">
-  <summary>Sådan vurderes det</summary>
+  <details class="panel rules">
+  <summary>Alle grænseværdier</summary>
   <div class="rules-grid">
     <div>
       <h3>Vindretning</h3>
@@ -104,11 +129,13 @@
   <p class="note">Modellen er lavet til elever og er bevidst konservativ. Den er ikke en flyvetilladelse og erstatter ikke pilotens egen vurdering på stedet.</p>
 </details>
 
-<p class="updated" id="updated">Henter data...</p>
+  <footer class="page-footer">
+    <p>Coded by 8orup 2026 | <a href="https://www.8orup.dk" target="_blank" rel="noopener">www.8orup.dk</a></p>
+  </footer>
 
-<footer class="page-footer">
-  <p>Coded by 8orup 2026 | <a href="https://www.8orup.dk" target="_blank" rel="noopener">www.8orup.dk</a></p>
-</footer>
+</main>
+
+<div class="scrim" id="scrim"></div>
 
 <script>
   // ---------- Tema skift (lys / mørk) ----------
@@ -298,56 +325,77 @@
   }
 
   // ---------- Oversigt ----------
-  function cellHtml(site, day, dayIndex) {
+  function cellHtml(site, day, dayIndex, compact) {
     const selected = state.site === site.name && state.day === dayIndex;
-    const top = day.bestTime
-      ? day.bestTime
-      : '<span class="long">' + STATUS_LABEL[day.status] + '</span><span class="short">' + STATUS_SHORT[day.status] + '</span>';
+    const label = compact ? STATUS_SHORT[day.status] : STATUS_LABEL[day.status];
+    const top = day.bestTime ? day.bestTime.split(", ")[0] : label;
 
     return '<button type="button" class="cell st-' + day.status + (selected ? ' selected' : '') + '" ' +
              'data-site="' + site.name + '" data-day="' + dayIndex + '" ' +
              'aria-label="' + site.name + ', ' + WEEKDAYS_FULL[parseDate(day.date).getDay()] + ': ' + STATUS_LABEL[day.status] + '">' +
              '<b>' + top + '</b>' +
-             '<span class="sub">' + Math.round(day.wind) + ' m/s ' + day.direction + '</span>' +
+             (compact ? '' : '<span class="sub">' + Math.round(day.wind) + ' m/s ' + day.direction + '</span>') +
            '</button>';
   }
 
-  function renderMatrix() {
+  function dayLabel(iso, todayIso) {
+    return iso === todayIso ? "I dag" : WEEKDAYS[parseDate(iso).getDay()];
+  }
+
+  function siteMetaHtml(site) {
+    const good = arcText(site.goodArcs);
+    return good ? '<div class="site-meta">Grøn ' + good + '</div>' : '';
+  }
+
+  function badgeHtml(site) {
+    const c = countryOf(site);
+    return '<span class="cc cc-' + c + '">' + c + '</span>';
+  }
+
+  // Lande i fast rækkefølge, medmindre der sorteres efter bedste status
+  function orderedSites() {
     const list = visibleSites();
+    if (state.sort) return list;
+    return countryList(list).flatMap(c => list.filter(s => countryOf(s) === c));
+  }
+
+  function renderMatrix() {
+    const list = orderedSites();
     const days = DATA.sites[0].days;
-    const todayIso = new Date().toISOString().slice(0, 10);
+    const todayIso = localIso(new Date());
     const cols = days.length + 1;
 
-    let h = '<thead><tr><th class="site"></th>';
+    // Tabel til bred skærm
+    let h = '<thead><tr><th class="site">Lokation · grøn retning</th>';
     days.forEach(d => {
-      const isToday = d.date === todayIso;
-      h += '<th class="' + (isToday ? 'today' : '') + '">' +
-             (isToday ? 'I dag' : WEEKDAYS[parseDate(d.date).getDay()]) +
+      h += '<th class="' + (d.date === todayIso ? 'today' : '') + '">' + dayLabel(d.date, todayIso) +
              '<small>' + ddmm(d.date) + '</small></th>';
     });
     h += '</tr></thead><tbody>';
 
-    // Grupperes efter land, medmindre der sorteres efter bedste status
-    const groups = state.sort
-      ? [[null, list]]
-        : countryList(list).map(c => [c, list.filter(s => countryOf(s) === c)]);
-
-    groups.forEach(([country, sites]) => {
-      if (country) {
-        h += '<tr class="group-row"><td colspan="' + cols + '">' + flagHtml(country) + (COUNTRY_NAME[country] || country) + '</td></tr>';
-      }
-      sites.forEach(site => {
-        const good = arcText(site.goodArcs);
-        h += '<tr><td class="site"><div class="site-name">' + site.name + '</div>' +
-               (good ? '<div class="site-meta">Grøn ' + good + '</div>' : '') + '</td>';
-        site.days.forEach((d, i) => h += '<td>' + cellHtml(site, d, i) + '</td>');
-        h += '</tr>';
-      });
+    list.forEach(site => {
+      h += '<tr><td class="site"><div class="site-name">' + badgeHtml(site) + site.name + '</div>' + siteMetaHtml(site) + '</td>';
+      site.days.forEach((d, i) => h += '<td>' + cellHtml(site, d, i) + '</td>');
+      h += '</tr>';
     });
 
     if (!list.length) h += '<tr><td colspan="' + cols + '" class="empty">Ingen lokationer matcher filteret</td></tr>';
-
     document.getElementById("matrix").innerHTML = h + '</tbody>';
+
+    // Kort pr. lokation til mobil
+    let m = '';
+    list.forEach(site => {
+      m += '<div class="site-card">' +
+             '<div class="site-card-head"><div><div class="site-name">' + badgeHtml(site) + site.name + '</div>' + siteMetaHtml(site) + '</div>' +
+             '<span class="country-tag">' + (COUNTRY_NAME[countryOf(site)] || countryOf(site)) + '</span></div>' +
+             '<div class="mini-days" style="--days:' + site.days.length + '">';
+      site.days.forEach((d, i) => {
+        m += '<div class="mini-day"><span class="mini-label">' + dayLabel(d.date, todayIso) + '</span>' + cellHtml(site, d, i, true) + '</div>';
+      });
+      m += '</div></div>';
+    });
+    if (!list.length) m = '<p class="empty">Ingen lokationer matcher filteret</p>';
+    document.getElementById("site-list").innerHTML = m;
   }
 
   // ---------- Detaljer ----------
@@ -452,6 +500,38 @@
   scrimEl.addEventListener("click", closeDetail);
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeDetail(); });
 
+  // Lokal dato som yyyy-MM-dd. toISOString giver UTC og kan skifte dag ved midnat
+  function localIso(d) {
+    return d.getFullYear() + "-" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate());
+  }
+
+  function relativeTime(iso) {
+    const min = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+    if (min < 1) return "lige nu";
+    if (min < 60) return "for " + min + " min siden";
+    const t = Math.floor(min / 60);
+    if (t < 24) return "for " + t + (t === 1 ? " time" : " timer") + " siden";
+    return "den " + ddmm(iso.slice(0, 10));
+  }
+
+  function renderMeta() {
+    if (!DATA) return;
+    document.getElementById("meta").textContent =
+      "Opdateret " + relativeTime(DATA.updated) + " · Data fra api.open-meteo.com · Vind i 10 m højde · Flyvetid " + (DATA.flyingHours || "");
+  }
+
+  function renderLiveChip() {
+    const todayIso = localIso(new Date());
+    const n = DATA.sites.filter(s => {
+      const d = s.days.find(x => x.date === todayIso);
+      return d && (d.status === "green" || d.status === "yellow");
+    }).length;
+    const chip = document.getElementById("live-chip");
+    chip.classList.toggle("none", n === 0);
+    chip.querySelector("span").textContent =
+      (n === 0 ? "Ingen" : n + " af " + DATA.sites.length) + " lokationer flyvbare i dag";
+  }
+
   function formatUpdated(iso) {
     const d = new Date(iso);
     return "Vejrinformation sidst opdateret " + pad2(d.getDate()) + "/" + pad2(d.getMonth() + 1) + "/" + d.getFullYear() +
@@ -474,11 +554,15 @@
         (STATUS_RANK[(a.days[0] || {}).status] ?? 9) - (STATUS_RANK[(b.days[0] || {}).status] ?? 9))[0];
       state.site = first ? first.name : null;
 
-      document.getElementById("updated").textContent = formatUpdated(data.updated);
+      document.getElementById("foot-info").textContent =
+        data.sites.length + " lokationer · " + (data.forecastDays || data.sites[0].days.length) + " dage · vind, stød og nedbør";
+      renderMeta();
+      renderLiveChip();
+      setInterval(renderMeta, 60000);
       renderAll();
     })
     .catch(err => {
-      document.getElementById("updated").textContent = "Kunne ikke hente weather.json (" + err.message + ")";
+      document.getElementById("meta").textContent = "Kunne ikke hente weather.json (" + err.message + ")";
     });
 </script>
 
