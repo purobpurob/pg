@@ -13,7 +13,7 @@
 <meta property="og:description" content="5 dages flyvevejr for paragliding på Hammars Backar, Heatherhill og Kyndeløse.">
 <meta property="og:url" content="https://www.8orup.dk/pg/">
 <meta property="og:image" content="https://www.8orup.dk/pg/borup.jpg">
-<link rel="stylesheet" href="style.css?v=20">
+<link rel="stylesheet" href="style.css?v=21">
 <script>
   (function () {
     try {
@@ -34,7 +34,6 @@
     <button type="button" data-theme-choice="light">Lys</button>
     <button type="button" data-theme-choice="dark">Mørk</button>
   </div>
-  <p class="hero-text" id="hero-sub">Elev flyvevejr</p>
 </header>
 
 <div class="toolbar">
@@ -134,6 +133,8 @@
   const STATUS_RANK  = { green: 0, yellow: 1, grey: 2, red: 3 };
 
   const COUNTRY_NAME = { DK: "Danmark", SE: "Sverige", NO: "Norge", DE: "Tyskland" };
+  // Rækkefølge af lande i oversigt og filtre. Ukendte lande kommer til sidst
+  const COUNTRY_ORDER = ["DK", "SE", "NO", "DE"];
   const FLAG_EMOJI   = { "🇸🇪": "SE", "🇩🇰": "DK", "🇳🇴": "NO", "🇩🇪": "DE" };
 
   // Rigtige flag som SVG. Windows viser flag-emojis som bogstaver
@@ -162,6 +163,11 @@
 
   function countryOf(site) {
     return site.country || FLAG_EMOJI[site.flag] || "XX";
+  }
+
+  function countryList(sites) {
+    const rank = c => { const i = COUNTRY_ORDER.indexOf(c); return i < 0 ? 99 : i; };
+    return [...new Set(sites.map(countryOf))].sort((a, b) => rank(a) - rank(b));
   }
 
   function flagHtml(code) {
@@ -279,7 +285,7 @@
 
   // ---------- Filtre ----------
   function renderFilters() {
-    const countries = [...new Set(DATA.sites.map(countryOf))];
+    const countries = countryList(DATA.sites);
     const el = document.getElementById("filters");
 
     // Filtre giver kun mening når der er mere end ét land
@@ -324,7 +330,7 @@
     // Grupperes efter land, medmindre der sorteres efter bedste status
     const groups = state.sort
       ? [[null, list]]
-      : [...new Set(list.map(countryOf))].map(c => [c, list.filter(s => countryOf(s) === c)]);
+        : countryList(list).map(c => [c, list.filter(s => countryOf(s) === c)]);
 
     groups.forEach(([country, sites]) => {
       if (country) {
@@ -468,8 +474,6 @@
         (STATUS_RANK[(a.days[0] || {}).status] ?? 9) - (STATUS_RANK[(b.days[0] || {}).status] ?? 9))[0];
       state.site = first ? first.name : null;
 
-      document.getElementById("hero-sub").textContent =
-        "Elev flyvevejr · " + data.sites.length + " lokationer · " + (data.forecastDays || 5) + " dage · " + (data.flyingHours || "");
       document.getElementById("updated").textContent = formatUpdated(data.updated);
       renderAll();
     })
