@@ -260,7 +260,6 @@ button { font: inherit; color: inherit; }
   stroke-linecap: round;
 }
 
-.foot-meta .hint::after { content: "·"; margin-left: 14px; }
 
 /* Landekode som lille rund mærkat */
 .cc {
@@ -832,7 +831,6 @@ details.rules summary { cursor: pointer; font-weight: 600; color: var(--strong);
 
   .board-foot .legend .dot { width: 7px; height: 7px; }
   .foot-meta { width: 100%; justify-content: center; }
-  .foot-meta .hint { display: none; }
   .matrix-wrap { display: none; }
   .site-list { display: block; }
   .site-card { padding: 14px 16px; }
