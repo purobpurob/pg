@@ -27,34 +27,35 @@
 }
 
 :root[data-theme="dark"] {
-  --bg: #14171c;
-  --text: #c9d1d9;
-  --strong: #e6edf3;
-  --muted: #8b949e;
-  --line: #2a2f37;
-  --card-bg: #1b1f26;
-  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
-  --surface: #232831;
-  --accent: #6aa9ff;
+  /* Lysere mørk tilstand: skifergrå i stedet for næsten sort */
+  --bg: #262b33;
+  --text: #d3d9e0;
+  --strong: #f1f4f7;
+  --muted: #a0a9b4;
+  --line: #3d444f;
+  --card-bg: #2f3540;
+  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+  --surface: #38404b;
+  --accent: #7ab4f0;
 
-  --green: #2ecc71;
-  --green-bg: rgba(26, 156, 74, 0.18);
-  --green-text: #57d98a;
+  --green: #3ccf7f;
+  --green-bg: rgba(46, 204, 113, 0.18);
+  --green-text: #6fe0a0;
 
-  --yellow: #e0a92e;
-  --yellow-bg: rgba(217, 154, 0, 0.18);
-  --yellow-text: #f0c14b;
+  --yellow: #e8b440;
+  --yellow-bg: rgba(232, 180, 64, 0.18);
+  --yellow-text: #f3cb6a;
 
-  --red: #e15a4f;
-  --red-bg: rgba(217, 54, 43, 0.20);
-  --red-text: #f08a80;
+  --red: #ec6d62;
+  --red-bg: rgba(236, 109, 98, 0.2);
+  --red-text: #f59a90;
 
-  --grey: #6b7684;
+  --grey: #7c8693;
   --grey-bg: rgba(255, 255, 255, 0.08);
-  --grey-text: #aeb6c0;
+  --grey-text: #b6bfc9;
 }
 
-html[data-theme="dark"] { background: #14171c; }
+html[data-theme="dark"] { background: #262b33; }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -176,7 +177,7 @@ button { font: inherit; color: inherit; }
   overflow: hidden;
 }
 
-:root[data-theme="dark"] .board { box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5); }
+:root[data-theme="dark"] .board { box-shadow: 0 18px 50px rgba(0, 0, 0, 0.3); }
 
 .board-head { padding: 22px 28px 14px; }
 .board-head .toolbar { margin-bottom: 0; }
