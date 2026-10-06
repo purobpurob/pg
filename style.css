@@ -1004,40 +1004,25 @@ details.rules summary { font-size: 0.9rem; }
 .win.st-red .w, .win.st-grey .w { color: var(--strong); }
 
 /* =====================================================
-   Nyt hero-billede (1856 x 1136)
-   Billedet er højere og vises fra toppen, så himlen og
-   skærmen med teksten ses. Det toner langsomt ud bag tavlen
+   Hero-billede (2080 x 992)
+   Motivet ligger i den øverste halvdel, så billedet vises
+   fra toppen. Lyngen nederst toner ud bag tavlen
    ===================================================== */
 
 .hero {
-  height: clamp(420px, 50vw, 760px);
-  background-position: center 12%;
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 50%, rgba(0, 0, 0, 0.55) 72%, transparent 100%);
-  mask-image: linear-gradient(180deg, #000 0%, #000 50%, rgba(0, 0, 0, 0.55) 72%, transparent 100%);
+  height: clamp(420px, 46vw, 700px);
+  background-position: center top;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 52%, rgba(0, 0, 0, 0.55) 74%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 52%, rgba(0, 0, 0, 0.55) 74%, transparent 100%);
 }
 
-/* Den gamle fade nederst fjernes. Masken ovenfor står for overgangen */
 .hero::after {
-  background: linear-gradient(180deg, rgba(10, 14, 20, 0.30) 0%, rgba(10, 14, 20, 0) 20%);
+  background: linear-gradient(180deg, rgba(10, 14, 20, 0.25) 0%, rgba(10, 14, 20, 0) 18%);
 }
 
-.board { margin-top: -240px; }
+.board { margin-top: -200px; }
 
 @media (max-width: 700px) {
-  .hero { height: auto; aspect-ratio: 1856 / 1136; background-position: center top; }
-  .board { margin-top: -90px; }
-}
-
-/* Ca. 1 cm (38 px) mere klippet af toppen af billedet */
-.hero { background-position: center calc(12% - 38px); }
-
-@media (max-width: 700px) {
-  .hero { aspect-ratio: 1856 / 1050; background-position: center bottom; }
-}
-
-/* Endnu ca. 1 cm (36 px) klippet af toppen */
-.hero { background-position: center calc(12% - 74px); }
-
-@media (max-width: 700px) {
-  .hero { aspect-ratio: 1856 / 980; background-position: center bottom; }
+  .hero { height: 230px; aspect-ratio: auto; background-position: center top; }
+  .board { margin-top: -60px; }
 }
