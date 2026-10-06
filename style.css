@@ -1106,3 +1106,107 @@ details.rules summary { font-size: 0.95rem; }
   .detail { padding: 16px; }
   details.rules { padding: 12px 16px; }
 }
+
+/* =====================================================
+   Læsbarhed og trykflader efter gængs standard
+   Mindst 12 px tekst, knapper mindst 40-44 px høje på mobil
+   og tekst i felterne 13-14 px på computer.
+   Tavlen ligger højere oppe i billedet for at give plads
+   ===================================================== */
+
+/* ---------- Computer ---------- */
+.board { margin-top: -190px; }
+
+.hero-meta { font-size: 0.8rem; padding: 7px 14px; }
+.hero-meta svg { width: 15px; height: 15px; }
+.theme-switch { padding: 4px; }
+.theme-switch button { font-size: 0.8rem; padding: 6px 14px; min-height: 32px; }
+.sw-dot { width: 8px; height: 8px; }
+
+.segment { padding: 4px; }
+.segment button { font-size: 0.85rem; padding: 7px 15px; min-height: 36px; }
+.segment .count { font-size: 0.75rem; min-width: 20px; padding: 0 6px; }
+
+.matrix thead th { font-size: 0.75rem; }
+.matrix thead th small { font-size: 0.88rem; }
+.site-name { font-size: 1rem; }
+.cc { width: 26px; height: 26px; font-size: 0.62rem; }
+.cell { padding: 9px 4px; min-height: 48px; }
+.cell b { font-size: 0.88rem; }
+.cell .sub { font-size: 0.75rem; }
+
+.board-foot .legend { font-size: 0.8rem; }
+.board-foot .legend .sw { width: 14px; height: 10px; }
+
+.detail .date, .reason, .links { font-size: 0.9rem; }
+.reason small { font-size: 0.8rem; }
+.pill { font-size: 0.75rem; padding: 4px 12px; }
+.win .t, .win .g, .win .why { font-size: 0.75rem; }
+.win .d, .win .wx { font-size: 0.82rem; }
+.win .w { font-size: 1.25rem; }
+.compass-txt { font-size: 0.85rem; }
+.links a { display: inline-block; padding: 4px 0; }
+
+.rules-grid { font-size: 0.9rem; }
+.page-footer { font-size: 0.8rem; }
+
+/* ---------- Mobil ---------- */
+@media (max-width: 700px) {
+  .hero { height: 240px; }
+  .board { margin-top: -80px; }
+
+  .hero-top { padding: 10px 12px; gap: 8px; }
+  .hero-meta { font-size: 0.75rem; padding: 6px 11px; min-height: 36px; }
+  .hero-meta svg { width: 14px; height: 14px; }
+  .theme-switch { padding: 3px; }
+  .theme-switch button { font-size: 0.75rem; padding: 6px 11px; min-height: 36px; }
+
+  .segment { width: 100%; }
+  .segment button { flex: 1; justify-content: center; font-size: 0.9rem; min-height: 44px; }
+  .segment .count { font-size: 0.75rem; }
+
+  .site-card { padding: 12px 14px 14px; }
+  .site-card .site-name { font-size: 1.05rem; }
+  .site-card .cc { width: 26px; height: 26px; font-size: 0.62rem; }
+  .mini-days { gap: 6px; }
+  .mini-label { font-size: 0.75rem; }
+  .mini-day .cell { min-height: 44px; padding: 8px 2px; justify-content: center; }
+  .site-card .cell b { font-size: 0.85rem; }
+
+  .board-foot .legend { font-size: 0.75rem; gap: 10px; flex-wrap: wrap; }
+  .board-foot .legend .sw { width: 13px; height: 9px; }
+
+  #detail-close { width: 44px; height: 44px; }
+  .win .t, .win .g, .win .why { font-size: 0.75rem; }
+  details.rules summary { min-height: 44px; display: flex; align-items: center; }
+}
+
+/* Smalle telefoner: kortere tekst i opdateringstiden */
+@media (max-width: 380px) {
+  .hero-meta { font-size: 0.7rem; padding: 6px 9px; }
+  .theme-switch button { padding: 6px 9px; }
+}
+
+/* Tavlen må gå op i billedet, men aldrig dække teksten på skærmen.
+   Teksten sidder ca. 22 % af skærmbredden nede i billedet */
+:root { --hero-h: clamp(400px, 60vh, 640px); }
+.hero { height: var(--hero-h); }
+.board { margin-top: calc(-1 * max(0px, min(var(--hero-h) * 0.32, var(--hero-h) - 24vw))); }
+
+@media (max-width: 700px) {
+  :root { --hero-h: 240px; }
+  .board { margin-top: -76px; }
+}
+
+/* Telefon: kort udgave af opdateringstiden, så den passer ved Lys/Mørk */
+@media (max-width: 430px) {
+  .meta-lead { display: none; }
+  .meta-lead-short { display: inline; }
+  .hero-meta { font-size: 0.72rem; padding: 6px 10px; gap: 5px; }
+  .hero-meta svg { flex: none; }
+  .theme-switch button { font-size: 0.72rem; padding: 6px 10px; }
+}
+
+@media (max-width: 380px) {
+  .meta-year { display: none; }
+}

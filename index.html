@@ -53,7 +53,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="style.css?v=52">
+<link rel="stylesheet" href="style.css?v=54">
 <script>
   (function () {
     try {
@@ -578,7 +578,8 @@
   // Fuld dato og tid, fx "06-10-2026 kl. 17:44"
   function updatedAt(iso) {
     const d = new Date(iso);
-    return pad2(d.getDate()) + "-" + pad2(d.getMonth() + 1) + "-" + d.getFullYear() +
+    // Årstallet skjules på de smalleste telefoner, så teksten kan være på 1 linje
+    return pad2(d.getDate()) + "-" + pad2(d.getMonth() + 1) + '<span class="meta-year">-' + d.getFullYear() + '</span>' +
            " kl. " + pad2(d.getHours()) + ":" + pad2(d.getMinutes());
   }
 
