@@ -1026,3 +1026,83 @@ details.rules summary { font-size: 0.9rem; }
   .hero { height: 230px; aspect-ratio: auto; background-position: center top; }
   .board { margin-top: -60px; }
 }
+
+/* =====================================================
+   Balance mellem billede, tavle og knapper
+   Én fælles skala: billede, tavle og knapper følger samme
+   bredde, og tekststørrelser passer til hinanden
+   ===================================================== */
+
+/* Fælles bredde for knapper i billedet og for tavlen */
+.wrap { max-width: 1120px; }
+.hero-top { max-width: 1120px; padding: 22px 24px; }
+
+/* Billedet: højde efter skærmens højde, så tavlen altid ses uden at scrolle */
+.hero { height: clamp(380px, 58vh, 620px); }
+.board { margin-top: -130px; }
+
+/* Knapperne i billedet lidt større, så de passer til tavlen */
+.hero-meta { font-size: 0.74rem; padding: 6px 13px; gap: 6px; }
+.hero-meta svg { width: 14px; height: 14px; }
+.theme-switch { padding: 3px; }
+.theme-switch button { font-size: 0.74rem; padding: 4px 12px; }
+.sw-dot { width: 7px; height: 7px; }
+
+/* Tavlen: lidt større tekst og rolig luft */
+.board-head { padding: 18px 24px 10px; }
+.segment button { font-size: 0.78rem; padding: 5px 13px; }
+.segment .count { font-size: 0.66rem; min-width: 18px; }
+.matrix thead th { font-size: 0.68rem; padding: 10px 6px; }
+.matrix thead th small { font-size: 0.82rem; }
+.matrix .site { padding-left: 24px; min-width: 220px; }
+.site-name { font-size: 0.95rem; }
+.cc { width: 24px; height: 24px; font-size: 0.58rem; }
+.matrix tbody td { padding: 4px 5px; }
+.cell { padding: 8px 4px; min-width: 76px; border-radius: 10px; }
+.cell b { font-size: 0.84rem; }
+.cell .sub { font-size: 0.68rem; }
+.board-foot { padding: 12px 24px; }
+.board-foot .legend { font-size: 0.74rem; }
+
+/* Detaljer og Om vejrvurderingen i samme skala som tavlen */
+.detail { padding: 18px 24px; gap: 22px; }
+.detail h2 { font-size: 1.2rem; }
+.detail .date, .reason, .links { font-size: 0.85rem; }
+.best { font-size: 0.9rem; }
+.pill { font-size: 0.7rem; padding: 3px 11px; }
+.win { padding: 10px 8px; }
+.win .w { font-size: 1.15rem; }
+.win .t, .win .g, .win .why { font-size: 0.7rem; }
+.win .d, .win .wx { font-size: 0.76rem; }
+.compass-row svg { width: 88px; height: 88px; }
+.compass-txt { font-size: 0.8rem; }
+details.rules { padding: 14px 24px; }
+details.rules summary { font-size: 0.95rem; }
+
+/* Mobil: lavere billede, mindre knapper og mere kompakte kort */
+@media (max-width: 700px) {
+  .wrap { padding: 0 12px; }
+  .hero-top { padding: 12px; }
+  .hero { height: 220px; }
+  .board { margin-top: -44px; border-radius: 16px; }
+
+  .hero-meta { font-size: 0.64rem; padding: 4px 10px; }
+  .hero-meta svg { width: 12px; height: 12px; }
+  .theme-switch button { font-size: 0.64rem; padding: 3px 9px; }
+
+  .board-head { padding: 12px 14px 8px; }
+  .segment button { font-size: 0.72rem; padding: 4px 11px; }
+
+  .site-card { padding: 10px 14px 12px; }
+  .site-card-head { margin-bottom: 6px; }
+  .site-card .site-name { font-size: 0.95rem; }
+  .site-card .cc { width: 22px; height: 22px; font-size: 0.55rem; margin-right: 8px; }
+  .mini-days { gap: 5px; }
+  .mini-label { font-size: 0.6rem; }
+  .mini-day .cell { padding: 7px 2px; min-width: 0; border-radius: 8px; }
+  .site-card .cell b { font-size: 0.74rem; }
+
+  .board-foot { padding: 10px 12px; }
+  .detail { padding: 16px; }
+  details.rules { padding: 12px 16px; }
+}
