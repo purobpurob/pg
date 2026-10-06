@@ -13,7 +13,7 @@
 <meta property="og:description" content="5 dages flyvevejr for paragliding på Hammars Backar, Heatherhill og Kyndeløse.">
 <meta property="og:url" content="https://www.8orup.dk/pg/">
 <meta property="og:image" content="https://www.8orup.dk/pg/borup.jpg">
-<link rel="stylesheet" href="style.css?v=33">
+<link rel="stylesheet" href="style.css?v=34">
 <script>
   (function () {
     try {
@@ -31,7 +31,6 @@
 
 <header class="hero">
   <div class="hero-top">
-    <span class="live-chip" id="live-chip" role="status"><i class="pulse"></i><span>Henter data</span></span>
     <div class="theme-switch" role="group" aria-label="Tema">
       <button type="button" data-theme-choice="light"><i class="sw-dot sw-sun"></i>Lys</button>
       <button type="button" data-theme-choice="dark"><i class="sw-dot sw-moon"></i>Mørk</button>
@@ -571,46 +570,6 @@
     return null;
   }
 
-  function renderLiveChip() {
-    const todayIso = localIso(new Date());
-    const n = DATA.sites.filter(s => {
-      const d = s.days.find(x => x.date === todayIso);
-      return d && (d.status === "green" || d.status === "yellow");
-    }).length;
-
-    const chip = document.getElementById("live-chip");
-    const text = chip.querySelector("span");
-    chip.classList.remove("none", "next");
-    chip.onclick = null;
-
-    if (n > 0) {
-      text.textContent = n + " af " + DATA.sites.length + " lokationer flyvbare i dag";
-      return;
-    }
-
-    const next = nextFlyable(todayIso);
-    if (!next) {
-      chip.classList.add("none");
-      text.textContent = "Ingen flyvbare dage de næste " + DATA.sites[0].days.length + " dage";
-      return;
-    }
-
-    // Vis næste mulighed. Et klik på chippen åbner detaljerne for den
-    const best = next.hits[0];
-    const more = next.hits.length > 1 ? " +" + (next.hits.length - 1) : "";
-    chip.classList.add("next");
-    text.textContent = "Ingen i dag · Næste " + WEEKDAYS[parseDate(next.date).getDay()].toLowerCase() + " " + ddmm(next.date) +
-                       " · " + best.site.name + (best.day.bestTime ? " " + best.day.bestTime.split(", ")[0] : "") + more;
-    chip.onclick = () => {
-      state.site = best.site.name;
-      state.day = best.di;
-      renderMatrix();
-      renderDetail();
-      openDetail();
-      detailEl.scrollIntoView({ behavior: "smooth", block: "center" });
-    };
-  }
-
   // Første besøg: den valgte boks pulserer 2 gange og viser "Tryk for detaljer".
   // Det huskes i browseren, så det ikke gentages ved næste besøg
   const HINT_KEY = "tapHintShown";
@@ -662,7 +621,6 @@
       }
 
       renderMeta();
-      renderLiveChip();
       setInterval(renderMeta, 60000);
       renderAll();
       showTapHint();

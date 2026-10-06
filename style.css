@@ -116,13 +116,12 @@ button { font: inherit; color: inherit; }
   margin: 0 auto;
   padding: 20px 24px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   gap: 12px;
 }
 
 /* Glas-effekt til chip og temaknap */
-.live-chip,
 .theme-switch {
   background: rgba(255, 255, 255, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.35);
@@ -132,46 +131,10 @@ button { font: inherit; color: inherit; }
   border-radius: 999px;
 }
 
-.live-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 7px 14px;
-  color: #fff;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
 
-.pulse {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #34d399;
-  box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
-  animation: pulse 2s infinite;
-}
 
-.live-chip.none .pulse { background: #f87171; animation: none; }
-.live-chip.next { cursor: pointer; }
-.live-chip.next:hover { background: rgba(255, 255, 255, 0.28); }
-.live-chip.next .pulse { background: #fbbf24; animation: pulse-amber 2s infinite; }
 
-@keyframes pulse-amber {
-  0%   { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.6); }
-  70%  { box-shadow: 0 0 0 8px rgba(251, 191, 36, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
-}
 
-@keyframes pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6); }
-  70%  { box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
-}
-
-@media (prefers-reduced-motion: reduce) { .pulse, .live-chip.next .pulse { animation: none; } }
 
 .theme-switch { display: flex; padding: 4px; flex: none; }
 
@@ -805,9 +768,7 @@ details.rules summary { cursor: pointer; font-weight: 600; color: var(--strong);
   .wrap { padding: 0 12px; }
   /* Hele logoet skal kunne ses, så billedet beskæres ikke i siderne */
   .hero { height: auto; aspect-ratio: 1584 / 760; background-position: center 30%; }
-  .hero-top { padding: 14px 12px; justify-content: flex-end; }
-  .live-chip { display: none; }
-  .live-chip { font-size: 0.62rem; padding: 6px 10px; letter-spacing: 0.05em; border-radius: 14px; line-height: 1.35; }
+  .hero-top { padding: 14px 12px; }
   .theme-switch button { padding: 5px 10px; font-size: 0.75rem; }
   .board { margin-top: -28px; border-radius: 20px; }
   .board-head { padding: 18px 16px 12px; }
