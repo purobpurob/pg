@@ -575,10 +575,10 @@
     return d.getFullYear() + "-" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate());
   }
 
-  // Fuld dato og tid, fx "06/10/2026 kl. 17:44"
+  // Fuld dato og tid, fx "06-10-2026 kl. 17:44"
   function updatedAt(iso) {
     const d = new Date(iso);
-    return pad2(d.getDate()) + "/" + pad2(d.getMonth() + 1) + "/" + d.getFullYear() +
+    return pad2(d.getDate()) + "-" + pad2(d.getMonth() + 1) + "-" + d.getFullYear() +
            " kl. " + pad2(d.getHours()) + ":" + pad2(d.getMinutes());
   }
 
