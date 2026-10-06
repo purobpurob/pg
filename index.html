@@ -302,8 +302,9 @@
   let DATA = null;
   const state = { country: "ALL", onlyFly: false, sort: false, site: null, day: 0 };
 
+  // Flyvbare = mindst én grøn dag i prognosen. Gule dage tæller ikke med
   function isFlyable(site) {
-    return site.days.some(d => d.status === "green" || d.status === "yellow");
+    return site.days.some(d => d.status === "green");
   }
 
   function visibleSites() {
@@ -504,7 +505,8 @@
     renderMatrix();
   });
 
-  document.getElementById("matrix").addEventListener("click", e => {
+  // Klik på en boks. Gælder både tabellen på computer og kortene på mobil
+  function onCellClick(e) {
     const b = e.target.closest(".cell");
     if (!b) return;
     state.site = b.dataset.site;
@@ -516,7 +518,10 @@
     if (window.matchMedia("(min-width: 901px)").matches) {
       detailEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
-  });
+  }
+
+  document.getElementById("matrix").addEventListener("click", onCellClick);
+  document.getElementById("site-list").addEventListener("click", onCellClick);
 
   scrimEl.addEventListener("click", closeDetail);
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeDetail(); });
@@ -538,7 +543,7 @@
   function renderMeta() {
     if (!DATA) return;
     document.getElementById("meta").textContent =
-      "Opdateret " + relativeTime(DATA.updated);
+      "Vejrdata opdateret " + relativeTime(DATA.updated);
   }
 
   // Finder første dag efter i dag hvor mindst én lokation kan flyves.
