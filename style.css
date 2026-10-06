@@ -817,3 +817,125 @@ details.rules summary { cursor: pointer; font-weight: 600; color: var(--strong);
   .site-card .cell b { font-size: 0.72rem; }
   .site-card .site-meta { display: block; }
 }
+
+/* =====================================================
+   Strømlinet udseende
+   Færre streger og flader, så de grønne og gule tider
+   springer i øjnene og resten træder i baggrunden
+   ===================================================== */
+
+/* Tabel uden lodrette streger og uden farvet hoved */
+.matrix td + td, .matrix th + th { border-left: 0; }
+.matrix thead th { background: transparent; border-top: 0; padding: 12px 8px; }
+.matrix thead th.today { box-shadow: inset 0 -2px 0 var(--accent); }
+.matrix tbody td { padding: 6px 6px; }
+.matrix tbody tr:hover td { background: transparent; }
+.matrix tbody tr:hover td .cell { filter: none; }
+
+/* Felterne: ingen kanter. Røde og grå er kun tekst, så de fylder mindre */
+.cell { border: 0; border-radius: 10px; padding: 9px 4px; }
+.cell.st-green, .cell.st-yellow, .cell.st-red, .cell.st-grey { border: 0; }
+.cell.st-red  { background: transparent; color: var(--muted); }
+.cell.st-grey { background: transparent; color: var(--muted); }
+.cell.st-red b, .cell.st-grey b { font-weight: 500; }
+.cell.st-red .sub, .cell.st-grey .sub { opacity: 0.7; }
+.cell.st-red:hover, .cell.st-grey:hover { background: var(--surface); }
+.cell:hover { box-shadow: none; }
+.cell.selected { outline: 2px solid var(--accent); outline-offset: 0; }
+
+/* Farveforklaring som ren tekst med prik */
+.board-foot { background: transparent; }
+.board-foot .legend span { padding: 0; border: 0; background: none; color: var(--muted); }
+.board-foot .legend { gap: 14px; }
+
+/* Tidsvinduer i detaljer: farvet prik i stedet for kraftig top-kant */
+.win { border-top: 0; background: var(--surface); }
+.win .t { display: flex; justify-content: center; align-items: center; gap: 5px; }
+.win .t::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--grey);
+}
+.win.st-green  .t::before { background: var(--green); }
+.win.st-yellow .t::before { background: var(--yellow); }
+.win.st-red    .t::before { background: var(--red); }
+
+/* Lidt mere luft og færre skygger på kortene */
+.panel { box-shadow: 0 1px 3px rgba(20, 25, 35, 0.05); }
+:root[data-theme="dark"] .panel { box-shadow: none; }
+
+@media (max-width: 700px) {
+  .board-foot .legend { gap: 8px; }
+  .mini-days { gap: 4px; }
+}
+
+/* Landenavnet på mobil gentager blot DK/SE-mærkaten */
+.country-tag { display: none; }
+
+/* =====================================================
+   Stram version
+   Mindre luft, lavere rækker og et lavere billede,
+   så hele oversigten kan ses uden at scrolle
+   ===================================================== */
+
+.hero { height: clamp(260px, 32vw, 440px); background-position: center 46%; }
+.board { margin-top: -56px; border-radius: 18px; }
+.wrap { gap: 12px; }
+
+.board-head { padding: 14px 20px 8px; }
+
+.matrix thead th { padding: 8px 6px; font-size: 0.66rem; }
+.matrix thead th small { font-size: 0.74rem; margin-top: 0; }
+.matrix .site { padding-left: 20px; min-width: 200px; }
+.matrix tbody td { padding: 3px 4px; }
+.site-name { font-size: 0.88rem; }
+.cc { width: 22px; height: 22px; font-size: 0.56rem; margin-right: 8px; }
+
+.cell { padding: 6px 4px; border-radius: 8px; min-width: 64px; line-height: 1.2; }
+.cell b { font-size: 0.76rem; }
+.cell .sub { font-size: 0.64rem; }
+
+.board-foot { padding: 10px 20px; }
+.board-foot .legend { font-size: 0.7rem; }
+
+.panel { border-radius: 14px; }
+.detail { padding: 14px 18px; gap: 18px; }
+.detail h2 { font-size: 1.05rem; }
+.detail .date { font-size: 0.78rem; }
+.pill { margin-top: 6px; padding: 2px 10px; font-size: 0.66rem; }
+.best { font-size: 0.82rem; margin-top: 4px; }
+.reason { font-size: 0.78rem; margin-top: 4px; }
+.links { margin-top: 8px; font-size: 0.78rem; }
+
+.windows { gap: 6px; }
+.win { padding: 8px 6px; border-radius: 10px; }
+.win .w { font-size: 1rem; }
+.win .t, .win .g, .win .why { font-size: 0.66rem; }
+.win .d, .win .wx { font-size: 0.72rem; }
+.win .wx svg { width: 15px; height: 15px; }
+
+.compass-row svg { width: 80px; height: 80px; }
+.compass-txt { font-size: 0.74rem; }
+
+details.rules { padding: 10px 18px; }
+details.rules summary { font-size: 0.9rem; }
+
+@media (max-width: 900px) {
+  .detail { padding: 14px; }
+}
+
+@media (max-width: 700px) {
+  .hero { height: auto; aspect-ratio: 1584 / 700; }
+  .board { margin-top: -22px; }
+  .board-head { padding: 12px 12px 8px; }
+  .site-card { padding: 10px 12px; }
+  .site-card-head { margin-bottom: 6px; }
+  .mini-days { gap: 3px; }
+  .mini-label { font-size: 0.58rem; }
+  .mini-day { gap: 2px; }
+  .mini-day .cell { padding: 6px 2px; }
+  .site-card .cell b { font-size: 0.7rem; }
+  .board-foot { padding: 8px 10px; }
+}
