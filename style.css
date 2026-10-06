@@ -1210,3 +1210,21 @@ details.rules summary { font-size: 0.95rem; }
 @media (max-width: 380px) {
   .meta-year { display: none; }
 }
+
+/* Tavlen ca. 60 px højere op på computer, stadig under teksten på skærmen */
+@media (min-width: 701px) {
+  .board { margin-top: calc(-1 * max(0px, min(var(--hero-h) * 0.43, var(--hero-h) - 21vw))); }
+}
+
+/* Let gennemsigtig tavle med sløring, så billedet anes bagved */
+.board {
+  background: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
+  backdrop-filter: blur(10px) saturate(1.2);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+:root[data-theme="dark"] .board {
+  background: rgba(47, 53, 64, 0.60);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.board-foot { background: transparent; }
