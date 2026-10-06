@@ -53,7 +53,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="style.css?v=43">
+<link rel="stylesheet" href="style.css?v=44">
 <script>
   (function () {
     try {
@@ -99,10 +99,9 @@
 
     <div class="board-foot">
       <div class="legend">
-          <span><i class="dot bg-green"></i>Flyvevejr</span>
-          <span><i class="dot bg-yellow"></i>Vær opmærksom</span>
-          <span><i class="dot bg-red"></i>Ikke egnet</span>
-          <span><i class="dot bg-grey"></i>For lidt vind</span>
+          <span><i class="sw sw-green"></i>Flyvevejr</span>
+          <span><i class="sw sw-yellow"></i>Vær opmærksom</span>
+          <span><i class="sw sw-none"></i>Ikke egnet</span>
         </div>
     </div>
   </section>
@@ -119,32 +118,32 @@
     <div>
       <h3>Vindstyrke</h3>
       <ul>
-        <li>⚪ Under 3 m/s for lidt vind</li>
-        <li>🟡 3-4 m/s marginalt</li>
-        <li>🟢 4-7 m/s flyvbart</li>
-        <li>🟡 7-8 m/s krævende</li>
-        <li>🔴 Over 8 m/s for kraftig</li>
+        <li><i class="sw sw-none"></i>Under 3 m/s for lidt vind</li>
+        <li><i class="sw sw-yellow"></i>3-4 m/s marginalt</li>
+        <li><i class="sw sw-green"></i>4-7 m/s flyvbart</li>
+        <li><i class="sw sw-yellow"></i>7-8 m/s krævende</li>
+        <li><i class="sw sw-none"></i>Over 8 m/s for kraftig</li>
       </ul>
     </div>
     <div>
       <h3>Vindstød</h3>
       <ul>
-        <li>🟢 Til og med 11 m/s</li>
-        <li>🟡 11-13 m/s</li>
-        <li>🔴 Over 13 m/s</li>
+        <li><i class="sw sw-green"></i>Til og med 11 m/s</li>
+        <li><i class="sw sw-yellow"></i>11-13 m/s</li>
+        <li><i class="sw sw-none"></i>Over 13 m/s</li>
       </ul>
     </div>
     <div>
       <h3>Nedbør</h3>
       <ul>
-        <li>🟢 Ingen målbar nedbør</li>
-        <li>🟡 Nedbør i perioder</li>
-        <li>🔴 Regn over 1 mm/t</li>
+        <li><i class="sw sw-green"></i>Ingen målbar nedbør</li>
+        <li><i class="sw sw-yellow"></i>Nedbør i perioder</li>
+        <li><i class="sw sw-none"></i>Regn over 1 mm/t</li>
       </ul>
     </div>
     <div>
       <h3>Samlet vurdering</h3>
-      <p>Én rød faktor gør perioden rød. Ingen røde men mindst én gul gør den gul. Alt grønt giver grøn.</p>
+      <p>Er én faktor ikke egnet, er hele perioden ikke egnet. Ellers giver mindst én gul faktor gul. Er alt grønt, er der flyvevejr.</p>
     </div>
     <div>
       <h3>Tidsvinduer</h3>
@@ -199,7 +198,9 @@
 
   // ---------- Konstanter og hjælpere ----------
   const STATUS_LABEL = { green: "Flyvevejr", yellow: "Vær opmærksom", red: "Ikke egnet", grey: "For lidt vind" };
-  const STATUS_SHORT = { green: "Ja", yellow: "Gul", red: "Nej", grey: "Lav" };
+  const STATUS_SHORT = { green: "Ja", yellow: "Gul", red: "Nej", grey: "Nej" };
+  // I oversigten vises For lidt vind som Ikke egnet. Detaljerne viser stadig den præcise årsag
+  const CELL_LABEL = { green: "Flyvevejr", yellow: "Vær opmærksom", red: "Ikke egnet", grey: "Ikke egnet" };
   const STATUS_RANK  = { green: 0, yellow: 1, grey: 2, red: 3 };
 
   const COUNTRY_NAME = { DK: "Danmark", SE: "Sverige", NO: "Norge", DE: "Tyskland" };
@@ -322,7 +323,7 @@
 
   function compassSvg(site, degrees) {
     let s = '<svg width="96" height="96" viewBox="0 0 96 96" role="img" aria-label="Kompas med gode vindretninger">';
-    s += '<circle cx="48" cy="48" r="36" fill="none" stroke="var(--red)" stroke-opacity=".35" stroke-width="9"/>';
+    s += '<circle cx="48" cy="48" r="36" fill="none" stroke="var(--line)" stroke-opacity="1" stroke-width="9"/>';
     arcList(site.fairArcs).forEach(a => s += '<path d="' + arcPath(48, 48, 36, a.from, a.to) + '" fill="none" stroke="var(--yellow)" stroke-width="9"/>');
     arcList(site.goodArcs).forEach(a => s += '<path d="' + arcPath(48, 48, 36, a.from, a.to) + '" fill="none" stroke="var(--green)" stroke-width="9"/>');
     [["N", 48, 9], ["Ø", 89, 51], ["S", 48, 94], ["V", 7, 51]].forEach(l =>
@@ -366,7 +367,7 @@
   // ---------- Oversigt ----------
   function cellHtml(site, day, dayIndex, compact) {
     const selected = state.site === site.name && state.day === dayIndex;
-    const label = compact ? STATUS_SHORT[day.status] : STATUS_LABEL[day.status];
+    const label = compact ? STATUS_SHORT[day.status] : CELL_LABEL[day.status];
     const top = day.bestTime ? day.bestTime.split(", ")[0] : label;
 
     return '<button type="button" class="cell st-' + day.status + (selected ? ' selected' : '') + '" ' +
@@ -483,9 +484,9 @@
     if (arcList(site.goodArcs).length) {
       h += '<div class="compass-row">' + compassSvg(site, rep.degrees) +
              '<ul class="compass-txt">' +
-               '<li><i class="dot bg-green"></i>' + arcText(site.goodArcs) + '</li>' +
-               (arcList(site.fairArcs).length ? '<li><i class="dot bg-yellow"></i>' + arcText(site.fairArcs) + '</li>' : '') +
-               '<li><i class="dot bg-red"></i>Resten</li>' +
+               '<li><i class="sw sw-green"></i>' + arcText(site.goodArcs) + '</li>' +
+               (arcList(site.fairArcs).length ? '<li><i class="sw sw-yellow"></i>' + arcText(site.fairArcs) + '</li>' : '') +
+               '<li><i class="sw sw-none"></i>Resten</li>' +
                '<li class="hint">Pilen viser vinden i det bedste vindue</li>' +
              '</ul></div>';
     }
@@ -522,9 +523,9 @@
       return '<div class="site-info-item">' +
                '<div class="site-name">' + badgeHtml(site) + site.name + '</div>' +
                '<ul>' +
-                 (good ? '<li><i class="dot bg-green"></i>' + good + '</li>' : '') +
-                 (fair ? '<li><i class="dot bg-yellow"></i>' + fair + '</li>' : '') +
-                 (good ? '<li><i class="dot bg-red"></i>Resten</li>' : '') +
+                 (good ? '<li><i class="sw sw-green"></i>' + good + '</li>' : '') +
+                 (fair ? '<li><i class="sw sw-yellow"></i>' + fair + '</li>' : '') +
+                 (good ? '<li><i class="sw sw-none"></i>Resten</li>' : '') +
                '</ul>' +
                (site.info ? '<p>' + site.info + '</p>' : '') +
                (links.length ? '<p class="site-links">' + links.join(" · ") + '</p>' : '') +

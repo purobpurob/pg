@@ -939,3 +939,42 @@ details.rules summary { font-size: 0.9rem; }
   .site-card .cell b { font-size: 0.7rem; }
   .board-foot { padding: 8px 10px; }
 }
+
+
+/* =====================================================
+   Ens farvesprog på hele siden
+   Grøn og gul er udfyldte felter. Ikke egnet og For lidt vind
+   er tomme felter med dæmpet tekst, præcis som i oversigten
+   ===================================================== */
+
+.sw {
+  display: inline-block;
+  flex: none;
+  width: 14px;
+  height: 10px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  vertical-align: -1px;
+}
+
+.sw-green  { background: var(--green-bg);  border-color: var(--green); }
+.sw-yellow { background: var(--yellow-bg); border-color: var(--yellow); }
+.sw-none   { background: transparent;      border-color: var(--muted); opacity: 0.6; }
+
+.legend span, .compass-txt li, .site-info-item li, .rules-grid li { display: flex; align-items: center; gap: 6px; }
+.board-foot .legend span { gap: 5px; }
+
+/* Status i detaljer */
+.pill.st-red, .pill.st-grey { background: var(--surface); color: var(--muted); }
+
+/* Prik ved tidsvinduer: samme udtryk som felterne */
+.win .t::before { width: 12px; height: 8px; border-radius: 2px; border: 1px solid transparent; }
+.win.st-green  .t::before { background: var(--green-bg);  border-color: var(--green); }
+.win.st-yellow .t::before { background: var(--yellow-bg); border-color: var(--yellow); }
+.win.st-red    .t::before,
+.win.st-grey   .t::before { background: transparent; border-color: var(--muted); opacity: 0.6; }
+.win.st-red .w, .win.st-grey .w { color: var(--muted); }
+
+@media (max-width: 700px) {
+  .board-foot .legend .sw { width: 11px; height: 8px; }
+}
