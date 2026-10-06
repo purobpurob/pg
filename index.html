@@ -13,7 +13,7 @@
 <meta property="og:description" content="5 dages flyvevejr for paragliding på Hammars Backar, Heatherhill og Kyndeløse.">
 <meta property="og:url" content="https://www.8orup.dk/pg/">
 <meta property="og:image" content="https://www.8orup.dk/pg/borup.jpg">
-<link rel="stylesheet" href="style.css?v=31">
+<link rel="stylesheet" href="style.css?v=32">
 <script>
   (function () {
     try {
@@ -425,7 +425,7 @@
       '<p class="reason">' + (day.primaryReason || day.reason) +
         (secondary.length && day.status !== "green" ? '<small>Desuden: ' + secondary.join(", ") + '</small>' : '') +
       '</p>' +
-      (site.windy ? '<div class="links"><a href="' + site.windy + '" target="_blank" rel="noopener">Se vind på Windy &#8599;</a></div>' : '') +
+      (siteLinks(site).length ? '<div class="links">' + siteLinks(site).join(' <span class="sep">·</span> ') + '</div>' : '') +
       '</div>';
 
     if (windows.length) {
@@ -464,17 +464,24 @@
   function openDetail()  { detailEl.classList.add("open");    scrimEl.classList.add("open"); }
   function closeDetail() { detailEl.classList.remove("open"); scrimEl.classList.remove("open"); }
 
+  // Kort, Windy og DHPU. Bruges både i detaljerne og under Om vejrvurderingen
+  function siteLinks(site) {
+    const links = [];
+    if (typeof site.latitude === "number" && typeof site.longitude === "number") {
+      links.push('<a href="https://www.google.com/maps?q=' + site.latitude + ',' + site.longitude + '" target="_blank" rel="noopener">Kort &#8599;</a>');
+    }
+    if (site.windy) links.push('<a href="' + site.windy + '" target="_blank" rel="noopener">Windy &#8599;</a>');
+    if (site.infoUrl) links.push('<a href="' + site.infoUrl + '" target="_blank" rel="noopener">' + (site.infoLabel || "Status og regler") + ' &#8599;</a>');
+    return links;
+  }
+
   // Flyvesteder under Forudsætninger for vurdering. Alt kommer fra weather.json
   function renderSiteInfo() {
     const el = document.getElementById("site-info");
     el.innerHTML = orderedSitesAll().map(site => {
       const good = arcText(site.goodArcs);
       const fair = arcText(site.fairArcs);
-      const hasPos = typeof site.latitude === "number" && typeof site.longitude === "number";
-      const links = [];
-      if (hasPos) links.push('<a href="https://www.google.com/maps?q=' + site.latitude + ',' + site.longitude + '" target="_blank" rel="noopener">Kort &#8599;</a>');
-      if (site.windy) links.push('<a href="' + site.windy + '" target="_blank" rel="noopener">Windy &#8599;</a>');
-      if (site.infoUrl) links.push('<a href="' + site.infoUrl + '" target="_blank" rel="noopener">' + (site.infoLabel || "Status og regler") + ' &#8599;</a>');
+      const links = siteLinks(site);
 
       return '<div class="site-info-item">' +
                '<div class="site-name">' + badgeHtml(site) + site.name + '</div>' +
