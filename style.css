@@ -1228,3 +1228,61 @@ details.rules summary { font-size: 0.95rem; }
   border-color: rgba(255, 255, 255, 0.08);
 }
 .board-foot { background: transparent; }
+
+/* =====================================================
+   Mindre glas-knapper i alle opløsninger
+   ===================================================== */
+
+.hero-meta { font-size: 0.7rem; padding: 4px 10px; gap: 5px; min-height: 0; }
+.hero-meta svg { width: 12px; height: 12px; }
+.theme-switch { padding: 2px; }
+.theme-switch button { font-size: 0.7rem; padding: 3px 10px; min-height: 0; gap: 4px; }
+.sw-dot { width: 6px; height: 6px; }
+
+.segment { width: auto; padding: 3px; }
+.segment button { flex: none; font-size: 0.75rem; padding: 4px 12px; min-height: 0; gap: 6px; }
+.segment .count { font-size: 0.65rem; min-width: 16px; padding: 0 5px; }
+
+@media (max-width: 700px) {
+  .hero-top { padding: 10px 12px; }
+  .hero-meta { font-size: 0.68rem; padding: 4px 9px; min-height: 0; }
+  .theme-switch button { font-size: 0.68rem; padding: 3px 9px; min-height: 0; }
+  .segment { width: auto; }
+  .segment button { flex: none; font-size: 0.78rem; padding: 5px 14px; min-height: 0; }
+  .segment .count { font-size: 0.68rem; }
+}
+
+@media (max-width: 430px) {
+  .hero-meta { font-size: 0.66rem; padding: 4px 8px; }
+  .theme-switch button { font-size: 0.66rem; padding: 3px 8px; }
+}
+
+/* Alle glas-knapper præcis 22 px høje (yderkant) i alle opløsninger */
+.hero-meta,
+.theme-switch,
+.segment {
+  height: 22px;
+  box-sizing: border-box;
+  align-items: center;
+}
+.hero-meta { padding: 0 9px; line-height: 1; }
+.theme-switch, .segment { padding: 2px; }
+.theme-switch button,
+.segment button {
+  height: 16px;
+  min-height: 0;
+  padding: 0 9px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+.hero-meta, .theme-switch button { font-size: 0.66rem; }
+.segment button { font-size: 0.7rem; }
+.segment .count { font-size: 0.6rem; min-width: 14px; padding: 0 4px; line-height: 12px; }
+.hero-meta svg { width: 11px; height: 11px; }
+
+@media (max-width: 700px) {
+  .hero-meta { padding: 0 8px; font-size: 0.66rem; }
+  .theme-switch button { padding: 0 8px; font-size: 0.66rem; }
+  .segment button { padding: 0 10px; font-size: 0.7rem; }
+}
