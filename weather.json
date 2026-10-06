@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-10-06T02:30:02",
+    "updated":  "2026-10-06T03:00:02",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -173,10 +173,10 @@
                                    {
                                        "date":  "2026-10-08",
                                        "status":  "yellow",
-                                       "wind":  4.6,
+                                       "wind":  4,
                                        "gust":  8.2,
                                        "precipitation":  1,
-                                       "temperature":  13.9,
+                                       "temperature":  13.5,
                                        "direction":  "S",
                                        "degrees":  182,
                                        "weatherCode":  55,
@@ -191,10 +191,10 @@
                                                            "label":  "Formiddag",
                                                            "range":  "09-13",
                                                            "status":  "yellow",
-                                                           "wind":  4.6,
+                                                           "wind":  4,
                                                            "gust":  8.2,
                                                            "precipitation":  1,
-                                                           "temperature":  13.9,
+                                                           "temperature":  13.5,
                                                            "direction":  "S",
                                                            "degrees":  182,
                                                            "weatherCode":  55,
@@ -561,7 +561,7 @@
                                    {
                                        "date":  "2026-10-08",
                                        "status":  "red",
-                                       "wind":  4,
+                                       "wind":  3.1,
                                        "gust":  7.4,
                                        "precipitation":  1,
                                        "temperature":  13.4,
@@ -580,7 +580,7 @@
                                                            "label":  "Formiddag",
                                                            "range":  "09-13",
                                                            "status":  "red",
-                                                           "wind":  4,
+                                                           "wind":  3.1,
                                                            "gust":  7.4,
                                                            "precipitation":  1,
                                                            "temperature":  13.4,
@@ -955,18 +955,17 @@
                                    {
                                        "date":  "2026-10-08",
                                        "status":  "red",
-                                       "wind":  3,
+                                       "wind":  2,
                                        "gust":  5.9,
                                        "precipitation":  1.3,
-                                       "temperature":  13.2,
+                                       "temperature":  13.4,
                                        "direction":  "SV",
                                        "degrees":  225,
                                        "weatherCode":  80,
-                                       "reason":  "Forkert vindretning (SV), Regn, Marginal vind (3-4 m/s)",
+                                       "reason":  "Forkert vindretning (SV), Regn",
                                        "primaryReason":  "Forkert vindretning (SV)",
                                        "secondaryReasons":  [
-                                                                "Regn",
-                                                                "Marginal vind (3-4 m/s)"
+                                                                "Regn"
                                                             ],
                                        "bestTime":  "",
                                        "windows":  [
@@ -974,18 +973,17 @@
                                                            "label":  "Formiddag",
                                                            "range":  "09-13",
                                                            "status":  "red",
-                                                           "wind":  3,
+                                                           "wind":  2,
                                                            "gust":  5.9,
                                                            "precipitation":  1.3,
-                                                           "temperature":  13.2,
+                                                           "temperature":  13.4,
                                                            "direction":  "SV",
                                                            "degrees":  225,
                                                            "weatherCode":  80,
-                                                           "reason":  "Forkert vindretning (SV), Regn, Marginal vind (3-4 m/s)",
+                                                           "reason":  "Forkert vindretning (SV), Regn",
                                                            "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
-                                                                                    "Regn",
-                                                                                    "Marginal vind (3-4 m/s)"
+                                                                                    "Regn"
                                                                                 ]
                                                        },
                                                        {
