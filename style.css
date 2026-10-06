@@ -117,12 +117,13 @@ button { font: inherit; color: inherit; }
   margin: 0 auto;
   padding: 20px 24px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   gap: 12px;
 }
 
-/* Glas-effekt til chip og temaknap */
+/* Glas-effekt til opdateringstid og temaknap */
+.hero-meta,
 .theme-switch {
   background: rgba(255, 255, 255, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.35);
@@ -137,18 +138,18 @@ button { font: inherit; color: inherit; }
 
 
 
-.theme-switch { display: flex; padding: 4px; flex: none; }
+.theme-switch { display: flex; padding: 2px; flex: none; }
 
 .theme-switch button {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   border: 0;
   background: none;
   color: rgba(255, 255, 255, 0.85);
-  padding: 6px 14px;
+  padding: 3px 8px;
   border-radius: 999px;
-  font-size: 0.82rem;
+  font-size: 0.62rem;
   font-weight: 600;
   cursor: pointer;
 }
@@ -159,7 +160,7 @@ button { font: inherit; color: inherit; }
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.sw-dot { width: 10px; height: 10px; border-radius: 50%; display: none; }
+.sw-dot { width: 6px; height: 6px; border-radius: 50%; display: none; }
 .theme-switch button[aria-pressed="true"] .sw-dot { display: inline-block; }
 .sw-sun  { background: #f6b73c; }
 .sw-moon { background: #6a7bd8; }
@@ -211,11 +212,28 @@ button { font: inherit; color: inherit; }
 
 .board-foot .legend .dot { width: 8px; height: 8px; }
 
-.foot-meta { display: flex; align-items: center; gap: 14px; }
+/* Opdateringstid øverst til venstre i billedet */
+.hero-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  min-width: 0;
+}
 
-.foot-meta .meta { display: inline-flex; align-items: center; gap: 5px; font-size: 0.75rem; }
+.meta-lead-short { display: none; }
 
-.foot-meta svg {
+@media (max-width: 360px) {
+  .meta-lead { display: none; }
+  .meta-lead-short { display: inline; }
+}
+
+.hero-meta svg {
   width: 13px;
   height: 13px;
   fill: none;
@@ -281,7 +299,7 @@ button { font: inherit; color: inherit; }
 /* Segmentknap: Alle eller kun flyvbare */
 .segment {
   display: inline-flex;
-  padding: 4px;
+  padding: 2px;
   border-radius: 999px;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -290,12 +308,12 @@ button { font: inherit; color: inherit; }
 .segment button {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   border: 0;
   background: none;
-  padding: 7px 16px;
+  padding: 3px 9px;
   border-radius: 999px;
-  font-size: 0.88rem;
+  font-size: 0.64rem;
   font-weight: 600;
   color: var(--muted);
   cursor: pointer;
@@ -308,10 +326,10 @@ button { font: inherit; color: inherit; }
 }
 
 .segment .count {
-  min-width: 22px;
-  padding: 1px 7px;
+  min-width: 15px;
+  padding: 0 5px;
   border-radius: 999px;
-  font-size: 0.72rem;
+  font-size: 0.56rem;
   background: var(--grey-bg);
   color: var(--grey-text);
 }
@@ -761,7 +779,7 @@ details.rules summary { cursor: pointer; font-weight: 600; color: var(--strong);
 
   .toolbar .legend { width: 100%; }
 
-  .theme-switch button { padding: 4px 10px; font-size: 0.75rem; }
+  .theme-switch button { padding: 3px 8px; font-size: 0.62rem; }
 }
 
 /* Telefon: tabellen skiftes ud med et kort pr. lokation */
@@ -770,7 +788,7 @@ details.rules summary { cursor: pointer; font-weight: 600; color: var(--strong);
   /* Hele logoet skal kunne ses, så billedet beskæres ikke i siderne */
   .hero { height: auto; aspect-ratio: 1584 / 760; background-position: center 30%; }
   .hero-top { padding: 14px 12px; }
-  .theme-switch button { padding: 5px 10px; font-size: 0.75rem; }
+  .theme-switch button { padding: 3px 8px; font-size: 0.62rem; }
   .board { margin-top: -28px; border-radius: 20px; }
   .board-head { padding: 18px 16px 12px; }
   .board-foot { padding: 12px 10px; justify-content: center; }
@@ -792,7 +810,6 @@ details.rules summary { cursor: pointer; font-weight: 600; color: var(--strong);
   }
 
   .board-foot .legend .dot { width: 7px; height: 7px; }
-  .foot-meta { width: 100%; justify-content: center; }
   .matrix-wrap { display: none; }
   .site-list { display: block; }
   .site-card { padding: 14px 16px; }

@@ -13,7 +13,7 @@
 <meta property="og:description" content="5 dages flyvevejr for paragliding på Hammars Backar, Heatherhill og Kyndeløse.">
 <meta property="og:url" content="https://www.8orup.dk/pg/">
 <meta property="og:image" content="https://www.8orup.dk/pg/borup.jpg">
-<link rel="stylesheet" href="style.css?v=38">
+<link rel="stylesheet" href="style.css?v=41">
 <script>
   (function () {
     try {
@@ -31,6 +31,10 @@
 
 <header class="hero">
   <div class="hero-top">
+    <span class="hero-meta">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <span id="meta">Henter data...</span>
+    </span>
     <div class="theme-switch" role="group" aria-label="Tema">
       <button type="button" data-theme-choice="light"><i class="sw-dot sw-sun"></i>Lys</button>
       <button type="button" data-theme-choice="dark"><i class="sw-dot sw-moon"></i>Mørk</button>
@@ -60,12 +64,6 @@
           <span><i class="dot bg-red"></i>Ikke egnet</span>
           <span><i class="dot bg-grey"></i>For lidt vind</span>
         </div>
-      <div class="foot-meta">
-        <span class="meta">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-          <span id="meta">Henter data...</span>
-        </span>
-      </div>
     </div>
   </section>
 
@@ -547,8 +545,9 @@
 
   function renderMeta() {
     if (!DATA) return;
-    document.getElementById("meta").textContent =
-      "Vejrdata opdateret " + relativeTime(DATA.updated);
+    // "Vejrdata" skjules på meget smalle skærme, så teksten kan stå på 1 linje
+    document.getElementById("meta").innerHTML =
+      '<span class="meta-lead">Vejrdata o</span><span class="meta-lead-short">O</span>pdateret ' + relativeTime(DATA.updated);
   }
 
   // Finder første dag efter i dag hvor mindst én lokation kan flyves.
