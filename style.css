@@ -1286,3 +1286,104 @@ details.rules summary { font-size: 0.95rem; }
   .theme-switch button { padding: 0 8px; font-size: 0.66rem; }
   .segment button { padding: 0 10px; font-size: 0.7rem; }
 }
+
+/* =====================================================
+   Kontakt-blok med billede
+   ===================================================== */
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 22px 24px;
+}
+
+.contact-photo {
+  flex: none;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 4px var(--card-bg), 0 0 0 5px var(--line);
+}
+
+.contact-body h2 { font-size: 1.1rem; color: var(--strong); margin-bottom: 6px; }
+.contact-body p { font-size: 0.9rem; }
+.contact-body p + p { margin-top: 4px; }
+
+.contact-mail {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.contact-mail:hover { border-color: var(--accent); }
+.contact-mail svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.contact-sign { margin-top: 14px; color: var(--muted); }
+.contact-sign strong { color: var(--strong); font-weight: 600; }
+
+@media (max-width: 700px) {
+  .contact { flex-direction: column; text-align: center; gap: 14px; padding: 20px 16px; }
+  .contact-photo { width: 96px; height: 96px; }
+  .contact-mail { min-height: 44px; }
+}
+
+/* Kontakt inde i Om vejrvurderingen. Hele portrættet vises */
+.contact {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 14px;
+  background: var(--surface);
+  align-items: center;
+}
+.contact-photo {
+  width: 120px;
+  height: auto;
+  aspect-ratio: auto;
+  border-radius: 10px;
+  object-fit: contain;
+  box-shadow: none;
+}
+.contact-body h3 { font-size: 1rem; color: var(--strong); margin-bottom: 6px; }
+
+@media (max-width: 700px) {
+  .contact-photo { width: 120px; height: auto; }
+}
+
+/* Billedet står ved underskriften */
+.contact { display: block; }
+.contact-sign {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.contact-sign .contact-photo { width: 72px; height: auto; border-radius: 8px; }
+.contact-sign p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+
+@media (max-width: 700px) {
+  .contact { text-align: left; }
+  .contact-sign .contact-photo { width: 72px; }
+}
+
+/* Større billede ved underskriften */
+.contact-sign { gap: 18px; }
+.contact-sign .contact-photo { width: 130px; border-radius: 10px; }
+@media (max-width: 700px) {
+  .contact-sign .contact-photo { width: 120px; }
+}
+
+.contact-sign .contact-photo { width: 170px; }
+@media (max-width: 700px) {
+  .contact-sign .contact-photo { width: 150px; }
+}
