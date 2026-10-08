@@ -1749,3 +1749,12 @@ details.rules summary { font-size: 0.95rem; }
 :root[data-theme="dark"] .tt-knob { transform: translateX(22px); background: #e6edf3; }
 .theme-toggle:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { .tt-knob { transition: none; } }
+
+/* Opdateringstiden må aldrig blive klippet.
+   Er der ikke plads, flyttes den ned på sin egen linje */
+.board-head .toolbar { flex-wrap: wrap !important; row-gap: 6px; }
+.board-meta { margin-left: auto; flex: none; }
+@media (max-width: 430px) {
+  .board-meta .meta-word { display: none; }
+  .board-meta svg { display: inline; }
+}
