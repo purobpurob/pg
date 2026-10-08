@@ -1604,3 +1604,148 @@ details.rules summary { font-size: 0.95rem; }
   .brand-sub { font-size: 0.7rem; }
   .brand-logo { display: block; width: 26px; height: 18px; }
 }
+
+/* Alle/Flyvbare og Lys/Mørk i samme skriftstørrelse som "Om vejrvurderingen" (0,95rem) */
+.segment, .theme-switch { height: 32px; padding: 3px; }
+.segment button, .theme-switch button {
+  height: 26px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0 12px;
+}
+.segment .count { font-size: 0.75rem; min-width: 18px; padding: 0 6px; line-height: 16px; }
+.sw-dot { width: 7px; height: 7px; }
+
+@media (max-width: 700px) {
+  .segment button, .theme-switch button { font-size: 0.95rem; padding: 0 11px; }
+}
+@media (max-width: 430px) {
+  .segment button { padding: 0 9px; }
+  .theme-switch button { font-size: 0.95rem; padding: 0 9px; }
+}
+@media (max-width: 380px) {
+  .segment button, .theme-switch button { padding: 0 7px; }
+}
+
+/* =====================================================
+   Ensartet typografi
+   S  0,75rem  (12 px)  små etiketter og hjælpetekst
+   M  0,875rem (14 px)  brødtekst, datoer, links
+   L  0,95rem  (15 px)  knapper, navne og overskrifter (vægt 600)
+   XL 1,2rem   (19 px)  overskrift i detaljer og vindtal
+   ===================================================== */
+:root { --fs-s: 0.75rem; --fs-m: 0.875rem; --fs-l: 0.95rem; --fs-xl: 1.2rem; }
+
+/* S */
+.brand-sub, .segment .count, .board-meta, .matrix thead th, .cell .sub,
+.board-foot .legend, .board-foot .legend span, .pill, .reason small,
+.win .t, .win .g, .win .why, .mini-label, .compass-txt .hint, .page-footer {
+  font-size: var(--fs-s);
+}
+
+/* M */
+.matrix thead th small, .cell b, .detail .date, .reason, .best, .links, .links a,
+.win .d, .win .wx, .compass-txt, .compass-txt li,
+.rules-grid, .rules-grid p, .rules-grid li, .rules-lead,
+.site-info-item, .site-info-item li, .site-links a,
+.note, .note p, .contact-body p, .contact-mail, .contact-sign {
+  font-size: var(--fs-m);
+}
+
+/* L */
+.theme-switch button, .segment button, details.rules summary,
+.site-name, .site-info-item .site-name, .rules-grid h3, .rules-sub, .contact-body h3 {
+  font-size: var(--fs-l);
+  font-weight: 600;
+}
+
+/* XL */
+.detail h2, .win .w { font-size: var(--fs-xl); font-weight: 600; }
+
+/* Ens vægt på små overskrifter i tabellen */
+.matrix thead th { font-weight: 600; }
+.cell b { font-weight: 600; }
+.pill { font-weight: 600; }
+
+@media (max-width: 700px) {
+  .site-card .site-name { font-size: var(--fs-l); }
+  .site-card .cell b, .mini-day .cell b { font-size: var(--fs-m); }
+  .brand-sub { font-size: var(--fs-s); }
+  .board-meta { font-size: var(--fs-s); }
+}
+@media (max-width: 430px) {
+  .contact-mail { font-size: 0.8rem; }
+}
+@media (max-width: 380px) {
+  .board-meta { font-size: 0.7rem; }
+  .brand-sub { font-size: 0.7rem; }
+}
+.matrix thead th.site { font-size: var(--fs-s); }
+@media (max-width: 380px) {
+  .board-meta svg { display: none; }
+  .segment button { padding: 0 6px; gap: 4px; }
+  .segment .count { min-width: 16px; padding: 0 4px; }
+}
+
+/* Diskret tema-knap: kun et ikon i en lille glas-cirkel */
+.theme-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.10);
+  color: rgba(255, 255, 255, 0.85);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s, color 0.15s;
+}
+.theme-icon:hover { background: rgba(255, 255, 255, 0.22); color: #fff; }
+.theme-icon:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.theme-icon svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.theme-icon .i-moon { fill: currentColor; stroke: none; }
+.theme-icon .i-sun { display: none; }
+:root[data-theme="dark"] .theme-icon .i-sun { display: block; }
+:root[data-theme="dark"] .theme-icon .i-moon { display: none; }
+
+/* Lille skyde-kontakt med sol og måne */
+.theme-toggle {
+  position: relative;
+  width: 46px;
+  height: 24px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.14);
+  cursor: pointer;
+  flex: none;
+}
+.theme-toggle svg {
+  position: absolute;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  transform: translateY(-50%);
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.75);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.theme-toggle .tt-sun  { left: 6px; }
+.theme-toggle .tt-moon { right: 6px; fill: rgba(255, 255, 255, 0.75); stroke: none; }
+.tt-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+}
+:root[data-theme="dark"] .tt-knob { transform: translateX(22px); background: #e6edf3; }
+.theme-toggle:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .tt-knob { transition: none; } }
