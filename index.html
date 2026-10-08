@@ -53,7 +53,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="style.css?v=72">
+<link rel="stylesheet" href="style.css?v=77">
 <script>
   (function () {
     try {
@@ -70,10 +70,33 @@
 <h1 class="visually-hidden">Paragliding vejrudsigt for Heatherhill, Kyndeløse, Gilleleje Feriecenter og Hammars Backar</h1>
 
 <header class="hero">
-  <div class="hero-top">
-    <div class="theme-switch" role="group" aria-label="Tema">
-      <button type="button" data-theme-choice="light"><i class="sw-dot sw-sun"></i>Lys</button>
-      <button type="button" data-theme-choice="dark"><i class="sw-dot sw-moon"></i>Mørk</button>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="https://www.8orup.dk/pg/" aria-label="8orup.dk/pg forside">
+        <svg class="brand-logo" viewBox="0 0 48 32" aria-hidden="true">
+          <defs>
+            <linearGradient id="lg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffb066"/><stop offset="1" stop-color="#f2621c"/>
+            </linearGradient>
+          </defs>
+          <path d="M2 30 L18 8 L26 18 L32 11 L46 30 Z" fill="url(#lg)"/>
+          <path d="M8 6 Q24 -2 40 6" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name">8ORUP.DK<span class="brand-path">/PG</span></span>
+          <span class="brand-sub">Paragliding Weather Forecast</span>
+        </span>
+      </a>
+      <div class="topbar-right">
+        <span class="wx-now" id="wx-now" hidden>
+          <span class="wx-now-icon" id="wx-now-icon"></span>
+          <span class="wx-now-text"><b id="wx-now-temp">--°C</b><small>Taastrup</small></span>
+        </span>
+        <div class="theme-switch" role="group" aria-label="Tema">
+          <button type="button" data-theme-choice="light"><i class="sw-dot sw-sun"></i>Lys</button>
+          <button type="button" data-theme-choice="dark"><i class="sw-dot sw-moon"></i>Mørk</button>
+        </div>
+      </div>
     </div>
   </div>
 </header>
@@ -653,6 +676,22 @@
     return "Vejrinformation sidst opdateret " + pad2(d.getDate()) + "/" + pad2(d.getMonth() + 1) + "/" + d.getFullYear() +
            " " + pad2(d.getHours()) + ":" + pad2(d.getMinutes()) + " via api.open-meteo.com";
   }
+
+  // ---------- Aktuel temperatur i Taastrup ----------
+  // Hentes direkte fra open-meteo i browseren. Fejler det, skjules feltet bare
+  function loadNowWeather() {
+    fetch("https://api.open-meteo.com/v1/forecast?latitude=55.65&longitude=12.30&current=temperature_2m,weather_code&timezone=auto")
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(d => {
+        if (!d.current) return;
+        document.getElementById("wx-now-temp").textContent = Math.round(d.current.temperature_2m) + "°C";
+        document.getElementById("wx-now-icon").innerHTML = weatherIconHtml(d.current.weather_code);
+        document.getElementById("wx-now").hidden = false;
+      })
+      .catch(() => {});
+  }
+  loadNowWeather();
+  setInterval(loadNowWeather, 15 * 60 * 1000);
 
   // ---------- Hent data ----------
   fetch("weather.json?" + Date.now())
