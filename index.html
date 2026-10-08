@@ -53,7 +53,7 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="style.css?v=65">
+<link rel="stylesheet" href="style.css?v=72">
 <script>
   (function () {
     try {
@@ -71,10 +71,6 @@
 
 <header class="hero">
   <div class="hero-top">
-    <span class="hero-meta">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-      <span id="meta">Henter data...</span>
-    </span>
     <div class="theme-switch" role="group" aria-label="Tema">
       <button type="button" data-theme-choice="light"><i class="sw-dot sw-sun"></i>Lys</button>
       <button type="button" data-theme-choice="dark"><i class="sw-dot sw-moon"></i>Mørk</button>
@@ -91,6 +87,10 @@
           <button type="button" data-show="all" aria-pressed="true">Alle <span class="count" id="count-all"></span></button>
           <button type="button" data-show="fly" aria-pressed="false">Flyvbare <span class="count" id="count-fly"></span></button>
         </div>
+        <span class="board-meta">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span id="meta">Henter data...</span>
+          </span>
       </div>
     </div>
 
@@ -170,7 +170,6 @@
     <div class="contact-body">
       <h3>Har du et forslag?</h3>
       <p>Forslag til nye flyvesteder eller forbedringer af siden er meget velkomne.</p>
-      <p>Skriv gerne en mail.</p>
       <a class="contact-mail" href="mailto:thomas.borup@hotmail.com">
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
         thomas.borup@hotmail.com
@@ -606,7 +605,7 @@
     if (!DATA) return;
     // "Vejrdata" skjules på meget smalle skærme, så teksten kan stå på 1 linje
     document.getElementById("meta").innerHTML =
-      '<span class="meta-lead">Vejrdata o</span><span class="meta-lead-short">O</span>pdateret ' + updatedAt(DATA.updated);
+      '<span class="meta-word"><span class="meta-lead">Vejrdata o</span><span class="meta-lead-short">O</span>pdateret </span>' + updatedAt(DATA.updated);
   }
 
   // Finder første dag efter i dag hvor mindst én lokation kan flyves.
