@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-10-09T09:30:03",
+    "updated":  "2026-10-09T10:00:02",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -827,7 +827,7 @@
                                                            "temperature":  11.6,
                                                            "direction":  "V",
                                                            "degrees":  277,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  2,
                                                            "reason":  "For kraftig vind, Kraftigere vindstød",
                                                            "primaryReason":  "For kraftig vind",
                                                            "secondaryReasons":  [
