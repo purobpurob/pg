@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-10-10T09:30:03",
+    "updated":  "2026-10-10T10:00:03",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -233,7 +233,7 @@
                                                            "temperature":  10.2,
                                                            "direction":  "NV",
                                                            "degrees":  319,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  2,
                                                            "reason":  "Forkert vindretning (NV)",
                                                            "primaryReason":  "Forkert vindretning (NV)",
                                                            "secondaryReasons":  [
@@ -251,7 +251,7 @@
                                        "temperature":  12.7,
                                        "direction":  "S",
                                        "degrees":  193,
-                                       "weatherCode":  3,
+                                       "weatherCode":  2,
                                        "reason":  "Gode vindforhold",
                                        "primaryReason":  "Gode forhold for den valgte lokation",
                                        "secondaryReasons":  [
@@ -269,7 +269,7 @@
                                                            "temperature":  11.4,
                                                            "direction":  "S",
                                                            "degrees":  179,
-                                                           "weatherCode":  1,
+                                                           "weatherCode":  45,
                                                            "reason":  "Vindretningen er marginal (S)",
                                                            "primaryReason":  "Vindretningen er marginal (S)",
                                                            "secondaryReasons":  [
@@ -286,7 +286,7 @@
                                                            "temperature":  12.7,
                                                            "direction":  "S",
                                                            "degrees":  193,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  2,
                                                            "reason":  "Gode vindforhold",
                                                            "primaryReason":  "Gode forhold for den valgte lokation",
                                                            "secondaryReasons":  [
@@ -321,7 +321,7 @@
                                        "temperature":  14.1,
                                        "direction":  "V",
                                        "degrees":  284,
-                                       "weatherCode":  2,
+                                       "weatherCode":  1,
                                        "reason":  "Vindretningen er marginal (V), Kraftigere vindstød",
                                        "primaryReason":  "Vindretningen er marginal (V)",
                                        "secondaryReasons":  [
@@ -339,7 +339,7 @@
                                                            "temperature":  14.1,
                                                            "direction":  "V",
                                                            "degrees":  284,
-                                                           "weatherCode":  2,
+                                                           "weatherCode":  1,
                                                            "reason":  "Vindretningen er marginal (V), Kraftigere vindstød",
                                                            "primaryReason":  "Vindretningen er marginal (V)",
                                                            "secondaryReasons":  [
@@ -356,7 +356,7 @@
                                                            "temperature":  15.7,
                                                            "direction":  "V",
                                                            "degrees":  283,
-                                                           "weatherCode":  2,
+                                                           "weatherCode":  3,
                                                            "reason":  "Vindretningen er marginal (V), Kraftigere vindstød",
                                                            "primaryReason":  "Vindretningen er marginal (V)",
                                                            "secondaryReasons":  [
@@ -622,7 +622,7 @@
                                                            "temperature":  10.6,
                                                            "direction":  "N",
                                                            "degrees":  347,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  1,
                                                            "reason":  "Gode vindforhold",
                                                            "primaryReason":  "Gode forhold for den valgte lokation",
                                                            "secondaryReasons":  [
@@ -640,7 +640,7 @@
                                        "temperature":  9.4,
                                        "direction":  "S",
                                        "degrees":  161,
-                                       "weatherCode":  45,
+                                       "weatherCode":  3,
                                        "reason":  "Forkert vindretning (S)",
                                        "primaryReason":  "Forkert vindretning (S)",
                                        "secondaryReasons":  [
@@ -658,7 +658,7 @@
                                                            "temperature":  9.4,
                                                            "direction":  "S",
                                                            "degrees":  161,
-                                                           "weatherCode":  45,
+                                                           "weatherCode":  3,
                                                            "reason":  "Forkert vindretning (S)",
                                                            "primaryReason":  "Forkert vindretning (S)",
                                                            "secondaryReasons":  [
@@ -688,7 +688,7 @@
                                                            "status":  "red",
                                                            "wind":  7.3,
                                                            "gust":  13.3,
-                                                           "precipitation":  0.1,
+                                                           "precipitation":  0.2,
                                                            "temperature":  12.2,
                                                            "direction":  "S",
                                                            "degrees":  163,
@@ -712,7 +712,7 @@
                                        "temperature":  13.7,
                                        "direction":  "V",
                                        "degrees":  266,
-                                       "weatherCode":  3,
+                                       "weatherCode":  0,
                                        "reason":  "Forkert vindretning (V), For kraftige vindstød",
                                        "primaryReason":  "Forkert vindretning (V)",
                                        "secondaryReasons":  [
@@ -730,7 +730,7 @@
                                                            "temperature":  13.7,
                                                            "direction":  "V",
                                                            "degrees":  266,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  0,
                                                            "reason":  "Forkert vindretning (V), For kraftige vindstød",
                                                            "primaryReason":  "Forkert vindretning (V)",
                                                            "secondaryReasons":  [
@@ -1072,11 +1072,11 @@
                                                            "status":  "red",
                                                            "wind":  6.3,
                                                            "gust":  11.9,
-                                                           "precipitation":  1,
+                                                           "precipitation":  0.1,
                                                            "temperature":  12.4,
                                                            "direction":  "S",
                                                            "degrees":  165,
-                                                           "weatherCode":  55,
+                                                           "weatherCode":  51,
                                                            "reason":  "Forkert vindretning (S), Kraftigere vindstød, Nedbør i perioder",
                                                            "primaryReason":  "Forkert vindretning (S)",
                                                            "secondaryReasons":  [
@@ -1095,7 +1095,7 @@
                                        "temperature":  13.4,
                                        "direction":  "V",
                                        "degrees":  271,
-                                       "weatherCode":  3,
+                                       "weatherCode":  0,
                                        "reason":  "Gode vindforhold",
                                        "primaryReason":  "Gode forhold for den valgte lokation",
                                        "secondaryReasons":  [
@@ -1113,7 +1113,7 @@
                                                            "temperature":  13.4,
                                                            "direction":  "V",
                                                            "degrees":  271,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  0,
                                                            "reason":  "Gode vindforhold",
                                                            "primaryReason":  "Gode forhold for den valgte lokation",
                                                            "secondaryReasons":  [
@@ -1395,7 +1395,7 @@
                                                            "temperature":  10.6,
                                                            "direction":  "N",
                                                            "degrees":  346,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  2,
                                                            "reason":  "Vindretningen er marginal (N)",
                                                            "primaryReason":  "Vindretningen er marginal (N)",
                                                            "secondaryReasons":  [
@@ -1413,7 +1413,7 @@
                                        "temperature":  9.4,
                                        "direction":  "S",
                                        "degrees":  161,
-                                       "weatherCode":  45,
+                                       "weatherCode":  3,
                                        "reason":  "Forkert vindretning (S)",
                                        "primaryReason":  "Forkert vindretning (S)",
                                        "secondaryReasons":  [
@@ -1431,7 +1431,7 @@
                                                            "temperature":  9.4,
                                                            "direction":  "S",
                                                            "degrees":  161,
-                                                           "weatherCode":  45,
+                                                           "weatherCode":  3,
                                                            "reason":  "Forkert vindretning (S)",
                                                            "primaryReason":  "Forkert vindretning (S)",
                                                            "secondaryReasons":  [
@@ -1461,7 +1461,7 @@
                                                            "status":  "red",
                                                            "wind":  7.3,
                                                            "gust":  13.3,
-                                                           "precipitation":  0.1,
+                                                           "precipitation":  0.2,
                                                            "temperature":  12.2,
                                                            "direction":  "S",
                                                            "degrees":  163,
@@ -1485,7 +1485,7 @@
                                        "temperature":  13.8,
                                        "direction":  "V",
                                        "degrees":  266,
-                                       "weatherCode":  3,
+                                       "weatherCode":  0,
                                        "reason":  "Forkert vindretning (V), For kraftige vindstød",
                                        "primaryReason":  "Forkert vindretning (V)",
                                        "secondaryReasons":  [
@@ -1503,7 +1503,7 @@
                                                            "temperature":  13.8,
                                                            "direction":  "V",
                                                            "degrees":  266,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  0,
                                                            "reason":  "Forkert vindretning (V), For kraftige vindstød",
                                                            "primaryReason":  "Forkert vindretning (V)",
                                                            "secondaryReasons":  [
