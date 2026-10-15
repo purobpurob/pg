@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-10-15T11:30:02",
+    "updated":  "2026-10-15T11:45:43",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -177,11 +177,11 @@
                                        "gust":  5.1,
                                        "precipitation":  0,
                                        "temperature":  10.5,
-                                       "direction":  "N",
-                                       "degrees":  356,
+                                       "direction":  "NV",
+                                       "degrees":  333,
                                        "weatherCode":  3,
-                                       "reason":  "Forkert vindretning (N), Marginal vind (3-4 m/s)",
-                                       "primaryReason":  "Forkert vindretning (N)",
+                                       "reason":  "Forkert vindretning (NV), Marginal vind (3-4 m/s)",
+                                       "primaryReason":  "Forkert vindretning (NV)",
                                        "secondaryReasons":  [
                                                                 "Marginal vind (3-4 m/s)"
                                                             ],
@@ -195,11 +195,11 @@
                                                            "gust":  5.1,
                                                            "precipitation":  0,
                                                            "temperature":  10.5,
-                                                           "direction":  "N",
-                                                           "degrees":  356,
+                                                           "direction":  "NV",
+                                                           "degrees":  333,
                                                            "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (N), Marginal vind (3-4 m/s)",
-                                                           "primaryReason":  "Forkert vindretning (N)",
+                                                           "reason":  "Forkert vindretning (NV), Marginal vind (3-4 m/s)",
+                                                           "primaryReason":  "Forkert vindretning (NV)",
                                                            "secondaryReasons":  [
                                                                                     "Marginal vind (3-4 m/s)"
                                                                                 ]
@@ -933,35 +933,35 @@
                                    },
                                    {
                                        "date":  "2026-10-17",
-                                       "status":  "red",
+                                       "status":  "yellow",
                                        "wind":  7.4,
                                        "gust":  11.1,
                                        "precipitation":  0,
                                        "temperature":  11.9,
-                                       "direction":  "N",
-                                       "degrees":  356,
+                                       "direction":  "NV",
+                                       "degrees":  319,
                                        "weatherCode":  2,
-                                       "reason":  "Forkert vindretning (N), Krævende vind (7-8 m/s), Kraftigere vindstød",
-                                       "primaryReason":  "Forkert vindretning (N)",
+                                       "reason":  "Vindretningen er marginal (NV), Krævende vind (7-8 m/s), Kraftigere vindstød",
+                                       "primaryReason":  "Vindretningen er marginal (NV)",
                                        "secondaryReasons":  [
                                                                 "Krævende vind (7-8 m/s)",
                                                                 "Kraftigere vindstød"
                                                             ],
-                                       "bestTime":  "",
+                                       "bestTime":  "09-13",
                                        "windows":  [
                                                        {
                                                            "label":  "Formiddag",
                                                            "range":  "09-13",
-                                                           "status":  "red",
+                                                           "status":  "yellow",
                                                            "wind":  7.4,
                                                            "gust":  11.1,
                                                            "precipitation":  0,
                                                            "temperature":  11.9,
-                                                           "direction":  "N",
-                                                           "degrees":  356,
+                                                           "direction":  "NV",
+                                                           "degrees":  319,
                                                            "weatherCode":  2,
-                                                           "reason":  "Forkert vindretning (N), Krævende vind (7-8 m/s), Kraftigere vindstød",
-                                                           "primaryReason":  "Forkert vindretning (N)",
+                                                           "reason":  "Vindretningen er marginal (NV), Krævende vind (7-8 m/s), Kraftigere vindstød",
+                                                           "primaryReason":  "Vindretningen er marginal (NV)",
                                                            "secondaryReasons":  [
                                                                                     "Krævende vind (7-8 m/s)",
                                                                                     "Kraftigere vindstød"
@@ -992,11 +992,11 @@
                                                            "gust":  10.4,
                                                            "precipitation":  0,
                                                            "temperature":  11.5,
-                                                           "direction":  "NØ",
-                                                           "degrees":  28,
+                                                           "direction":  "N",
+                                                           "degrees":  13,
                                                            "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (NØ)",
-                                                           "primaryReason":  "Forkert vindretning (NØ)",
+                                                           "reason":  "Forkert vindretning (N)",
+                                                           "primaryReason":  "Forkert vindretning (N)",
                                                            "secondaryReasons":  [
 
                                                                                 ]
@@ -1132,11 +1132,11 @@
                                                            "gust":  9.2,
                                                            "precipitation":  0,
                                                            "temperature":  10,
-                                                           "direction":  "Ø",
-                                                           "degrees":  102,
+                                                           "direction":  "SØ",
+                                                           "degrees":  118,
                                                            "weatherCode":  1,
-                                                           "reason":  "Forkert vindretning (Ø), Marginal vind (3-4 m/s)",
-                                                           "primaryReason":  "Forkert vindretning (Ø)",
+                                                           "reason":  "Forkert vindretning (SØ), Marginal vind (3-4 m/s)",
+                                                           "primaryReason":  "Forkert vindretning (SØ)",
                                                            "secondaryReasons":  [
                                                                                     "Marginal vind (3-4 m/s)"
                                                                                 ]
