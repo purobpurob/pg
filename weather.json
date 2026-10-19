@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-10-19T14:00:03",
+    "updated":  "2026-10-19T14:30:03",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -239,30 +239,30 @@
                                                            "direction":  "Ø",
                                                            "degrees":  96,
                                                            "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (Ø), Nedbør i perioder",
+                                                           "reason":  "Forkert vindretning (Ø)",
                                                            "primaryReason":  "Forkert vindretning (Ø)",
                                                            "secondaryReasons":  [
-                                                                                    "Nedbør i perioder"
+
                                                                                 ]
                                                        }
                                                    ]
                                    },
                                    {
                                        "date":  "2026-10-22",
-                                       "status":  "green",
-                                       "wind":  5.5,
-                                       "gust":  9.8,
-                                       "precipitation":  0,
-                                       "temperature":  10.6,
-                                       "direction":  "SV",
-                                       "degrees":  243,
-                                       "weatherCode":  3,
-                                       "reason":  "Gode vindforhold",
-                                       "primaryReason":  "Gode forhold for den valgte lokation",
+                                       "status":  "yellow",
+                                       "wind":  5.4,
+                                       "gust":  9.5,
+                                       "precipitation":  0.5,
+                                       "temperature":  11.2,
+                                       "direction":  "V",
+                                       "degrees":  256,
+                                       "weatherCode":  53,
+                                       "reason":  "Nedbør i perioder",
+                                       "primaryReason":  "Nedbør i perioder",
                                        "secondaryReasons":  [
 
                                                             ],
-                                       "bestTime":  "16-19",
+                                       "bestTime":  "09-19",
                                        "windows":  [
                                                        {
                                                            "label":  "Formiddag",
@@ -270,7 +270,7 @@
                                                            "status":  "yellow",
                                                            "wind":  5.4,
                                                            "gust":  9.5,
-                                                           "precipitation":  0.7,
+                                                           "precipitation":  0.5,
                                                            "temperature":  11.2,
                                                            "direction":  "V",
                                                            "degrees":  256,
@@ -287,7 +287,7 @@
                                                            "status":  "yellow",
                                                            "wind":  5.6,
                                                            "gust":  9.8,
-                                                           "precipitation":  0.6,
+                                                           "precipitation":  0.5,
                                                            "temperature":  10.4,
                                                            "direction":  "SV",
                                                            "degrees":  243,
@@ -301,16 +301,16 @@
                                                        {
                                                            "label":  "Sen eftermiddag",
                                                            "range":  "16-19",
-                                                           "status":  "green",
+                                                           "status":  "yellow",
                                                            "wind":  5.5,
                                                            "gust":  9.8,
-                                                           "precipitation":  0,
+                                                           "precipitation":  1,
                                                            "temperature":  10.6,
                                                            "direction":  "SV",
                                                            "degrees":  243,
-                                                           "weatherCode":  3,
-                                                           "reason":  "Gode vindforhold",
-                                                           "primaryReason":  "Gode forhold for den valgte lokation",
+                                                           "weatherCode":  55,
+                                                           "reason":  "Nedbør i perioder",
+                                                           "primaryReason":  "Nedbør i perioder",
                                                            "secondaryReasons":  [
 
                                                                                 ]
@@ -319,16 +319,16 @@
                                    },
                                    {
                                        "date":  "2026-10-23",
-                                       "status":  "green",
+                                       "status":  "yellow",
                                        "wind":  5.5,
                                        "gust":  10.5,
-                                       "precipitation":  0,
+                                       "precipitation":  0.1,
                                        "temperature":  9.7,
                                        "direction":  "S",
                                        "degrees":  190,
-                                       "weatherCode":  0,
-                                       "reason":  "Gode vindforhold",
-                                       "primaryReason":  "Gode forhold for den valgte lokation",
+                                       "weatherCode":  51,
+                                       "reason":  "Nedbør i perioder",
+                                       "primaryReason":  "Nedbør i perioder",
                                        "secondaryReasons":  [
 
                                                             ],
@@ -337,16 +337,16 @@
                                                        {
                                                            "label":  "Formiddag",
                                                            "range":  "09-13",
-                                                           "status":  "green",
+                                                           "status":  "yellow",
                                                            "wind":  5.5,
                                                            "gust":  10.5,
-                                                           "precipitation":  0,
+                                                           "precipitation":  0.1,
                                                            "temperature":  9.7,
                                                            "direction":  "S",
                                                            "degrees":  190,
-                                                           "weatherCode":  0,
-                                                           "reason":  "Gode vindforhold",
-                                                           "primaryReason":  "Gode forhold for den valgte lokation",
+                                                           "weatherCode":  51,
+                                                           "reason":  "Nedbør i perioder",
+                                                           "primaryReason":  "Nedbør i perioder",
                                                            "secondaryReasons":  [
 
                                                                                 ]
@@ -357,15 +357,16 @@
                                                            "status":  "red",
                                                            "wind":  5.8,
                                                            "gust":  11.6,
-                                                           "precipitation":  0,
+                                                           "precipitation":  0.1,
                                                            "temperature":  11,
                                                            "direction":  "S",
                                                            "degrees":  168,
-                                                           "weatherCode":  2,
-                                                           "reason":  "Forkert vindretning (S), Kraftigere vindstød",
+                                                           "weatherCode":  51,
+                                                           "reason":  "Forkert vindretning (S), Kraftigere vindstød, Nedbør i perioder",
                                                            "primaryReason":  "Forkert vindretning (S)",
                                                            "secondaryReasons":  [
-                                                                                    "Kraftigere vindstød"
+                                                                                    "Kraftigere vindstød",
+                                                                                    "Nedbør i perioder"
                                                                                 ]
                                                        },
                                                        {
@@ -374,7 +375,7 @@
                                                            "status":  "red",
                                                            "wind":  6.2,
                                                            "gust":  12.6,
-                                                           "precipitation":  0.4,
+                                                           "precipitation":  0.3,
                                                            "temperature":  11,
                                                            "direction":  "SØ",
                                                            "degrees":  140,
@@ -616,16 +617,16 @@
                                                            "status":  "red",
                                                            "wind":  3.5,
                                                            "gust":  6.3,
-                                                           "precipitation":  1.3,
+                                                           "precipitation":  1,
                                                            "temperature":  11.3,
                                                            "direction":  "SØ",
                                                            "degrees":  128,
                                                            "weatherCode":  55,
-                                                           "reason":  "Forkert vindretning (SØ), Regn, Marginal vind (3-4 m/s)",
+                                                           "reason":  "Forkert vindretning (SØ), Marginal vind (3-4 m/s), Nedbør i perioder",
                                                            "primaryReason":  "Forkert vindretning (SØ)",
                                                            "secondaryReasons":  [
-                                                                                    "Regn",
-                                                                                    "Marginal vind (3-4 m/s)"
+                                                                                    "Marginal vind (3-4 m/s)",
+                                                                                    "Nedbør i perioder"
                                                                                 ]
                                                        }
                                                    ]
@@ -635,15 +636,15 @@
                                        "status":  "red",
                                        "wind":  5.4,
                                        "gust":  9.6,
-                                       "precipitation":  0.9,
+                                       "precipitation":  1.1,
                                        "temperature":  10.6,
                                        "direction":  "SV",
                                        "degrees":  223,
-                                       "weatherCode":  53,
-                                       "reason":  "Forkert vindretning (SV), Nedbør i perioder",
+                                       "weatherCode":  55,
+                                       "reason":  "Forkert vindretning (SV), Regn",
                                        "primaryReason":  "Forkert vindretning (SV)",
                                        "secondaryReasons":  [
-                                                                "Nedbør i perioder"
+                                                                "Regn"
                                                             ],
                                        "bestTime":  "",
                                        "windows":  [
@@ -653,15 +654,15 @@
                                                            "status":  "red",
                                                            "wind":  5.4,
                                                            "gust":  9.6,
-                                                           "precipitation":  0.9,
+                                                           "precipitation":  1.1,
                                                            "temperature":  10.6,
                                                            "direction":  "SV",
                                                            "degrees":  223,
-                                                           "weatherCode":  53,
-                                                           "reason":  "Forkert vindretning (SV), Nedbør i perioder",
+                                                           "weatherCode":  55,
+                                                           "reason":  "Forkert vindretning (SV), Regn",
                                                            "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
-                                                                                    "Nedbør i perioder"
+                                                                                    "Regn"
                                                                                 ]
                                                        },
                                                        {
@@ -670,15 +671,15 @@
                                                            "status":  "red",
                                                            "wind":  4.7,
                                                            "gust":  9.6,
-                                                           "precipitation":  0,
+                                                           "precipitation":  0.6,
                                                            "temperature":  10.5,
                                                            "direction":  "SV",
                                                            "degrees":  213,
-                                                           "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (SV)",
+                                                           "weatherCode":  53,
+                                                           "reason":  "Forkert vindretning (SV), Nedbør i perioder",
                                                            "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
-
+                                                                                    "Nedbør i perioder"
                                                                                 ]
                                                        },
                                                        {
@@ -687,15 +688,15 @@
                                                            "status":  "red",
                                                            "wind":  4.6,
                                                            "gust":  10.3,
-                                                           "precipitation":  0,
+                                                           "precipitation":  0.5,
                                                            "temperature":  10.6,
                                                            "direction":  "SV",
                                                            "degrees":  211,
-                                                           "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (SV)",
+                                                           "weatherCode":  53,
+                                                           "reason":  "Forkert vindretning (SV), Nedbør i perioder",
                                                            "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
-
+                                                                                    "Nedbør i perioder"
                                                                                 ]
                                                        }
                                                    ]
@@ -709,7 +710,7 @@
                                        "temperature":  8.8,
                                        "direction":  "S",
                                        "degrees":  180,
-                                       "weatherCode":  1,
+                                       "weatherCode":  2,
                                        "reason":  "Forkert vindretning (S)",
                                        "primaryReason":  "Forkert vindretning (S)",
                                        "secondaryReasons":  [
@@ -727,7 +728,7 @@
                                                            "temperature":  8.8,
                                                            "direction":  "S",
                                                            "degrees":  180,
-                                                           "weatherCode":  1,
+                                                           "weatherCode":  2,
                                                            "reason":  "Forkert vindretning (S)",
                                                            "primaryReason":  "Forkert vindretning (S)",
                                                            "secondaryReasons":  [
@@ -744,7 +745,7 @@
                                                            "temperature":  11.4,
                                                            "direction":  "SØ",
                                                            "degrees":  152,
-                                                           "weatherCode":  1,
+                                                           "weatherCode":  2,
                                                            "reason":  "Forkert vindretning (SØ)",
                                                            "primaryReason":  "Forkert vindretning (SØ)",
                                                            "secondaryReasons":  [
@@ -757,15 +758,16 @@
                                                            "status":  "red",
                                                            "wind":  6.1,
                                                            "gust":  12.7,
-                                                           "precipitation":  0,
+                                                           "precipitation":  0.1,
                                                            "temperature":  10.2,
                                                            "direction":  "SØ",
                                                            "degrees":  132,
-                                                           "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (SØ), Kraftigere vindstød",
+                                                           "weatherCode":  51,
+                                                           "reason":  "Forkert vindretning (SØ), Kraftigere vindstød, Nedbør i perioder",
                                                            "primaryReason":  "Forkert vindretning (SØ)",
                                                            "secondaryReasons":  [
-                                                                                    "Kraftigere vindstød"
+                                                                                    "Kraftigere vindstød",
+                                                                                    "Nedbør i perioder"
                                                                                 ]
                                                        }
                                                    ]
@@ -1019,15 +1021,15 @@
                                        "status":  "red",
                                        "wind":  4.8,
                                        "gust":  8.5,
-                                       "precipitation":  1,
+                                       "precipitation":  1.7,
                                        "temperature":  10.2,
                                        "direction":  "SV",
                                        "degrees":  221,
-                                       "weatherCode":  55,
-                                       "reason":  "Forkert vindretning (SV), Nedbør i perioder",
+                                       "weatherCode":  61,
+                                       "reason":  "Forkert vindretning (SV), Regn",
                                        "primaryReason":  "Forkert vindretning (SV)",
                                        "secondaryReasons":  [
-                                                                "Nedbør i perioder"
+                                                                "Regn"
                                                             ],
                                        "bestTime":  "",
                                        "windows":  [
@@ -1037,15 +1039,15 @@
                                                            "status":  "red",
                                                            "wind":  4.8,
                                                            "gust":  8.5,
-                                                           "precipitation":  1,
+                                                           "precipitation":  1.7,
                                                            "temperature":  10.2,
                                                            "direction":  "SV",
                                                            "degrees":  221,
-                                                           "weatherCode":  55,
-                                                           "reason":  "Forkert vindretning (SV), Nedbør i perioder",
+                                                           "weatherCode":  61,
+                                                           "reason":  "Forkert vindretning (SV), Regn",
                                                            "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
-                                                                                    "Nedbør i perioder"
+                                                                                    "Regn"
                                                                                 ]
                                                        },
                                                        {
@@ -1054,15 +1056,15 @@
                                                            "status":  "red",
                                                            "wind":  5.3,
                                                            "gust":  10,
-                                                           "precipitation":  0,
+                                                           "precipitation":  0.6,
                                                            "temperature":  11.1,
                                                            "direction":  "SV",
                                                            "degrees":  218,
-                                                           "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (SV)",
+                                                           "weatherCode":  53,
+                                                           "reason":  "Forkert vindretning (SV), Nedbør i perioder",
                                                            "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
-
+                                                                                    "Nedbør i perioder"
                                                                                 ]
                                                        },
                                                        {
@@ -1071,15 +1073,15 @@
                                                            "status":  "red",
                                                            "wind":  5.1,
                                                            "gust":  10.3,
-                                                           "precipitation":  0,
+                                                           "precipitation":  0.1,
                                                            "temperature":  10.4,
                                                            "direction":  "SV",
                                                            "degrees":  213,
-                                                           "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (SV)",
+                                                           "weatherCode":  51,
+                                                           "reason":  "Forkert vindretning (SV), Nedbør i perioder",
                                                            "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
-
+                                                                                    "Nedbør i perioder"
                                                                                 ]
                                                        }
                                                    ]
@@ -1093,7 +1095,7 @@
                                        "temperature":  8.9,
                                        "direction":  "S",
                                        "degrees":  177,
-                                       "weatherCode":  1,
+                                       "weatherCode":  2,
                                        "reason":  "Forkert vindretning (S)",
                                        "primaryReason":  "Forkert vindretning (S)",
                                        "secondaryReasons":  [
@@ -1111,7 +1113,7 @@
                                                            "temperature":  8.9,
                                                            "direction":  "S",
                                                            "degrees":  177,
-                                                           "weatherCode":  1,
+                                                           "weatherCode":  2,
                                                            "reason":  "Forkert vindretning (S)",
                                                            "primaryReason":  "Forkert vindretning (S)",
                                                            "secondaryReasons":  [
@@ -1387,16 +1389,16 @@
                                                            "status":  "red",
                                                            "wind":  4,
                                                            "gust":  7.4,
-                                                           "precipitation":  1.3,
+                                                           "precipitation":  1,
                                                            "temperature":  11.2,
                                                            "direction":  "SØ",
                                                            "degrees":  128,
                                                            "weatherCode":  55,
-                                                           "reason":  "Forkert vindretning (SØ), Regn, Marginal vind (3-4 m/s)",
+                                                           "reason":  "Forkert vindretning (SØ), Marginal vind (3-4 m/s), Nedbør i perioder",
                                                            "primaryReason":  "Forkert vindretning (SØ)",
                                                            "secondaryReasons":  [
-                                                                                    "Regn",
-                                                                                    "Marginal vind (3-4 m/s)"
+                                                                                    "Marginal vind (3-4 m/s)",
+                                                                                    "Nedbør i perioder"
                                                                                 ]
                                                        }
                                                    ]
@@ -1406,15 +1408,15 @@
                                        "status":  "red",
                                        "wind":  5.4,
                                        "gust":  9.6,
-                                       "precipitation":  0.9,
+                                       "precipitation":  1.1,
                                        "temperature":  10.6,
                                        "direction":  "SV",
                                        "degrees":  223,
-                                       "weatherCode":  53,
-                                       "reason":  "Forkert vindretning (SV), Nedbør i perioder",
+                                       "weatherCode":  55,
+                                       "reason":  "Forkert vindretning (SV), Regn",
                                        "primaryReason":  "Forkert vindretning (SV)",
                                        "secondaryReasons":  [
-                                                                "Nedbør i perioder"
+                                                                "Regn"
                                                             ],
                                        "bestTime":  "",
                                        "windows":  [
@@ -1424,15 +1426,15 @@
                                                            "status":  "red",
                                                            "wind":  5.4,
                                                            "gust":  9.6,
-                                                           "precipitation":  0.9,
+                                                           "precipitation":  1.1,
                                                            "temperature":  10.6,
                                                            "direction":  "SV",
                                                            "degrees":  223,
-                                                           "weatherCode":  53,
-                                                           "reason":  "Forkert vindretning (SV), Nedbør i perioder",
+                                                           "weatherCode":  55,
+                                                           "reason":  "Forkert vindretning (SV), Regn",
                                                            "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
-                                                                                    "Nedbør i perioder"
+                                                                                    "Regn"
                                                                                 ]
                                                        },
                                                        {
@@ -1441,15 +1443,15 @@
                                                            "status":  "red",
                                                            "wind":  4.7,
                                                            "gust":  9.6,
-                                                           "precipitation":  0,
+                                                           "precipitation":  0.6,
                                                            "temperature":  10.5,
                                                            "direction":  "SV",
                                                            "degrees":  213,
-                                                           "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (SV)",
+                                                           "weatherCode":  53,
+                                                           "reason":  "Forkert vindretning (SV), Nedbør i perioder",
                                                            "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
-
+                                                                                    "Nedbør i perioder"
                                                                                 ]
                                                        },
                                                        {
@@ -1458,15 +1460,15 @@
                                                            "status":  "red",
                                                            "wind":  4.6,
                                                            "gust":  10.3,
-                                                           "precipitation":  0,
+                                                           "precipitation":  0.5,
                                                            "temperature":  10.6,
                                                            "direction":  "SV",
                                                            "degrees":  211,
-                                                           "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (SV)",
+                                                           "weatherCode":  53,
+                                                           "reason":  "Forkert vindretning (SV), Nedbør i perioder",
                                                            "primaryReason":  "Forkert vindretning (SV)",
                                                            "secondaryReasons":  [
-
+                                                                                    "Nedbør i perioder"
                                                                                 ]
                                                        }
                                                    ]
@@ -1480,7 +1482,7 @@
                                        "temperature":  8.9,
                                        "direction":  "S",
                                        "degrees":  180,
-                                       "weatherCode":  1,
+                                       "weatherCode":  2,
                                        "reason":  "Forkert vindretning (S)",
                                        "primaryReason":  "Forkert vindretning (S)",
                                        "secondaryReasons":  [
@@ -1498,7 +1500,7 @@
                                                            "temperature":  8.9,
                                                            "direction":  "S",
                                                            "degrees":  180,
-                                                           "weatherCode":  1,
+                                                           "weatherCode":  2,
                                                            "reason":  "Forkert vindretning (S)",
                                                            "primaryReason":  "Forkert vindretning (S)",
                                                            "secondaryReasons":  [
@@ -1515,7 +1517,7 @@
                                                            "temperature":  11.5,
                                                            "direction":  "SØ",
                                                            "degrees":  152,
-                                                           "weatherCode":  1,
+                                                           "weatherCode":  2,
                                                            "reason":  "Forkert vindretning (SØ)",
                                                            "primaryReason":  "Forkert vindretning (SØ)",
                                                            "secondaryReasons":  [
@@ -1528,15 +1530,16 @@
                                                            "status":  "red",
                                                            "wind":  6.1,
                                                            "gust":  12.7,
-                                                           "precipitation":  0,
+                                                           "precipitation":  0.1,
                                                            "temperature":  10.3,
                                                            "direction":  "SØ",
                                                            "degrees":  132,
-                                                           "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (SØ), Kraftigere vindstød",
+                                                           "weatherCode":  51,
+                                                           "reason":  "Forkert vindretning (SØ), Kraftigere vindstød, Nedbør i perioder",
                                                            "primaryReason":  "Forkert vindretning (SØ)",
                                                            "secondaryReasons":  [
-                                                                                    "Kraftigere vindstød"
+                                                                                    "Kraftigere vindstød",
+                                                                                    "Nedbør i perioder"
                                                                                 ]
                                                        }
                                                    ]
