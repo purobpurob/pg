@@ -1758,3 +1758,17 @@ details.rules summary { font-size: 0.95rem; }
   .board-meta .meta-word { display: none; }
   .board-meta svg { display: inline; }
 }
+
+/* ---------- Tidsvindue-prikker i oversigten ---------- */
+.cell { display: inline-flex; flex-direction: column; align-items: center; gap: 6px; }
+.wdots {
+  display: inline-flex; gap: 4px; padding: 3px 6px;
+  border-radius: 999px; background: rgba(255, 255, 255, 0.75);
+}
+.wd { width: 6px; height: 6px; border-radius: 50%; display: block; background: var(--grey); }
+.wd-green  { background: var(--green);  box-shadow: 0 0 0 2px rgba(26, 156, 74, 0.2); }
+.wd-yellow { background: var(--yellow); }
+.wd-red    { background: var(--red); }
+.wd-grey   { background: var(--grey); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .wdots { background: rgba(0, 0, 0, 0.3); } }
+:root[data-theme="dark"] .wdots { background: rgba(0, 0, 0, 0.3); }

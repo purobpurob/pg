@@ -405,7 +405,17 @@
              'aria-label="' + site.name + ', ' + WEEKDAYS_FULL[parseDate(day.date).getDay()] + ': ' + STATUS_LABEL[day.status] + '">' +
              '<b>' + top + '</b>' +
              (compact ? '' : '<span class="sub">' + Math.round(day.wind) + ' m/s ' + day.direction + '</span>') +
+             windowDotsHtml(day) +
            '</button>';
+  }
+
+  // 3 prikker: én pr. tidsvindue (09-13, 13-16, 16-19)
+  function windowDotsHtml(day) {
+    const w = toArray(day.windows);
+    if (!w.length) return '';
+    return '<span class="wdots" aria-hidden="true">' +
+             w.map(x => '<i class="wd wd-' + x.status + '" title="' + x.range + ': ' + (STATUS_LABEL[x.status] || x.status) + '"></i>').join('') +
+           '</span>';
   }
 
   function dayLabel(iso, todayIso) {
