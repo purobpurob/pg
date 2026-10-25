@@ -228,7 +228,7 @@
 
   // ---------- Konstanter og hjælpere ----------
   const STATUS_LABEL = { green: "Flyvevejr", yellow: "Vær opmærksom", red: "Ikke egnet", grey: "For lidt vind" };
-  const STATUS_SHORT = { green: "Ja", yellow: "Gul", red: "Nej", grey: "Nej" };
+  const STATUS_SHORT = { green: "Ja", yellow: "Gul", red: "No-go", grey: "No-go" };
   // I oversigten vises For lidt vind som Ikke egnet. Detaljerne viser stadig den præcise årsag
   const CELL_LABEL = { green: "Flyvevejr", yellow: "Vær opmærksom", red: "Ikke egnet", grey: "Ikke egnet" };
   const STATUS_RANK  = { green: 0, yellow: 1, grey: 2, red: 3 };
@@ -404,7 +404,7 @@
              'data-site="' + site.name + '" data-day="' + dayIndex + '" ' +
              'aria-label="' + site.name + ', ' + WEEKDAYS_FULL[parseDate(day.date).getDay()] + ': ' + STATUS_LABEL[day.status] + '">' +
              '<b>' + top + '</b>' +
-             (compact ? '' : '<span class="sub">' + Math.round(day.wind) + ' m/s ' + day.direction + '</span>') +
+             (compact ? '' : '<span class="sub">' + Math.round(day.wind) + ' m/s <span title="' + day.direction + ' ' + Math.round(day.degrees) + '°">' + windArrow(day.degrees) + '</span></span>') +
              windowDotsHtml(day) +
            '</button>';
   }
