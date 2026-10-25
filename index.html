@@ -555,6 +555,15 @@
     return f;
   }
 
+  // Forklaring på vinduets farve. Årsagerne kommer fra scriptet
+  function whyText(w) {
+    const r = w.reason || "";
+    if (w.status === "green")  return '<b>Grøn:</b> Alle faktorer er inden for grænserne.';
+    if (w.status === "grey")   return '<b>Grå:</b> For lidt vind til at flyve.';
+    if (w.status === "yellow") return '<b>Gul fordi:</b> ' + r + '.';
+    return '<b>Rød fordi:</b> ' + r + '.';
+  }
+
   function renderDetail() {
     const el = document.getElementById("detail");
     const site = DATA.sites.find(s => s.name === state.site);
@@ -607,7 +616,7 @@
                '<li class="pv-' + f.st + '"><i></i><span class="k">' + f.k + '</span>' +
                '<span class="v">' + f.v + '</span><span class="t">' + f.t + '</span></li>').join('') +
            '</ul>' +
-           '<p class="pv-note">Er du i tvivl så lad være med at flyve. Tjek altid forholdene på stedet.</p>' +
+           '<p class="pv-note pv-why-' + sel.status + '">' + whyText(sel) + '</p>' +
          '</section>';
 
     // 4. Kompas for det valgte vindue
