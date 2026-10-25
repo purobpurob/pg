@@ -500,6 +500,61 @@
     return (Math.round(m / 100) * 100).toLocaleString("da-DK");
   }
 
+  // WMO-vejrkode som kort dansk tekst
+  function weatherText(code) {
+    if (typeof code !== "number") return "";
+    if (code === 0) return "Klart";
+    if (code === 1) return "Mest klart";
+    if (code === 2) return "Delvis skyet";
+    if (code === 3) return "Overskyet";
+    if (code === 45 || code === 48) return "Tåge";
+    if (code >= 51 && code <= 55) return "Støvregn";
+    if (code === 56 || code === 57) return "Isslag";
+    if (code === 61) return "Let regn";
+    if (code === 63) return "Regn";
+    if (code === 65) return "Kraftig regn";
+    if (code === 66 || code === 67) return "Isregn";
+    if (code >= 71 && code <= 77) return "Sne";
+    if (code >= 80 && code <= 82) return "Regnbyger";
+    if (code === 85 || code === 86) return "Snebyger";
+    if (code >= 95) return "Torden";
+    return "";
+  }
+
+  // Ligger retningen i en bue. Samme logik som Test-InArc i scriptet
+  function inArc(deg, a) {
+    deg = ((deg % 360) + 360) % 360;
+    return a.from <= a.to ? deg >= a.from && deg <= a.to : deg >= a.from || deg <= a.to;
+  }
+
+  // Pilotvurdering pr. faktor. Samme grænser som scriptet og pg.md
+  function factorList(site, w) {
+    const f = [];
+
+    let dir = "red", dirTxt = "Forkert retning";
+    if (arcList(site.goodArcs).some(a => inArc(w.degrees, a)))      { dir = "green";  dirTxt = "God retning"; }
+    else if (arcList(site.fairArcs).some(a => inArc(w.degrees, a))) { dir = "yellow"; dirTxt = "Marginal retning"; }
+    f.push({ st: dir, k: "Vindretning", v: windArrow(w.degrees) + ' ' + w.direction + ' ' + Math.round(w.degrees) + '°', t: dirTxt });
+
+    const v = w.wind;
+    const ws = v > 8 ? ["red", "For kraftig"] : v >= 7 ? ["yellow", "Krævende"] : v >= 4 ? ["green", "Flyvbart"]
+             : v >= 3 ? ["yellow", "Marginalt"] : ["grey", "For lidt vind"];
+    f.push({ st: ws[0], k: "Vind", v: num1(v) + ' m/s', t: ws[1] });
+
+    const g = w.gust;
+    const gs = g > 13 ? ["red", "Ikke egnet"] : g > 11 ? ["yellow", "Vær opmærksom"] : ["green", "Godkendt"];
+    f.push({ st: gs[0], k: "Vindstød", v: num1(g) + ' m/s', t: gs[1] });
+
+    const p = w.precipitation || 0;
+    const ps = p > 1 ? ["red", "Regn"] : p > 0 ? ["yellow", "Nedbør i perioder"] : ["green", "Tørt"];
+    f.push({ st: ps[0], k: "Nedbør", v: num1(p) + ' mm', t: ps[1] });
+
+    const base = cloudBase(w);
+    if (base) f.push({ st: "info", k: "Skybase", v: 'ca. ' + base + ' m', t: "Kun info" });
+
+    return f;
+  }
+
   function renderDetail() {
     const el = document.getElementById("detail");
     const site = DATA.sites.find(s => s.name === state.site);
@@ -508,53 +563,62 @@
     if (!day) { el.innerHTML = '<p class="empty">Vælg et felt i oversigten</p>'; return; }
 
     const windows = toArray(day.windows).filter(w => w && typeof w.wind === "number");
-    const secondary = toArray(day.secondaryReasons);
-    // Valgt vindue. Som standard det bedste
     if (state.win === null || !windows[state.win]) state.win = bestWindowIndex(windows);
-    const rep = windows[state.win] || day;
+    const sel = windows[state.win] || day;
 
+    // 1. Hoved: sted, dato, dagens status og links
     let h =
-      '<div class="detail-info">' +
-      '<div class="detail-head">' +
-        '<div><h2>' + site.name + ' ' + flagHtml(countryOf(site)) + '</h2>' +
-        '<div class="date">' + WEEKDAYS_FULL[parseDate(day.date).getDay()] + ' ' + ddmm(day.date) + '</div></div>' +
+      '<div class="dt-head">' +
+        '<div class="dt-title">' +
+          '<h2>' + site.name + ' ' + flagHtml(countryOf(site)) + '</h2>' +
+          '<div class="date">' + WEEKDAYS_FULL[parseDate(day.date).getDay()] + ' ' + ddmm(day.date) + '</div>' +
+        '</div>' +
+        '<div class="dt-day">' +
+          '<span class="pill st-' + day.status + '">' + STATUS_LABEL[day.status].toUpperCase() + '</span>' +
+          (day.bestTime ? '<span class="best">Bedste flyvetid <b>' + day.bestTime + '</b></span>' : '') +
+        '</div>' +
+        (siteLinks(site).length ? '<div class="links">' + siteLinks(site).join(' <span class="sep">·</span> ') + '</div>' : '') +
         '<button class="close" id="detail-close" type="button" aria-label="Luk">&times;</button>' +
-      '</div>' +
-      '<span class="pill st-' + day.status + '">' + STATUS_LABEL[day.status].toUpperCase() + '</span>' +
-      (day.bestTime ? '<p class="best">Bedste flyvetid <b>' + day.bestTime + '</b></p>' : '') +
-      '<p class="reason">' + (day.primaryReason || day.reason) +
-        (secondary.length && day.status !== "green" ? '<small>Desuden: ' + secondary.join(", ") + '</small>' : '') +
-      '</p>' +
-      (siteLinks(site).length ? '<div class="links">' + siteLinks(site).join(' <span class="sep">·</span> ') + '</div>' : '') +
       '</div>';
 
+    // 2. Tidsvinduer: vejr og vind. Tryk for at vælge
     if (windows.length) {
-      h += '<div class="windows">';
+      h += '<div class="dt-wins" role="tablist" aria-label="Tidsvinduer">';
       windows.forEach((w, i) => {
-        const base = cloudBase(w);
-        h += '<button type="button" class="win st-' + w.status + (i === state.win ? ' active' : '') + '" data-win="' + i + '" ' +
-               'aria-pressed="' + (i === state.win) + '" title="' + w.label + '">' +
-               '<div class="t">' + w.range + '</div>' +
-               '<div class="w">' + num1(w.wind) + '</div>' +
-               '<div class="g">stød ' + num1(w.gust) + ' m/s</div>' +
-               '<div class="d">' + windArrow(w.degrees) + w.direction + ' ' + Math.round(w.degrees) + '°</div>' +
-               '<div class="wx">' + weatherIconHtml(w.weatherCode) + num1(w.temperature) + '°' +
-                 (w.precipitation > 0 ? ' · ' + num1(w.precipitation) + ' mm' : '') + '</div>' +
-               (base ? '<div class="cb"><span>Skybase</span> <span>ca. ' + base + ' m</span></div>' : '') +
-               '<div class="why">' + (w.primaryReason || w.reason) + '</div>' +
+        const on = i === state.win;
+        h += '<button type="button" role="tab" class="wcard st-' + w.status + (on ? ' active' : '') + '" data-win="' + i + '" aria-selected="' + on + '">' +
+               '<span class="wc-time">' + w.range + '</span>' +
+               '<span class="wc-wx">' + weatherIconHtml(w.weatherCode) +
+                 '<span><b>' + num1(w.temperature) + '°</b><small>' + weatherText(w.weatherCode) + '</small></span></span>' +
+               '<span class="wc-wind"><b>' + num1(w.wind) + '</b> m/s</span>' +
+               '<span class="wc-dir">' + windArrow(w.degrees) + ' ' + w.direction + ' · stød ' + num1(w.gust) + '</span>' +
              '</button>';
       });
       h += '</div>';
     }
 
+    // 3. Pilotvurdering for det valgte vindue
+    const factors = factorList(site, sel);
+    h += '<section class="dt-pilot">' +
+           '<div class="pv-head"><h3>Pilotvurdering kl. ' + (sel.range || '') + '</h3>' +
+             '<span class="pill st-' + sel.status + '">' + STATUS_LABEL[sel.status] + '</span></div>' +
+           '<ul class="pv-list">' +
+             factors.map(f =>
+               '<li class="pv-' + f.st + '"><i></i><span class="k">' + f.k + '</span>' +
+               '<span class="v">' + f.v + '</span><span class="t">' + f.t + '</span></li>').join('') +
+           '</ul>' +
+           '<p class="pv-note">Er du i tvivl så lad være med at flyve. Tjek altid forholdene på stedet.</p>' +
+         '</section>';
+
+    // 4. Kompas for det valgte vindue
     if (arcList(site.goodArcs).length) {
-      h += '<div class="compass-row">' + compassSvg(site, rep.degrees) +
+      h += '<section class="dt-compass">' + compassSvg(site, sel.degrees) +
              '<ul class="compass-txt">' +
+               '<li class="ct-head">Vindretning kl. ' + (sel.range || '') + '</li>' +
                '<li><i class="sw sw-green"></i>' + arcText(site.goodArcs) + '</li>' +
                (arcList(site.fairArcs).length ? '<li><i class="sw sw-yellow"></i>' + arcText(site.fairArcs) + '</li>' : '') +
                '<li><i class="sw sw-red"></i>Resten</li>' +
-               '<li class="hint">Pilen viser vinden kl. ' + (rep.range || '') + '</li>' +
-             '</ul></div>';
+             '</ul></section>';
     }
 
     el.innerHTML = h;
@@ -636,7 +700,7 @@
 
   // Klik på et tidsvindue i detaljerne
   detailEl.addEventListener("click", e => {
-    const w = e.target.closest(".win[data-win]");
+    const w = e.target.closest(".wcard[data-win]");
     if (!w) return;
     state.win = Number(w.dataset.win);
     renderDetail();
