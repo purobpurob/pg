@@ -1772,3 +1772,12 @@ details.rules summary { font-size: 0.95rem; }
 .wd-grey   { background: var(--grey); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .wdots { background: rgba(0, 0, 0, 0.3); } }
 :root[data-theme="dark"] .wdots { background: rgba(0, 0, 0, 0.3); }
+.cell .sub .arrow { margin-left: 2px; font-size: 0.85rem; line-height: 1; }
+
+/* ---------- Valgbare tidsvinduer ---------- */
+button.win { font: inherit; color: inherit; text-align: center; cursor: pointer; width: 100%;
+  border: 1px solid var(--line); transition: transform .12s, box-shadow .12s, border-color .12s; }
+button.win:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(20, 25, 35, 0.08); }
+button.win.active { border-color: var(--strong); box-shadow: 0 0 0 1px var(--strong); }
+button.win:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.win .cb { font-size: 0.72rem; margin-top: 2px; color: var(--muted); }

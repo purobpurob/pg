@@ -367,7 +367,7 @@
 
   // ---------- Tilstand ----------
   let DATA = null;
-  const state = { country: "ALL", onlyFly: false, sort: false, site: null, day: 0 };
+  const state = { country: "ALL", onlyFly: false, sort: false, site: null, day: 0, win: null };
 
   // Flyvbare = mindst én grøn dag i prognosen. Gule dage tæller ikke med
   function isFlyable(site) {
@@ -479,6 +479,27 @@
   }
 
   // ---------- Detaljer ----------
+  const RANK = { green: 3, yellow: 2, grey: 1, red: 0 };
+
+  // Bedste vindue. Ved lige status vælges det med mindst vind
+  function bestWindowIndex(windows) {
+    let best = 0;
+    windows.forEach((w, i) => {
+      const a = RANK[w.status] || 0, b = RANK[windows[best].status] || 0;
+      if (a > b || (a === b && w.wind < windows[best].wind && a > 0)) best = i;
+    });
+    return best;
+  }
+
+  // Skybase i meter. Bruger cloudBase fra weather.json eller beregner ud fra dugpunkt
+  function cloudBase(w) {
+    let m = typeof w.cloudBase === "number" ? w.cloudBase
+          : (typeof w.dewPoint === "number" && typeof w.temperature === "number") ? 125 * (w.temperature - w.dewPoint)
+          : null;
+    if (m === null || m < 0) return null;
+    return (Math.round(m / 100) * 100).toLocaleString("da-DK");
+  }
+
   function renderDetail() {
     const el = document.getElementById("detail");
     const site = DATA.sites.find(s => s.name === state.site);
@@ -488,7 +509,9 @@
 
     const windows = toArray(day.windows).filter(w => w && typeof w.wind === "number");
     const secondary = toArray(day.secondaryReasons);
-    const rep = windows.find(w => w.status === day.status) || day;
+    // Valgt vindue. Som standard det bedste
+    if (state.win === null || !windows[state.win]) state.win = bestWindowIndex(windows);
+    const rep = windows[state.win] || day;
 
     let h =
       '<div class="detail-info">' +
@@ -507,16 +530,19 @@
 
     if (windows.length) {
       h += '<div class="windows">';
-      windows.forEach(w => {
-        h += '<div class="win st-' + w.status + '" title="' + w.label + '">' +
+      windows.forEach((w, i) => {
+        const base = cloudBase(w);
+        h += '<button type="button" class="win st-' + w.status + (i === state.win ? ' active' : '') + '" data-win="' + i + '" ' +
+               'aria-pressed="' + (i === state.win) + '" title="' + w.label + '">' +
                '<div class="t">' + w.range + '</div>' +
                '<div class="w">' + num1(w.wind) + '</div>' +
                '<div class="g">stød ' + num1(w.gust) + ' m/s</div>' +
                '<div class="d">' + windArrow(w.degrees) + w.direction + ' ' + Math.round(w.degrees) + '°</div>' +
                '<div class="wx">' + weatherIconHtml(w.weatherCode) + num1(w.temperature) + '°' +
                  (w.precipitation > 0 ? ' · ' + num1(w.precipitation) + ' mm' : '') + '</div>' +
+               (base ? '<div class="cb">Skybase ca. ' + base + ' m</div>' : '') +
                '<div class="why">' + (w.primaryReason || w.reason) + '</div>' +
-             '</div>';
+             '</button>';
       });
       h += '</div>';
     }
@@ -527,7 +553,7 @@
                '<li><i class="sw sw-green"></i>' + arcText(site.goodArcs) + '</li>' +
                (arcList(site.fairArcs).length ? '<li><i class="sw sw-yellow"></i>' + arcText(site.fairArcs) + '</li>' : '') +
                '<li><i class="sw sw-red"></i>Resten</li>' +
-               '<li class="hint">Pilen viser vinden i det bedste vindue</li>' +
+               '<li class="hint">Pilen viser vinden kl. ' + (rep.range || '') + '</li>' +
              '</ul></div>';
     }
 
@@ -595,6 +621,7 @@
     if (!b) return;
     state.site = b.dataset.site;
     state.day = Number(b.dataset.day);
+    state.win = null;
     renderMatrix();
     renderDetail();
     openDetail();
@@ -606,6 +633,14 @@
 
   document.getElementById("matrix").addEventListener("click", onCellClick);
   document.getElementById("site-list").addEventListener("click", onCellClick);
+
+  // Klik på et tidsvindue i detaljerne
+  detailEl.addEventListener("click", e => {
+    const w = e.target.closest(".win[data-win]");
+    if (!w) return;
+    state.win = Number(w.dataset.win);
+    renderDetail();
+  });
 
   scrimEl.addEventListener("click", closeDetail);
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeDetail(); });
