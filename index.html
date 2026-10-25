@@ -540,7 +540,7 @@
                '<div class="d">' + windArrow(w.degrees) + w.direction + ' ' + Math.round(w.degrees) + '°</div>' +
                '<div class="wx">' + weatherIconHtml(w.weatherCode) + num1(w.temperature) + '°' +
                  (w.precipitation > 0 ? ' · ' + num1(w.precipitation) + ' mm' : '') + '</div>' +
-               (base ? '<div class="cb">Skybase ca. ' + base + ' m</div>' : '') +
+               (base ? '<div class="cb"><span>Skybase</span> <span>ca. ' + base + ' m</span></div>' : '') +
                '<div class="why">' + (w.primaryReason || w.reason) + '</div>' +
              '</button>';
       });
