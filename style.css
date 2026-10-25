@@ -1776,8 +1776,13 @@ details.rules summary { font-size: 0.95rem; }
 
 /* ---------- Valgbare tidsvinduer ---------- */
 button.win { font: inherit; color: inherit; text-align: center; cursor: pointer; width: 100%;
-  border: 1px solid var(--line); transition: transform .12s, box-shadow .12s, border-color .12s; }
+  border: 1px solid var(--line); border-top: 4px solid var(--grey);
+  transition: transform .12s, box-shadow .12s, border-color .12s; }
+button.win.st-green  { border-top-color: var(--green); }
+button.win.st-yellow { border-top-color: var(--yellow); }
+button.win.st-red    { border-top-color: var(--red); }
 button.win:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(20, 25, 35, 0.08); }
-button.win.active { border-color: var(--strong); box-shadow: 0 0 0 1px var(--strong); }
+button.win.active { border-left-color: var(--strong); border-right-color: var(--strong); border-bottom-color: var(--strong);
+  box-shadow: 0 0 0 1px var(--strong); }
 button.win:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.win .cb { font-size: 0.72rem; margin-top: 2px; color: var(--muted); }
+.win .cb { font-size: var(--fs-s); margin-top: 4px; color: var(--muted); white-space: nowrap; }
