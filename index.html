@@ -586,7 +586,6 @@
           '<span class="pill st-' + day.status + '">' + STATUS_LABEL[day.status].toUpperCase() + '</span>' +
           (day.bestTime ? '<span class="best">Bedste flyvetid <b>' + day.bestTime + '</b></span>' : '') +
         '</div>' +
-        (siteLinks(site).length ? '<div class="links">' + siteLinks(site).join(' <span class="sep">·</span> ') + '</div>' : '') +
         '<button class="close" id="detail-close" type="button" aria-label="Luk">&times;</button>' +
       '</div>';
 
@@ -599,14 +598,27 @@
                '<span class="wc-time">' + w.range + '</span>' +
                '<span class="wc-wx">' + weatherIconHtml(w.weatherCode) +
                  '<span><b>' + num1(w.temperature) + '°</b><small>' + weatherText(w.weatherCode) + '</small></span></span>' +
-               '<span class="wc-wind"><b>' + num1(w.wind) + '</b> m/s</span>' +
-               '<span class="wc-dir">' + windArrow(w.degrees) + ' ' + w.direction + ' · stød ' + num1(w.gust) + '</span>' +
+               '<span class="wc-windrow">' +
+                 '<span class="wc-wind"><b>' + num1(w.wind) + '</b> m/s</span>' +
+                 '<span class="wc-dir">' + windArrow(w.degrees) + '<span class="wc-dl"> ' + w.direction + ' ·</span> stød <span class="wc-g1">' + num1(w.gust) + '</span><span class="wc-gu">' + Math.round(w.gust) + ' m/s</span></span>' +
+               '</span>' +
              '</button>';
       });
       h += '</div>';
     }
 
-    // 3. Pilotvurdering for det valgte vindue
+    // 3. Kompas for det valgte vindue
+    if (arcList(site.goodArcs).length) {
+      h += '<section class="dt-compass">' + compassSvg(site, sel.degrees) +
+             '<ul class="compass-txt">' +
+               '<li class="ct-head">Vindretning kl. ' + (sel.range || '') + '</li>' +
+               '<li><i class="sw sw-green"></i>' + arcText(site.goodArcs) + '</li>' +
+               (arcList(site.fairArcs).length ? '<li><i class="sw sw-yellow"></i>' + arcText(site.fairArcs) + '</li>' : '') +
+               '<li><i class="sw sw-red"></i>Resten</li>' +
+             '</ul></section>';
+    }
+
+    // 4. Pilotvurdering for det valgte vindue
     const factors = factorList(site, sel);
     h += '<section class="dt-pilot">' +
            '<div class="pv-head"><h3>Pilotvurdering kl. ' + (sel.range || '') + '</h3>' +
@@ -619,15 +631,9 @@
            '<p class="pv-note pv-why-' + sel.status + '">' + whyText(sel) + '</p>' +
          '</section>';
 
-    // 4. Kompas for det valgte vindue
-    if (arcList(site.goodArcs).length) {
-      h += '<section class="dt-compass">' + compassSvg(site, sel.degrees) +
-             '<ul class="compass-txt">' +
-               '<li class="ct-head">Vindretning kl. ' + (sel.range || '') + '</li>' +
-               '<li><i class="sw sw-green"></i>' + arcText(site.goodArcs) + '</li>' +
-               (arcList(site.fairArcs).length ? '<li><i class="sw sw-yellow"></i>' + arcText(site.fairArcs) + '</li>' : '') +
-               '<li><i class="sw sw-red"></i>Resten</li>' +
-             '</ul></section>';
+    // 5. Links nederst
+    if (siteLinks(site).length) {
+      h += '<div class="links dt-links">' + siteLinks(site).join(' <span class="sep">·</span> ') + '</div>';
     }
 
     el.innerHTML = h;

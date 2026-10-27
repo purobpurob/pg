@@ -1893,3 +1893,77 @@ button.win { min-width: 0; }
 .pv-why-yellow { background: var(--yellow-bg); color: var(--yellow-text); }
 .pv-why-red    { background: var(--red-bg);    color: var(--red-text); }
 .pv-why-grey   { background: var(--grey-bg);   color: var(--grey-text); }
+
+/* Vindlinje i tidskort. Desktop: som før (to linjer, uden m/s efter stød) */
+.wc-windrow { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.wc-gu { display: none; }
+
+/* =====================================================
+   iPhone (fx 15 Pro): Alt i popup'en uden scroll
+   ===================================================== */
+@media (max-width: 480px) {
+  .detail { padding: 12px 12px 14px; max-height: 94vh; max-height: 94dvh; }
+
+  /* Hoved */
+  .dt-head { gap: 4px 10px; padding-bottom: 8px; padding-right: 40px; }
+  .dt-title h2 { font-size: 1.1rem; }
+  .dt-title .date { font-size: var(--fs-s); }
+  .dt-day { gap: 8px; }
+  .dt-day .pill { padding: 3px 9px; font-size: 0.68rem; }
+  .dt-day .best { font-size: var(--fs-s); }
+  .dt-head .links, .dt-head .links a { font-size: var(--fs-s); }
+  .dt-head .close { width: 32px; height: 32px; }
+
+  /* Tidskort */
+  .dt-wins { margin-top: 10px; gap: 5px; }
+  .wcard { padding: 6px 3px 7px; gap: 3px; border-radius: 10px; border-top-width: 3px; }
+  .wc-time { font-size: 0.68rem; }
+  .wc-wx { flex-direction: row; gap: 4px; }
+  .wc-wx svg { width: 22px; height: 22px; }
+  .wc-wx > span { align-items: flex-start; text-align: left; }
+  .wc-wx b { font-size: 0.8rem; }
+  .wc-wx small { font-size: 0.64rem; }
+  .wc-windrow { flex-direction: row; align-items: baseline; justify-content: center; gap: 3px; white-space: nowrap; }
+  .wc-wind { font-size: 0.62rem; }
+  .wc-wind b { font-size: 0.95rem; }
+  .wc-dir { font-size: 0.62rem; }
+  .wc-dir .arrow { font-size: 0.7rem; }
+  .wc-dl { display: none; }
+  .wc-gu { display: inline; }
+
+  /* Kompas lige under tidskortene */
+  .dt-compass { margin-top: 8px; padding: 0; gap: 12px; }
+  .dt-compass svg { width: 62px; height: 62px; }
+  .dt-compass .compass-txt li { font-size: 0.7rem; }
+
+  /* Pilotvurdering */
+  .dt-pilot { margin-top: 8px; padding: 8px 10px; border-radius: 10px; }
+  .pv-head { margin-bottom: 0; }
+  .pv-head h3 { font-size: var(--fs-m); }
+  .pv-head .pill { padding: 2px 8px; font-size: 0.66rem; }
+  .pv-list li { grid-template-columns: 8px 74px 1fr auto; gap: 6px; padding: 4px 0; font-size: 0.78rem; }
+  .pv-list i { width: 8px; height: 8px; }
+  .pv-list .t { font-size: 0.68rem; }
+  .pv-note { margin-top: 6px; padding: 6px 8px; font-size: 0.7rem; }
+}
+@media (max-width: 480px) {
+  .detail { padding-left: 10px; padding-right: 10px; }
+  .dt-wins { gap: 4px; }
+  .wcard { padding-left: 2px; padding-right: 2px; }
+  .wc-windrow { gap: 2px; letter-spacing: -0.01em; }
+  .wc-wind b { font-size: 0.88rem; }
+  .wc-wind, .wc-dir { font-size: 0.6rem; }
+}
+@media (max-width: 480px) { .wc-g1 { display: none; } }
+
+/* Links: Desktop øverst til højre som før. Mobil nederst */
+.dt-links { grid-area: head; justify-self: end; align-self: center; margin: 0 0 14px; }
+@media (max-width: 1100px) and (min-width: 901px) { .dt-links { margin-bottom: 14px; } }
+@media (max-width: 900px) {
+  .dt-links { margin: 10px 0 0; text-align: center; }
+}
+@media (max-width: 480px) {
+  .dt-links { margin-top: 8px; }
+  .dt-links, .dt-links a { font-size: var(--fs-s); }
+}
+@media (max-width: 900px) { .detail .dt-links { justify-self: center; justify-content: center; width: 100%; } }
