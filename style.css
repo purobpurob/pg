@@ -1967,3 +1967,14 @@ button.win { min-width: 0; }
   .dt-links, .dt-links a { font-size: var(--fs-s); }
 }
 @media (max-width: 900px) { .detail .dt-links { justify-self: center; justify-content: center; width: 100%; } }
+
+/* Mobil: Status og bedste flyvetid op ved siden af navn og dato */
+@media (max-width: 900px) {
+  .dt-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 10px; row-gap: 2px; align-items: center; }
+  .dt-title, .dt-day { display: contents; }
+  .dt-title h2 { grid-column: 1; grid-row: 1; }
+  .dt-title .date { grid-column: 1; grid-row: 2; }
+  .dt-day .pill { grid-column: 2; grid-row: 1; justify-self: end; }
+  .dt-day .best { grid-column: 2; grid-row: 2; justify-self: end; white-space: nowrap; }
+}
+@media (max-width: 900px) { .detail .dt-head { padding-right: 52px; } .detail .dt-head .close { top: -2px; } }
