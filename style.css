@@ -2012,3 +2012,8 @@ button.win { min-width: 0; }
 }
 @media (max-width: 480px) { .wc-wind b { font-size: 0.94rem; } .wc-wind, .wc-dir { font-size: 0.62rem; } }
 @media (max-width: 480px) { .wc-windrow { letter-spacing: -0.02em; gap: 2px; } .wcard { padding-left: 1px; padding-right: 1px; } }
+
+/* Mobil: Dagens status og bedste flyvetid vises ikke i popup'en */
+@media (max-width: 900px) { .detail .dt-day { display: none; } }
+@media (max-width: 480px) { .wc-wind b, .wc-gu b { font-size: 0.9rem; font-weight: 700; color: var(--strong); } }
+@media (max-width: 480px) { .wc-wind b, .wc-gu b { font-size: 0.87rem; } }
