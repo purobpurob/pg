@@ -1978,3 +1978,37 @@ button.win { min-width: 0; }
   .dt-day .best { grid-column: 2; grid-row: 2; justify-self: end; white-space: nowrap; }
 }
 @media (max-width: 900px) { .detail .dt-head { padding-right: 52px; } .detail .dt-head .close { top: -2px; } }
+
+/* iPhone: Lidt større skrift så pladsen bruges */
+@media (max-width: 480px) {
+  .dt-title h2 { font-size: 1.2rem; }
+  .dt-title .date, .dt-day .best { font-size: 0.8rem; }
+  .dt-day .pill { font-size: 0.72rem; padding: 4px 10px; }
+
+  .dt-wins { margin-top: 12px; }
+  .wcard { padding-top: 8px; padding-bottom: 9px; gap: 5px; }
+  .wc-time { font-size: 0.75rem; }
+  .wc-wx svg { width: 26px; height: 26px; }
+  .wc-wx b { font-size: 0.9rem; }
+  .wc-wx small { font-size: 0.7rem; }
+  .wc-wind b { font-size: 1rem; }
+  .wc-wind, .wc-dir { font-size: 0.64rem; }
+
+  .dt-compass { margin-top: 10px; }
+  .dt-compass svg { width: 72px; height: 72px; }
+  .dt-compass .compass-txt li { font-size: 0.78rem; }
+
+  .dt-pilot { margin-top: 10px; padding: 10px 12px; }
+  .pv-head { margin-bottom: 2px; }
+  .pv-head h3 { font-size: 0.95rem; }
+  .pv-head .pill { font-size: 0.72rem; padding: 3px 9px; }
+  .pv-list li { grid-template-columns: 9px 84px 1fr auto; padding: 6px 0; font-size: 0.88rem; }
+  .pv-list i { width: 9px; height: 9px; }
+  .pv-list .t { font-size: 0.76rem; }
+  .pv-note { margin-top: 8px; padding: 7px 9px; font-size: 0.78rem; }
+
+  .dt-links { margin-top: 10px; }
+  .dt-links, .dt-links a { font-size: 0.85rem; }
+}
+@media (max-width: 480px) { .wc-wind b { font-size: 0.94rem; } .wc-wind, .wc-dir { font-size: 0.62rem; } }
+@media (max-width: 480px) { .wc-windrow { letter-spacing: -0.02em; gap: 2px; } .wcard { padding-left: 1px; padding-right: 1px; } }
