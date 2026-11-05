@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-11-05T10:00:04",
+    "updated":  "2026-11-05T10:30:02",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -879,7 +879,7 @@
                                        "cloudBase":  0,
                                        "direction":  "V",
                                        "degrees":  270,
-                                       "weatherCode":  3,
+                                       "weatherCode":  2,
                                        "reason":  "Marginal vind (3-4 m/s)",
                                        "primaryReason":  "Marginal vind (3-4 m/s)",
                                        "secondaryReasons":  [
@@ -899,7 +899,7 @@
                                                            "cloudBase":  0,
                                                            "direction":  "V",
                                                            "degrees":  270,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  2,
                                                            "reason":  "Marginal vind (3-4 m/s)",
                                                            "primaryReason":  "Marginal vind (3-4 m/s)",
                                                            "secondaryReasons":  [
