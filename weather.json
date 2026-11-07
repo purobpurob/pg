@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-11-07T23:30:02",
+    "updated":  "2026-11-08T00:00:02",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -31,91 +31,13 @@
                                    ],
                       "days":  [
                                    {
-                                       "date":  "2026-11-07",
-                                       "status":  "yellow",
-                                       "wind":  2.6,
-                                       "gust":  4.1,
-                                       "precipitation":  0,
-                                       "temperature":  9.2,
-                                       "dewPoint":  3.3,
-                                       "cloudBase":  700,
-                                       "direction":  "S",
-                                       "degrees":  173,
-                                       "weatherCode":  3,
-                                       "reason":  "Vindretningen er marginal (S)",
-                                       "primaryReason":  "Vindretningen er marginal (S)",
-                                       "secondaryReasons":  [
-
-                                                            ],
-                                       "bestTime":  "13-16",
-                                       "windows":  [
-                                                       {
-                                                           "label":  "Formiddag",
-                                                           "range":  "09-13",
-                                                           "status":  "red",
-                                                           "wind":  2.5,
-                                                           "gust":  3.9,
-                                                           "precipitation":  0,
-                                                           "temperature":  8.4,
-                                                           "dewPoint":  5.4,
-                                                           "cloudBase":  150,
-                                                           "direction":  "Ø",
-                                                           "degrees":  77,
-                                                           "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (Ø)",
-                                                           "primaryReason":  "Forkert vindretning (Ø)",
-                                                           "secondaryReasons":  [
-
-                                                                                ]
-                                                       },
-                                                       {
-                                                           "label":  "Eftermiddag",
-                                                           "range":  "13-16",
-                                                           "status":  "yellow",
-                                                           "wind":  2.6,
-                                                           "gust":  4.1,
-                                                           "precipitation":  0,
-                                                           "temperature":  9.2,
-                                                           "dewPoint":  3.3,
-                                                           "cloudBase":  700,
-                                                           "direction":  "S",
-                                                           "degrees":  173,
-                                                           "weatherCode":  3,
-                                                           "reason":  "Vindretningen er marginal (S)",
-                                                           "primaryReason":  "Vindretningen er marginal (S)",
-                                                           "secondaryReasons":  [
-
-                                                                                ]
-                                                       },
-                                                       {
-                                                           "label":  "Sen eftermiddag",
-                                                           "range":  "16-19",
-                                                           "status":  "red",
-                                                           "wind":  2.3,
-                                                           "gust":  3.5,
-                                                           "precipitation":  0,
-                                                           "temperature":  7.1,
-                                                           "dewPoint":  2.6,
-                                                           "cloudBase":  300,
-                                                           "direction":  "SØ",
-                                                           "degrees":  143,
-                                                           "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (SØ)",
-                                                           "primaryReason":  "Forkert vindretning (SØ)",
-                                                           "secondaryReasons":  [
-
-                                                                                ]
-                                                       }
-                                                   ]
-                                   },
-                                   {
                                        "date":  "2026-11-08",
                                        "status":  "red",
                                        "wind":  4.5,
                                        "gust":  7,
                                        "precipitation":  0,
-                                       "temperature":  7.2,
-                                       "dewPoint":  3.4,
+                                       "temperature":  7.1,
+                                       "dewPoint":  3.3,
                                        "cloudBase":  450,
                                        "direction":  "S",
                                        "degrees":  165,
@@ -134,8 +56,8 @@
                                                            "wind":  4.5,
                                                            "gust":  7,
                                                            "precipitation":  0,
-                                                           "temperature":  7.2,
-                                                           "dewPoint":  3.4,
+                                                           "temperature":  7.1,
+                                                           "dewPoint":  3.3,
                                                            "cloudBase":  450,
                                                            "direction":  "S",
                                                            "degrees":  165,
@@ -419,6 +341,86 @@
                                                                                 ]
                                                        }
                                                    ]
+                                   },
+                                   {
+                                       "date":  "2026-11-12",
+                                       "status":  "yellow",
+                                       "wind":  5.5,
+                                       "gust":  10.6,
+                                       "precipitation":  0,
+                                       "temperature":  6.4,
+                                       "dewPoint":  3.1,
+                                       "cloudBase":  250,
+                                       "direction":  "V",
+                                       "degrees":  278,
+                                       "weatherCode":  3,
+                                       "reason":  "Vindretningen er marginal (V)",
+                                       "primaryReason":  "Vindretningen er marginal (V)",
+                                       "secondaryReasons":  [
+
+                                                            ],
+                                       "bestTime":  "09-16",
+                                       "windows":  [
+                                                       {
+                                                           "label":  "Formiddag",
+                                                           "range":  "09-13",
+                                                           "status":  "yellow",
+                                                           "wind":  5.5,
+                                                           "gust":  10.6,
+                                                           "precipitation":  0,
+                                                           "temperature":  6.4,
+                                                           "dewPoint":  3.1,
+                                                           "cloudBase":  250,
+                                                           "direction":  "V",
+                                                           "degrees":  278,
+                                                           "weatherCode":  3,
+                                                           "reason":  "Vindretningen er marginal (V)",
+                                                           "primaryReason":  "Vindretningen er marginal (V)",
+                                                           "secondaryReasons":  [
+
+                                                                                ]
+                                                       },
+                                                       {
+                                                           "label":  "Eftermiddag",
+                                                           "range":  "13-16",
+                                                           "status":  "yellow",
+                                                           "wind":  7,
+                                                           "gust":  12.5,
+                                                           "precipitation":  0,
+                                                           "temperature":  7.3,
+                                                           "dewPoint":  0.6,
+                                                           "cloudBase":  800,
+                                                           "direction":  "V",
+                                                           "degrees":  266,
+                                                           "weatherCode":  0,
+                                                           "reason":  "Vindretningen er marginal (V), Krævende vind (7-8 m/s), Kraftigere vindstød",
+                                                           "primaryReason":  "Vindretningen er marginal (V)",
+                                                           "secondaryReasons":  [
+                                                                                    "Krævende vind (7-8 m/s)",
+                                                                                    "Kraftigere vindstød"
+                                                                                ]
+                                                       },
+                                                       {
+                                                           "label":  "Sen eftermiddag",
+                                                           "range":  "16-19",
+                                                           "status":  "red",
+                                                           "wind":  7.3,
+                                                           "gust":  14.1,
+                                                           "precipitation":  0,
+                                                           "temperature":  5,
+                                                           "dewPoint":  0.8,
+                                                           "cloudBase":  250,
+                                                           "direction":  "V",
+                                                           "degrees":  277,
+                                                           "weatherCode":  0,
+                                                           "reason":  "For kraftige vindstød, Vindretningen er marginal (V), Krævende vind (7-8 m/s)",
+                                                           "primaryReason":  "For kraftige vindstød",
+                                                           "secondaryReasons":  [
+                                                                                    "Vindretningen er marginal (V)",
+                                                                                    "Krævende vind (7-8 m/s)"
+                                                                                ]
+                                                       }
+                                                   ]
                                    }
                                ]
                   },
@@ -449,84 +451,6 @@
                                        }
                                    ],
                       "days":  [
-                                   {
-                                       "date":  "2026-11-07",
-                                       "status":  "red",
-                                       "wind":  1.7,
-                                       "gust":  3.5,
-                                       "precipitation":  0,
-                                       "temperature":  5,
-                                       "dewPoint":  2.2,
-                                       "cloudBase":  200,
-                                       "direction":  "SØ",
-                                       "degrees":  132,
-                                       "weatherCode":  2,
-                                       "reason":  "Forkert vindretning (SØ)",
-                                       "primaryReason":  "Forkert vindretning (SØ)",
-                                       "secondaryReasons":  [
-
-                                                            ],
-                                       "bestTime":  "",
-                                       "windows":  [
-                                                       {
-                                                           "label":  "Formiddag",
-                                                           "range":  "09-13",
-                                                           "status":  "red",
-                                                           "wind":  1.7,
-                                                           "gust":  3.5,
-                                                           "precipitation":  0,
-                                                           "temperature":  5,
-                                                           "dewPoint":  2.2,
-                                                           "cloudBase":  200,
-                                                           "direction":  "SØ",
-                                                           "degrees":  132,
-                                                           "weatherCode":  2,
-                                                           "reason":  "Forkert vindretning (SØ)",
-                                                           "primaryReason":  "Forkert vindretning (SØ)",
-                                                           "secondaryReasons":  [
-
-                                                                                ]
-                                                       },
-                                                       {
-                                                           "label":  "Eftermiddag",
-                                                           "range":  "13-16",
-                                                           "status":  "red",
-                                                           "wind":  2.9,
-                                                           "gust":  5.1,
-                                                           "precipitation":  0,
-                                                           "temperature":  8.6,
-                                                           "dewPoint":  3.9,
-                                                           "cloudBase":  500,
-                                                           "direction":  "Ø",
-                                                           "degrees":  101,
-                                                           "weatherCode":  2,
-                                                           "reason":  "Forkert vindretning (Ø)",
-                                                           "primaryReason":  "Forkert vindretning (Ø)",
-                                                           "secondaryReasons":  [
-
-                                                                                ]
-                                                       },
-                                                       {
-                                                           "label":  "Sen eftermiddag",
-                                                           "range":  "16-19",
-                                                           "status":  "red",
-                                                           "wind":  3,
-                                                           "gust":  5.4,
-                                                           "precipitation":  0,
-                                                           "temperature":  5.7,
-                                                           "dewPoint":  3.1,
-                                                           "cloudBase":  250,
-                                                           "direction":  "Ø",
-                                                           "degrees":  88,
-                                                           "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (Ø), Marginal vind (3-4 m/s)",
-                                                           "primaryReason":  "Forkert vindretning (Ø)",
-                                                           "secondaryReasons":  [
-                                                                                    "Marginal vind (3-4 m/s)"
-                                                                                ]
-                                                       }
-                                                   ]
-                                   },
                                    {
                                        "date":  "2026-11-08",
                                        "status":  "red",
@@ -591,7 +515,7 @@
                                                            "wind":  2.5,
                                                            "gust":  4,
                                                            "precipitation":  0,
-                                                           "temperature":  5.5,
+                                                           "temperature":  5.6,
                                                            "dewPoint":  3.6,
                                                            "cloudBase":  100,
                                                            "direction":  "SØ",
@@ -613,7 +537,7 @@
                                        "precipitation":  0,
                                        "temperature":  6.4,
                                        "dewPoint":  5.1,
-                                       "cloudBase":  50,
+                                       "cloudBase":  100,
                                        "direction":  "S",
                                        "degrees":  170,
                                        "weatherCode":  3,
@@ -633,7 +557,7 @@
                                                            "precipitation":  0,
                                                            "temperature":  6.4,
                                                            "dewPoint":  5.1,
-                                                           "cloudBase":  50,
+                                                           "cloudBase":  100,
                                                            "direction":  "S",
                                                            "degrees":  170,
                                                            "weatherCode":  3,
@@ -838,6 +762,88 @@
                                                                                 ]
                                                        }
                                                    ]
+                                   },
+                                   {
+                                       "date":  "2026-11-12",
+                                       "status":  "red",
+                                       "wind":  6.7,
+                                       "gust":  12.5,
+                                       "precipitation":  0.6,
+                                       "temperature":  6.2,
+                                       "dewPoint":  1.4,
+                                       "cloudBase":  450,
+                                       "direction":  "V",
+                                       "degrees":  269,
+                                       "weatherCode":  85,
+                                       "reason":  "Forkert vindretning (V), Kraftigere vindstød, Nedbør i perioder",
+                                       "primaryReason":  "Forkert vindretning (V)",
+                                       "secondaryReasons":  [
+                                                                "Kraftigere vindstød",
+                                                                "Nedbør i perioder"
+                                                            ],
+                                       "bestTime":  "",
+                                       "windows":  [
+                                                       {
+                                                           "label":  "Formiddag",
+                                                           "range":  "09-13",
+                                                           "status":  "red",
+                                                           "wind":  6.7,
+                                                           "gust":  12.5,
+                                                           "precipitation":  0.6,
+                                                           "temperature":  6.2,
+                                                           "dewPoint":  1.4,
+                                                           "cloudBase":  450,
+                                                           "direction":  "V",
+                                                           "degrees":  269,
+                                                           "weatherCode":  85,
+                                                           "reason":  "Forkert vindretning (V), Kraftigere vindstød, Nedbør i perioder",
+                                                           "primaryReason":  "Forkert vindretning (V)",
+                                                           "secondaryReasons":  [
+                                                                                    "Kraftigere vindstød",
+                                                                                    "Nedbør i perioder"
+                                                                                ]
+                                                       },
+                                                       {
+                                                           "label":  "Eftermiddag",
+                                                           "range":  "13-16",
+                                                           "status":  "red",
+                                                           "wind":  6.9,
+                                                           "gust":  14.4,
+                                                           "precipitation":  0.6,
+                                                           "temperature":  4.9,
+                                                           "dewPoint":  2.8,
+                                                           "cloudBase":  250,
+                                                           "direction":  "V",
+                                                           "degrees":  276,
+                                                           "weatherCode":  85,
+                                                           "reason":  "For kraftige vindstød, Vindretningen er marginal (V), Nedbør i perioder",
+                                                           "primaryReason":  "For kraftige vindstød",
+                                                           "secondaryReasons":  [
+                                                                                    "Vindretningen er marginal (V)",
+                                                                                    "Nedbør i perioder"
+                                                                                ]
+                                                       },
+                                                       {
+                                                           "label":  "Sen eftermiddag",
+                                                           "range":  "16-19",
+                                                           "status":  "red",
+                                                           "wind":  8,
+                                                           "gust":  15,
+                                                           "precipitation":  0.4,
+                                                           "temperature":  5.3,
+                                                           "dewPoint":  0.8,
+                                                           "cloudBase":  300,
+                                                           "direction":  "NV",
+                                                           "degrees":  308,
+                                                           "weatherCode":  51,
+                                                           "reason":  "For kraftig vind, For kraftige vindstød, Nedbør i perioder",
+                                                           "primaryReason":  "For kraftig vind",
+                                                           "secondaryReasons":  [
+                                                                                    "For kraftige vindstød",
+                                                                                    "Nedbør i perioder"
+                                                                                ]
+                                                       }
+                                                   ]
                                    }
                                ]
                   },
@@ -869,92 +875,14 @@
                                    ],
                       "days":  [
                                    {
-                                       "date":  "2026-11-07",
-                                       "status":  "red",
-                                       "wind":  2.8,
-                                       "gust":  4.7,
-                                       "precipitation":  0,
-                                       "temperature":  5.2,
-                                       "dewPoint":  3.1,
-                                       "cloudBase":  100,
-                                       "direction":  "SØ",
-                                       "degrees":  117,
-                                       "weatherCode":  1,
-                                       "reason":  "Forkert vindretning (SØ)",
-                                       "primaryReason":  "Forkert vindretning (SØ)",
-                                       "secondaryReasons":  [
-
-                                                            ],
-                                       "bestTime":  "",
-                                       "windows":  [
-                                                       {
-                                                           "label":  "Formiddag",
-                                                           "range":  "09-13",
-                                                           "status":  "red",
-                                                           "wind":  2.8,
-                                                           "gust":  4.7,
-                                                           "precipitation":  0,
-                                                           "temperature":  5.2,
-                                                           "dewPoint":  3.1,
-                                                           "cloudBase":  100,
-                                                           "direction":  "SØ",
-                                                           "degrees":  117,
-                                                           "weatherCode":  1,
-                                                           "reason":  "Forkert vindretning (SØ)",
-                                                           "primaryReason":  "Forkert vindretning (SØ)",
-                                                           "secondaryReasons":  [
-
-                                                                                ]
-                                                       },
-                                                       {
-                                                           "label":  "Eftermiddag",
-                                                           "range":  "13-16",
-                                                           "status":  "red",
-                                                           "wind":  4.2,
-                                                           "gust":  6.5,
-                                                           "precipitation":  0,
-                                                           "temperature":  8.8,
-                                                           "dewPoint":  3.9,
-                                                           "cloudBase":  600,
-                                                           "direction":  "SØ",
-                                                           "degrees":  126,
-                                                           "weatherCode":  2,
-                                                           "reason":  "Forkert vindretning (SØ)",
-                                                           "primaryReason":  "Forkert vindretning (SØ)",
-                                                           "secondaryReasons":  [
-
-                                                                                ]
-                                                       },
-                                                       {
-                                                           "label":  "Sen eftermiddag",
-                                                           "range":  "16-19",
-                                                           "status":  "red",
-                                                           "wind":  2.9,
-                                                           "gust":  5.5,
-                                                           "precipitation":  0,
-                                                           "temperature":  5.6,
-                                                           "dewPoint":  3.2,
-                                                           "cloudBase":  250,
-                                                           "direction":  "Ø",
-                                                           "degrees":  101,
-                                                           "weatherCode":  2,
-                                                           "reason":  "Forkert vindretning (Ø)",
-                                                           "primaryReason":  "Forkert vindretning (Ø)",
-                                                           "secondaryReasons":  [
-
-                                                                                ]
-                                                       }
-                                                   ]
-                                   },
-                                   {
                                        "date":  "2026-11-08",
                                        "status":  "red",
                                        "wind":  3.3,
                                        "gust":  5.6,
                                        "precipitation":  0,
-                                       "temperature":  5.8,
-                                       "dewPoint":  3,
-                                       "cloudBase":  300,
+                                       "temperature":  6,
+                                       "dewPoint":  3.1,
+                                       "cloudBase":  250,
                                        "direction":  "S",
                                        "degrees":  173,
                                        "weatherCode":  3,
@@ -972,9 +900,9 @@
                                                            "wind":  3.3,
                                                            "gust":  5.6,
                                                            "precipitation":  0,
-                                                           "temperature":  5.8,
-                                                           "dewPoint":  3,
-                                                           "cloudBase":  300,
+                                                           "temperature":  6,
+                                                           "dewPoint":  3.1,
+                                                           "cloudBase":  250,
                                                            "direction":  "S",
                                                            "degrees":  173,
                                                            "weatherCode":  3,
@@ -991,8 +919,8 @@
                                                            "wind":  3.4,
                                                            "gust":  5.6,
                                                            "precipitation":  0,
-                                                           "temperature":  6.6,
-                                                           "dewPoint":  2.9,
+                                                           "temperature":  6.7,
+                                                           "dewPoint":  3,
                                                            "cloudBase":  450,
                                                            "direction":  "SØ",
                                                            "degrees":  135,
@@ -1011,8 +939,8 @@
                                                            "gust":  4.6,
                                                            "precipitation":  0,
                                                            "temperature":  5.6,
-                                                           "dewPoint":  3.2,
-                                                           "cloudBase":  250,
+                                                           "dewPoint":  3.3,
+                                                           "cloudBase":  200,
                                                            "direction":  "SØ",
                                                            "degrees":  140,
                                                            "weatherCode":  3,
@@ -1031,7 +959,7 @@
                                        "gust":  4.4,
                                        "precipitation":  0,
                                        "temperature":  6.4,
-                                       "dewPoint":  4.4,
+                                       "dewPoint":  4.5,
                                        "cloudBase":  200,
                                        "direction":  "S",
                                        "degrees":  181,
@@ -1051,7 +979,7 @@
                                                            "gust":  4.4,
                                                            "precipitation":  0,
                                                            "temperature":  6.4,
-                                                           "dewPoint":  4.4,
+                                                           "dewPoint":  4.5,
                                                            "cloudBase":  200,
                                                            "direction":  "S",
                                                            "degrees":  181,
@@ -1069,8 +997,8 @@
                                                            "wind":  2.5,
                                                            "gust":  4.3,
                                                            "precipitation":  0,
-                                                           "temperature":  7,
-                                                           "dewPoint":  4.3,
+                                                           "temperature":  7.1,
+                                                           "dewPoint":  4.4,
                                                            "cloudBase":  300,
                                                            "direction":  "SØ",
                                                            "degrees":  150,
@@ -1088,8 +1016,8 @@
                                                            "wind":  2.6,
                                                            "gust":  4,
                                                            "precipitation":  0,
-                                                           "temperature":  5.3,
-                                                           "dewPoint":  3.3,
+                                                           "temperature":  5.4,
+                                                           "dewPoint":  3.4,
                                                            "cloudBase":  150,
                                                            "direction":  "SØ",
                                                            "degrees":  142,
@@ -1257,6 +1185,85 @@
                                                                                 ]
                                                        }
                                                    ]
+                                   },
+                                   {
+                                       "date":  "2026-11-12",
+                                       "status":  "green",
+                                       "wind":  6.2,
+                                       "gust":  10.8,
+                                       "precipitation":  0,
+                                       "temperature":  5.7,
+                                       "dewPoint":  2.8,
+                                       "cloudBase":  150,
+                                       "direction":  "V",
+                                       "degrees":  261,
+                                       "weatherCode":  1,
+                                       "reason":  "Gode vindforhold",
+                                       "primaryReason":  "Gode forhold for den valgte lokation",
+                                       "secondaryReasons":  [
+
+                                                            ],
+                                       "bestTime":  "09-13",
+                                       "windows":  [
+                                                       {
+                                                           "label":  "Formiddag",
+                                                           "range":  "09-13",
+                                                           "status":  "green",
+                                                           "wind":  6.2,
+                                                           "gust":  10.8,
+                                                           "precipitation":  0,
+                                                           "temperature":  5.7,
+                                                           "dewPoint":  2.8,
+                                                           "cloudBase":  150,
+                                                           "direction":  "V",
+                                                           "degrees":  261,
+                                                           "weatherCode":  1,
+                                                           "reason":  "Gode vindforhold",
+                                                           "primaryReason":  "Gode forhold for den valgte lokation",
+                                                           "secondaryReasons":  [
+
+                                                                                ]
+                                                       },
+                                                       {
+                                                           "label":  "Eftermiddag",
+                                                           "range":  "13-16",
+                                                           "status":  "red",
+                                                           "wind":  7,
+                                                           "gust":  14.3,
+                                                           "precipitation":  0.2,
+                                                           "temperature":  6.3,
+                                                           "dewPoint":  1,
+                                                           "cloudBase":  550,
+                                                           "direction":  "V",
+                                                           "degrees":  269,
+                                                           "weatherCode":  51,
+                                                           "reason":  "For kraftige vindstød, Nedbør i perioder",
+                                                           "primaryReason":  "For kraftige vindstød",
+                                                           "secondaryReasons":  [
+                                                                                    "Nedbør i perioder"
+                                                                                ]
+                                                       },
+                                                       {
+                                                           "label":  "Sen eftermiddag",
+                                                           "range":  "16-19",
+                                                           "status":  "red",
+                                                           "wind":  7.2,
+                                                           "gust":  14.6,
+                                                           "precipitation":  0.2,
+                                                           "temperature":  4.6,
+                                                           "dewPoint":  0.5,
+                                                           "cloudBase":  450,
+                                                           "direction":  "NV",
+                                                           "degrees":  296,
+                                                           "weatherCode":  51,
+                                                           "reason":  "For kraftige vindstød, Krævende vind (7-8 m/s), Nedbør i perioder",
+                                                           "primaryReason":  "For kraftige vindstød",
+                                                           "secondaryReasons":  [
+                                                                                    "Krævende vind (7-8 m/s)",
+                                                                                    "Nedbør i perioder"
+                                                                                ]
+                                                       }
+                                                   ]
                                    }
                                ]
                   },
@@ -1288,91 +1295,13 @@
                                    ],
                       "days":  [
                                    {
-                                       "date":  "2026-11-07",
-                                       "status":  "red",
-                                       "wind":  1.5,
-                                       "gust":  3.2,
-                                       "precipitation":  0,
-                                       "temperature":  5.4,
-                                       "dewPoint":  2.2,
-                                       "cloudBase":  150,
-                                       "direction":  "SØ",
-                                       "degrees":  148,
-                                       "weatherCode":  2,
-                                       "reason":  "Forkert vindretning (SØ)",
-                                       "primaryReason":  "Forkert vindretning (SØ)",
-                                       "secondaryReasons":  [
-
-                                                            ],
-                                       "bestTime":  "",
-                                       "windows":  [
-                                                       {
-                                                           "label":  "Formiddag",
-                                                           "range":  "09-13",
-                                                           "status":  "red",
-                                                           "wind":  1.5,
-                                                           "gust":  3.2,
-                                                           "precipitation":  0,
-                                                           "temperature":  5.4,
-                                                           "dewPoint":  2.2,
-                                                           "cloudBase":  150,
-                                                           "direction":  "SØ",
-                                                           "degrees":  148,
-                                                           "weatherCode":  2,
-                                                           "reason":  "Forkert vindretning (SØ)",
-                                                           "primaryReason":  "Forkert vindretning (SØ)",
-                                                           "secondaryReasons":  [
-
-                                                                                ]
-                                                       },
-                                                       {
-                                                           "label":  "Eftermiddag",
-                                                           "range":  "13-16",
-                                                           "status":  "red",
-                                                           "wind":  3.1,
-                                                           "gust":  5.5,
-                                                           "precipitation":  0,
-                                                           "temperature":  8.2,
-                                                           "dewPoint":  4,
-                                                           "cloudBase":  400,
-                                                           "direction":  "Ø",
-                                                           "degrees":  94,
-                                                           "weatherCode":  2,
-                                                           "reason":  "Forkert vindretning (Ø), Marginal vind (3-4 m/s)",
-                                                           "primaryReason":  "Forkert vindretning (Ø)",
-                                                           "secondaryReasons":  [
-                                                                                    "Marginal vind (3-4 m/s)"
-                                                                                ]
-                                                       },
-                                                       {
-                                                           "label":  "Sen eftermiddag",
-                                                           "range":  "16-19",
-                                                           "status":  "red",
-                                                           "wind":  3.3,
-                                                           "gust":  5.3,
-                                                           "precipitation":  0,
-                                                           "temperature":  5.9,
-                                                           "dewPoint":  2.6,
-                                                           "cloudBase":  350,
-                                                           "direction":  "Ø",
-                                                           "degrees":  101,
-                                                           "weatherCode":  3,
-                                                           "reason":  "Forkert vindretning (Ø), Marginal vind (3-4 m/s)",
-                                                           "primaryReason":  "Forkert vindretning (Ø)",
-                                                           "secondaryReasons":  [
-                                                                                    "Marginal vind (3-4 m/s)"
-                                                                                ]
-                                                       }
-                                                   ]
-                                   },
-                                   {
                                        "date":  "2026-11-08",
                                        "status":  "red",
                                        "wind":  3.4,
                                        "gust":  5.9,
                                        "precipitation":  0,
-                                       "temperature":  5.8,
-                                       "dewPoint":  3.6,
+                                       "temperature":  5.9,
+                                       "dewPoint":  3.7,
                                        "cloudBase":  200,
                                        "direction":  "SØ",
                                        "degrees":  124,
@@ -1391,8 +1320,8 @@
                                                            "wind":  3.4,
                                                            "gust":  5.9,
                                                            "precipitation":  0,
-                                                           "temperature":  5.8,
-                                                           "dewPoint":  3.6,
+                                                           "temperature":  5.9,
+                                                           "dewPoint":  3.7,
                                                            "cloudBase":  200,
                                                            "direction":  "SØ",
                                                            "degrees":  124,
@@ -1429,8 +1358,8 @@
                                                            "wind":  2.4,
                                                            "gust":  3.6,
                                                            "precipitation":  0,
-                                                           "temperature":  5.3,
-                                                           "dewPoint":  3.5,
+                                                           "temperature":  5.5,
+                                                           "dewPoint":  3.6,
                                                            "cloudBase":  150,
                                                            "direction":  "Ø",
                                                            "degrees":  108,
@@ -1449,8 +1378,8 @@
                                        "wind":  1.8,
                                        "gust":  3,
                                        "precipitation":  0,
-                                       "temperature":  6,
-                                       "dewPoint":  5.2,
+                                       "temperature":  6.2,
+                                       "dewPoint":  5.4,
                                        "cloudBase":  50,
                                        "direction":  "S",
                                        "degrees":  164,
@@ -1469,8 +1398,8 @@
                                                            "wind":  1.8,
                                                            "gust":  3,
                                                            "precipitation":  0,
-                                                           "temperature":  6,
-                                                           "dewPoint":  5.2,
+                                                           "temperature":  6.2,
+                                                           "dewPoint":  5.4,
                                                            "cloudBase":  50,
                                                            "direction":  "S",
                                                            "degrees":  164,
@@ -1507,8 +1436,8 @@
                                                            "wind":  1.8,
                                                            "gust":  3,
                                                            "precipitation":  0,
-                                                           "temperature":  5.3,
-                                                           "dewPoint":  4.6,
+                                                           "temperature":  5.4,
+                                                           "dewPoint":  4.7,
                                                            "cloudBase":  50,
                                                            "direction":  "SØ",
                                                            "degrees":  142,
@@ -1673,6 +1602,89 @@
                                                            "primaryReason":  "Forkert vindretning (S)",
                                                            "secondaryReasons":  [
                                                                                     "Marginal vind (3-4 m/s)"
+                                                                                ]
+                                                       }
+                                                   ]
+                                   },
+                                   {
+                                       "date":  "2026-11-12",
+                                       "status":  "red",
+                                       "wind":  6.7,
+                                       "gust":  12.5,
+                                       "precipitation":  0.6,
+                                       "temperature":  6.3,
+                                       "dewPoint":  1.5,
+                                       "cloudBase":  450,
+                                       "direction":  "V",
+                                       "degrees":  269,
+                                       "weatherCode":  85,
+                                       "reason":  "Forkert vindretning (V), Kraftigere vindstød, Nedbør i perioder",
+                                       "primaryReason":  "Forkert vindretning (V)",
+                                       "secondaryReasons":  [
+                                                                "Kraftigere vindstød",
+                                                                "Nedbør i perioder"
+                                                            ],
+                                       "bestTime":  "",
+                                       "windows":  [
+                                                       {
+                                                           "label":  "Formiddag",
+                                                           "range":  "09-13",
+                                                           "status":  "red",
+                                                           "wind":  6.7,
+                                                           "gust":  12.5,
+                                                           "precipitation":  0.6,
+                                                           "temperature":  6.3,
+                                                           "dewPoint":  1.5,
+                                                           "cloudBase":  450,
+                                                           "direction":  "V",
+                                                           "degrees":  269,
+                                                           "weatherCode":  85,
+                                                           "reason":  "Forkert vindretning (V), Kraftigere vindstød, Nedbør i perioder",
+                                                           "primaryReason":  "Forkert vindretning (V)",
+                                                           "secondaryReasons":  [
+                                                                                    "Kraftigere vindstød",
+                                                                                    "Nedbør i perioder"
+                                                                                ]
+                                                       },
+                                                       {
+                                                           "label":  "Eftermiddag",
+                                                           "range":  "13-16",
+                                                           "status":  "red",
+                                                           "wind":  6.9,
+                                                           "gust":  14.4,
+                                                           "precipitation":  0.6,
+                                                           "temperature":  5,
+                                                           "dewPoint":  2.9,
+                                                           "cloudBase":  250,
+                                                           "direction":  "V",
+                                                           "degrees":  276,
+                                                           "weatherCode":  85,
+                                                           "reason":  "Forkert vindretning (V), For kraftige vindstød, Nedbør i perioder",
+                                                           "primaryReason":  "Forkert vindretning (V)",
+                                                           "secondaryReasons":  [
+                                                                                    "For kraftige vindstød",
+                                                                                    "Nedbør i perioder"
+                                                                                ]
+                                                       },
+                                                       {
+                                                           "label":  "Sen eftermiddag",
+                                                           "range":  "16-19",
+                                                           "status":  "red",
+                                                           "wind":  8,
+                                                           "gust":  15,
+                                                           "precipitation":  0.4,
+                                                           "temperature":  5.4,
+                                                           "dewPoint":  0.9,
+                                                           "cloudBase":  300,
+                                                           "direction":  "NV",
+                                                           "degrees":  308,
+                                                           "weatherCode":  51,
+                                                           "reason":  "Forkert vindretning (NV), For kraftig vind, For kraftige vindstød, Nedbør i perioder",
+                                                           "primaryReason":  "Forkert vindretning (NV)",
+                                                           "secondaryReasons":  [
+                                                                                    "For kraftig vind",
+                                                                                    "For kraftige vindstød",
+                                                                                    "Nedbør i perioder"
                                                                                 ]
                                                        }
                                                    ]
