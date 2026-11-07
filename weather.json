@@ -1,5 +1,5 @@
 {
-    "updated":  "2026-11-07T01:00:03",
+    "updated":  "2026-11-07T01:30:02",
     "flyingHours":  "09:00-19:00",
     "forecastDays":  5,
     "sites":  [
@@ -411,7 +411,7 @@
                                                            "cloudBase":  250,
                                                            "direction":  "SV",
                                                            "degrees":  218,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  2,
                                                            "reason":  "Gode vindforhold",
                                                            "primaryReason":  "Gode forhold for den valgte lokation",
                                                            "secondaryReasons":  [
@@ -753,7 +753,7 @@
                                                            "cloudBase":  350,
                                                            "direction":  "NV",
                                                            "degrees":  329,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  2,
                                                            "reason":  "For lidt vind",
                                                            "primaryReason":  "For lidt vind",
                                                            "secondaryReasons":  [
@@ -831,7 +831,7 @@
                                                            "cloudBase":  150,
                                                            "direction":  "S",
                                                            "degrees":  192,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  2,
                                                            "reason":  "Forkert vindretning (S)",
                                                            "primaryReason":  "Forkert vindretning (S)",
                                                            "secondaryReasons":  [
@@ -1250,7 +1250,7 @@
                                                            "cloudBase":  100,
                                                            "direction":  "S",
                                                            "degrees":  184,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  0,
                                                            "reason":  "Forkert vindretning (S)",
                                                            "primaryReason":  "Forkert vindretning (S)",
                                                            "secondaryReasons":  [
@@ -1591,7 +1591,7 @@
                                                            "cloudBase":  350,
                                                            "direction":  "NV",
                                                            "degrees":  329,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  2,
                                                            "reason":  "Forkert vindretning (NV)",
                                                            "primaryReason":  "Forkert vindretning (NV)",
                                                            "secondaryReasons":  [
@@ -1669,7 +1669,7 @@
                                                            "cloudBase":  100,
                                                            "direction":  "S",
                                                            "degrees":  192,
-                                                           "weatherCode":  3,
+                                                           "weatherCode":  2,
                                                            "reason":  "Forkert vindretning (S)",
                                                            "primaryReason":  "Forkert vindretning (S)",
                                                            "secondaryReasons":  [
